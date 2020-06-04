@@ -1,0 +1,36 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace RPGWO_Client.Network.Packets
+{
+    public class Login : Packet
+    {
+        public String Username { get; set; } // First 20 Bytes
+        public String Password { get; set; } // Second 20 Bytes
+        public bool NewUser { get; set; } // Single Byte
+        public String Email { get; set; } // 100 Bytes
+
+        public Login() : base((byte)PacketTypes.Login, 141)
+        {
+
+        }
+
+        public override byte[] GetBytes()
+        {
+            AddString(Username, 20);
+            AddString(Password, 20);
+            AddBool(NewUser);
+            AddString(Email, 100);
+
+            return base.GetBytes();
+        }
+
+        public override bool Receive()
+        {
+            throw new NotImplementedException();
+        }
+    }
+}

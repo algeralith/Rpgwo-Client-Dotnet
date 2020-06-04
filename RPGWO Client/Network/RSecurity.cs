@@ -1,0 +1,49 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Microsoft.VisualBasic;
+
+namespace RPGWO_Client.Network
+{
+    // Random Security, hand the random bytes needed by the server. 
+    public class RSecurity
+    {
+        private Int16 _seed;
+        private int _queueSize;
+        private Queue<byte> _serverBytes;
+        private Queue<byte> _clientBytes;
+
+        public RSecurity(Int16 rnd, int queueSize)
+        {
+            this._seed = rnd;
+            this._queueSize = queueSize;
+
+            Initialze();
+        }
+
+        private void Initialze()
+        {
+            _serverBytes = new Queue<byte>(_queueSize);
+            _clientBytes = new Queue<byte>(_queueSize);
+
+            // Seed VB Rnd
+            VBMath.Rnd(-1);
+            VBMath.Randomize(_seed);
+
+            for (int i = 0; i < _queueSize; i++)
+            {
+                _clientBytes.Enqueue(Convert.ToByte(VBMath.Rnd() * 255));
+                _serverBytes.Enqueue(Convert.ToByte(VBMath.Rnd() * 255));
+            }
+
+            // The first byte does not seem to be used, at least initially.
+            // TODO :: Expore whether or not it adds the firs to queue, or just skips.
+            // Looks like it is added to the end. Not sure why.
+            // Need to look into whether mickey keeps a counter and uses modulo. Will get different results on rollover if he does
+            _clientBytes.Enqueue(_clientBytes.Dequeue());
+            _serverBytes.Enqueue(_serverBytes.Dequeue());
+        }
+    }
+}
