@@ -77,6 +77,7 @@
     <Compile Include="Network\Packets\RandomByte.cs" />
     <Compile Include="Network\Packets\ReqSkillDef.cs" />
     <Compile Include="Network\Packets\SkillDef.cs" />
+    <Compile Include="Network\Packets\Text.cs" />
     <Compile Include="Network\Packets\Version.cs" />
     <Compile Include="Network\RpgwoSocketEventArgs.cs" />
     <Compile Include="Network\RSecurity.cs" />

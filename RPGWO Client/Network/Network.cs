@@ -39,6 +39,7 @@ namespace RPGWO_Client.Network
             RegisterPacket((byte)PacketTypes.Nack, typeof(Nack));
             RegisterPacket((byte)PacketTypes.Version, typeof(Packets.Version));
             RegisterPacket((byte)PacketTypes.Login, typeof(Login)); // Sent Only
+            RegisterPacket((byte)PacketTypes.Text, typeof(Text));
             RegisterPacket((byte)PacketTypes.RandomByte, typeof(RandomByte));
             RegisterPacket((byte)PacketTypes.ClientList, typeof(ClientList)); // TODO :: Handler
             RegisterPacket((byte)PacketTypes.Info2, typeof(Info2)); // Sent Only
@@ -54,6 +55,9 @@ namespace RPGWO_Client.Network
 
                 // Create Socket
                 _clientSock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+
+                // Create Packet Handler
+                Handler = new PacketHandler();
             }
             catch (Exception ex)
             {
@@ -231,22 +235,43 @@ namespace RPGWO_Client.Network
                         break;
                 }
 
+                // TODO :: Verify.
+
+                // Populate the packet with its data.
+                bool packetCompleted = args.Packet.Receive();
+
+                if (args.Packet.IsMultiPart) // See if any parts need receiving.
+                {
+                    // Check to see if all parts are received.
+                    if (!packetCompleted)
+                    {
+                        byte[] buffer = new byte[args.Packet.Remaining() + 2]; // Assume security is inherited from parent.
+
+                        RpgwoSocketEventArgs args2 = new RpgwoSocketEventArgs();
+
+                        args2.Packet = args.Packet;
+                        args2.ReceiveMode = args.ReceiveMode;
+                        args2.SetBuffer(buffer, 0, buffer.Length);
+                        args2.Completed += new EventHandler<SocketAsyncEventArgs>(ReceivePacketData);
+
+                        _clientSock.ReceiveAsync(args2);
+                        return; // TODO :: Refactor out this bit of code.
+                    }
+                }
+
                 // Send packet off to be handled
                 HandlePacket(args.Packet);
 
                 // Start receiving again
                 Receive();
             }
-
         }
 
         private void HandlePacket(Packet packet)
         {
-            // Populate the packet with its data
-            packet.Receive();
-
             // Certain Packets need to not leave the networking class.
-            // Handle these packets before dispatching to our Packet Handler
+            // Handle these packets before dispatching to our Packet Handler.
+            Console.WriteLine("Handling: " + packet.PacketID);
             switch ((PacketTypes)packet.PacketID)
             {
                 case PacketTypes.Nack:
@@ -255,9 +280,6 @@ namespace RPGWO_Client.Network
                 case PacketTypes.Ack:
                     HandleAck();
                     break;
-                case PacketTypes.Text: // Check to see if we still need to receive the rest of the packet
-
-                    break; 
                 case PacketTypes.RandomByte:
                     HandleRndByte((RandomByte)packet);
                     break;

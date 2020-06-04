@@ -17,6 +17,10 @@ namespace RPGWO_Client.Network.Packets
         // Packet contents
         protected byte[] buffer { get; private set; }
 
+        // Multipart
+        public bool IsMultiPart { get; protected set; }
+        public bool MultiComplete { get; protected set; }
+
         private int _writeHead = 0;
         private int _readHead = 0;
 
@@ -58,6 +62,23 @@ namespace RPGWO_Client.Network.Packets
         public void AdvanceWriteHead(int length)
         {
             _writeHead += length; // TODO :: I hate this type of function, redo it at some point.
+        }
+
+        protected bool ResizeBuffer(int length)
+        {
+            if (length < buffer.Length)
+            {
+                // We can not decrease size, only increase.
+                return false;
+            }
+
+            byte[] tmpBuff = new byte[length];
+
+            buffer.CopyTo(tmpBuff, 0);
+
+            buffer = tmpBuff;
+
+            return true;
         }
 
         // Add Methods
@@ -106,6 +127,13 @@ namespace RPGWO_Client.Network.Packets
 
         // Read Methods
         public byte ReadByte()
+        {
+            byte b = buffer[_readHead];
+            _readHead++;
+            return b;
+        }
+
+        public byte ReadBytes(int length)
         {
             byte b = buffer[_readHead];
             _readHead++;
