@@ -11,7 +11,7 @@ using RPGWO_Client.Network.Packets;
 
 namespace RPGWO_Client.Network
 {
-    public class Network
+    public partial class Network
     {
         public static Dictionary<byte, Type> Packets { get; private set; }
         public PacketHandler Handler { get; }
@@ -23,15 +23,14 @@ namespace RPGWO_Client.Network
         private RSecurity _rSecurity;
 
         public NetworkState NetworkState = NetworkState.None;
-        private ReceiveMode _receiveMode = ReceiveMode.Checksum; // Client starts sending checksum.
-        private SendMode sendMode = SendMode.None;
+        private SendReceiveMode _receiveMode = SendReceiveMode.Checksum; // Client starts sending checksum.
+        private SendReceiveMode _sendMode = SendReceiveMode.None;
 
         public bool Connected { get; private set; }
 
         // Connection Events
         public event EventHandler OnConnect;
         public event EventHandler OnDisconnect;
-
 
         // Register all Packets here. For now at least.
         static Network()
@@ -42,6 +41,8 @@ namespace RPGWO_Client.Network
             RegisterPacket((byte)PacketTypes.Text, typeof(Text));
             RegisterPacket((byte)PacketTypes.RandomByte, typeof(RandomByte));
             RegisterPacket((byte)PacketTypes.ClientList, typeof(ClientList)); // TODO :: Handler
+            RegisterPacket((byte)PacketTypes.SkillDef, typeof(SkillDef));
+            RegisterPacket((byte)PacketTypes.ReqSkillDef, typeof(ReqSkillDef));
             RegisterPacket((byte)PacketTypes.Info2, typeof(Info2)); // Sent Only
             RegisterPacket((byte)PacketTypes.Ack, typeof(Ack));
         }
@@ -90,7 +91,7 @@ namespace RPGWO_Client.Network
                 Receive();
 
                 // Send Version
-                Send(new Packets.Version(), SendMode.None);
+                Send(new Packets.Version(), SendReceiveMode.None);
 
             }
             catch (Exception ex)
@@ -169,15 +170,15 @@ namespace RPGWO_Client.Network
                 byte[] buffer = null;
                 switch (_receiveMode)
                 {
-                    case ReceiveMode.None: // No extra data appended
+                    case SendReceiveMode.None: // No extra data appended
                         buffer = new byte[packet.Size];
                         break;
 
-                    case ReceiveMode.Checksum: // Extra byte for checksum
+                    case SendReceiveMode.Checksum: // Extra byte for checksum
                         buffer = new byte[packet.Size + 1];
                         break;
 
-                    case ReceiveMode.ChecksumRnd: // Extra byte for checksum and rnd
+                    case SendReceiveMode.ChecksumRnd: // Extra byte for checksum and rnd
                         buffer = new byte[packet.Size + 2];
                         break;
                 }
@@ -219,16 +220,16 @@ namespace RPGWO_Client.Network
                 // Build up the packet before sending off to be handled
                 switch (args.ReceiveMode)
                 {
-                    case ReceiveMode.None: // No extra data appended
+                    case SendReceiveMode.None: // No extra data appended
                         args.Packet.AddBytes(args.Buffer);
                         break;
 
-                    case ReceiveMode.Checksum: // Extra byte for checksum
+                    case SendReceiveMode.Checksum: // Extra byte for checksum
                         args.Packet.AddBytes(args.Buffer, 0, args.Buffer.Length - 1);
                         args.Packet.CRC = args.Buffer[args.Buffer.Length - 1];
                         break;
 
-                    case ReceiveMode.ChecksumRnd: // Extra byte for checksum and rnd
+                    case SendReceiveMode.ChecksumRnd: // Extra byte for checksum and rnd
                         args.Packet.AddBytes(args.Buffer, 0, args.Buffer.Length - 2);
                         args.Packet.Rnd = args.Buffer[args.Buffer.Length - 2];
                         args.Packet.CRC = args.Buffer[args.Buffer.Length - 1];
@@ -289,7 +290,12 @@ namespace RPGWO_Client.Network
             }
         }
 
-        public void Send(Packet packet, SendMode sendMode)
+        public void Send(Packet packet)
+        {
+            Send(packet, _sendMode);
+        }
+
+        public void Send(Packet packet, SendReceiveMode sendMode)
         {
             if (_clientSock == null || _clientSock.Connected == false)
             {
@@ -300,22 +306,7 @@ namespace RPGWO_Client.Network
             try
             {
                 byte[] buffer = null;
-
-                switch (sendMode)
-                {
-                    case SendMode.None:
-                        buffer = new byte[packet.Size + 1]; // Need to add PacketID before sending
-                        break;
-                    case SendMode.Checksum:
-                        buffer = new byte[packet.Size + 2]; // Need to add Checksum, plus previous
-                        break;
-                    case SendMode.ChecksumRnd:
-                        buffer = new byte[packet.Size + 3]; // Need to add RND, plus previous
-                        break;
-                    default:
-                        Console.WriteLine("Unknown SendMode: " + sendMode);
-                        break;
-                }
+                buffer = new byte[packet.Size + 1]; // Need to add PacketID before sending
 
                 // Set Packet ID
                 buffer[0] = packet.PacketID;
@@ -323,6 +314,24 @@ namespace RPGWO_Client.Network
                 // Copy packet contents
                 packet.GetBytes().CopyTo(buffer, 1);
 
+                // Add Security
+                switch (sendMode)
+                {
+                    case SendReceiveMode.Checksum:
+
+                        break;
+                    case SendReceiveMode.ChecksumRnd:
+                        byte rnd = _rSecurity.NextClientByte();
+                        byte checksum = Utils.CalcCheckSum(buffer, rnd);
+                        byte[] tmpBuffer = new byte[buffer.Length + 2];
+                        tmpBuffer[tmpBuffer.Length - 2] = rnd;
+                        tmpBuffer[tmpBuffer.Length - 1] = checksum;
+                        buffer.CopyTo(tmpBuffer, 0);
+                        buffer = tmpBuffer;
+                        break;
+                }
+
+                // Prepare and send Packet
                 SocketAsyncEventArgs args = new SocketAsyncEventArgs();
                 args.Completed += new EventHandler<SocketAsyncEventArgs>(OnSendComplete);
 
@@ -379,8 +388,9 @@ namespace RPGWO_Client.Network
             // Set up packet security
             _rSecurity = new RSecurity(packet.randomByte, 1001); // Server expects 1001 bytes to use
 
-            // Update Receive / Send modee
-            _receiveMode = ReceiveMode.ChecksumRnd; // Tell Socket to expect packets to use both Checksum and Random.
+            // Update Receive / Send mode
+            _receiveMode = SendReceiveMode.ChecksumRnd; // Tell Socket to expect packets to use both Checksum and Random.
+            _sendMode = SendReceiveMode.ChecksumRnd; 
         }
 
         public static void RegisterPacket(Byte packetID, Type packetType)

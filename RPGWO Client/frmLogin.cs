@@ -13,22 +13,27 @@ namespace RPGWO_Client
 {
     public partial class frmLogin : Form
     {
-        public frmLogin()
+        public frmClient Client {get; private set; }
+        public frmLogin(frmClient frmClient)
         {
             InitializeComponent();
+            Client = frmClient;
         }
 
         private void BtnLogin_Click(object sender, EventArgs e)
         {
-            // Create Login Packet
-            Login login = new Login();
+            // First send client info2
+            Client.Network.SendInfo2();
 
-            login.Username = textBoxUsername.Text;
-            login.Password = textBoxPassword.Text;
-            login.Email = textBoxEmail.Text;
-            login.NewUser = checkBoxNewUser.Checked;
+            // TODO :: Validate text fields before sending.
+            if (!checkBoxNewUser.Checked)
+            {
+                Client.Network.SendLogin(textBoxUsername.Text, textBoxPassword.Text);
+            } else
+            {
+                Client.Network.SendLogin(textBoxUsername.Text, textBoxPassword.Text, textBoxEmail.Text);
+            }
 
-            // Send Login request
         }
 
         private void BtnCancel_Click(object sender, EventArgs e)

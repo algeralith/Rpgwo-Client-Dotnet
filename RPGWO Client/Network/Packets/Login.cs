@@ -15,15 +15,17 @@ namespace RPGWO_Client.Network.Packets
 
         public Login() : base((byte)PacketTypes.Login, 141)
         {
-
+            Username = "";
+            Password = "";
+            Email = "";
         }
 
         public override byte[] GetBytes()
         {
-            AddString(Username, 20);
-            AddString(Password, 20);
+            AddString(Username, 20, ' ');
+            AddString(Password, 20, ' ');
             AddBool(NewUser);
-            AddString(Email, 100);
+            AddString(Email, 100, ' ');
 
             return base.GetBytes();
         }

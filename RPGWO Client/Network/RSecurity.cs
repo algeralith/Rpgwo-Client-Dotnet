@@ -38,12 +38,29 @@ namespace RPGWO_Client.Network
                 _serverBytes.Enqueue(Convert.ToByte(VBMath.Rnd() * 255));
             }
 
-            // The first byte does not seem to be used, at least initially.
+            // The first byte does not seem to be used, at least initially. -- Could just be related to modulo usage. 
             // TODO :: Expore whether or not it adds the firs to queue, or just skips.
             // Looks like it is added to the end. Not sure why.
             // Need to look into whether mickey keeps a counter and uses modulo. Will get different results on rollover if he does
             _clientBytes.Enqueue(_clientBytes.Dequeue());
             _serverBytes.Enqueue(_serverBytes.Dequeue());
+        }
+
+        public byte NextServerByte()
+        {
+            return NextByte(_serverBytes);
+        }
+
+        public byte NextClientByte()
+        {
+            return NextByte(_clientBytes);
+        }
+
+        private byte NextByte(Queue<Byte> bytes)
+        {
+            byte b = bytes.Dequeue();
+            bytes.Enqueue(b);
+            return b;
         }
     }
 }

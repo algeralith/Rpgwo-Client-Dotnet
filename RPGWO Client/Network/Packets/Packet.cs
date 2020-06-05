@@ -112,6 +112,22 @@ namespace RPGWO_Client.Network.Packets
             _writeHead += count;
         }
 
+        public void AddString(String s, int maxLength, char initial)
+        {
+            if (s.Length > maxLength)
+            {
+                s = s.Substring(0, maxLength);
+            }
+            
+            byte[] tmpBuff = Encoding.ASCII.GetBytes(new string(initial, 20));
+            tmpBuff.CopyTo(buffer, _writeHead);
+
+            byte[] stringBytes = Encoding.UTF8.GetBytes(s);
+            stringBytes.CopyTo(buffer, _writeHead);
+
+            _writeHead += maxLength;
+        }
+
         public void AddString(String s, int maxLength)
         {
             if (s.Length > maxLength)

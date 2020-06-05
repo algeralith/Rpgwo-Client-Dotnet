@@ -15,8 +15,8 @@ namespace RPGWO_Client.Network
 
         public int TotalReceived { get; set; }
 
-        public SendMode SendMode { get; set; }
+        public SendReceiveMode SendMode { get; set; }
 
-        public ReceiveMode ReceiveMode { get; set; }
+        public SendReceiveMode ReceiveMode { get; set; }
     }
 }

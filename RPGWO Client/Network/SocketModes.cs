@@ -6,15 +6,8 @@ using System.Threading.Tasks;
 
 namespace RPGWO_Client.Network
 {
-    // Send Mode
-    public enum SendMode
-    {
-        None,
-        Checksum,
-        ChecksumRnd
-    }
 
-    public enum ReceiveMode
+    public enum SendReceiveMode
     {
         None,
         Checksum,

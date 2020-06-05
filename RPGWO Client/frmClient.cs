@@ -16,21 +16,19 @@ namespace RPGWO_Client
         // Networking
         public Network.Network Network { private set; get; }
 
-        frmLogin frmLogin = new frmLogin();
+        public frmLogin LoginForm { private set; get; }
 
         public frmClient()
         {
             InitializeComponent();
+            LoginForm = new frmLogin(this);
         }
 
         private void FrmClient_Load(object sender, EventArgs e)
         {
-            frmLogin.TopLevel = false;
-            frmLogin.Parent = this;
+            LoginForm.TopLevel = false;
+            LoginForm.Parent = this;
 
-            // RPGWO_Client.Network.Network.Connect();
-            // 104.168.47.163
-            // 127.0.0.1
             this.Network = new Network.Network("127.0.0.1", 4502);
 
             Network.OnConnect += Network_OnConnect;
@@ -41,9 +39,9 @@ namespace RPGWO_Client
         {
             Console.WriteLine("Connected to Server.");
 
-            frmLogin.Invoke((MethodInvoker)delegate ()
+            LoginForm.Invoke((MethodInvoker)delegate ()
             {
-                frmLogin.Show();
+                LoginForm.Show();
             });
         }
     }
