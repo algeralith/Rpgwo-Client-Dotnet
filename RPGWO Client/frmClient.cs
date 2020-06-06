@@ -32,7 +32,12 @@ namespace RPGWO_Client
             this.Network = new Network.Network("127.0.0.1", 4502);
 
             Network.OnConnect += Network_OnConnect;
-            Network.Connect();
+            // Network.Connect();
+
+            frmMainMenu frmMainMenu = new frmMainMenu();
+            // frmMainMenu.TopLevel = false;
+            // frmMainMenu.Parent = this;
+            frmMainMenu.Show();
         }
 
         private void Network_OnConnect(object sender, EventArgs e)

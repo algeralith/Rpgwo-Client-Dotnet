@@ -32,9 +32,9 @@
             // 
             // frmClient
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1007, 721);
+            this.ClientSize = new System.Drawing.Size(991, 683);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmClient";
             this.Text = "Form1";

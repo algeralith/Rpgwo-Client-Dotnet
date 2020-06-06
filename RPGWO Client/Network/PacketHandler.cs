@@ -9,6 +9,13 @@ namespace RPGWO_Client.Network
 {
     public class PacketHandler
     {
+        public Network Network { get; private set; }
+
+        public PacketHandler(Network network)
+        {
+            Network = network;
+        }
+
         public void HandlePacket(Packet packet)
         {
             switch((PacketTypes)packet.PacketID)

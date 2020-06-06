@@ -58,7 +58,7 @@ namespace RPGWO_Client.Network
                 _clientSock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
                 // Create Packet Handler
-                Handler = new PacketHandler();
+                Handler = new PacketHandler(this);
             }
             catch (Exception ex)
             {
@@ -273,6 +273,7 @@ namespace RPGWO_Client.Network
             // Certain Packets need to not leave the networking class.
             // Handle these packets before dispatching to our Packet Handler.
             Console.WriteLine("Handling: " + packet.PacketID);
+
             switch ((PacketTypes)packet.PacketID)
             {
                 case PacketTypes.Nack:
@@ -285,9 +286,11 @@ namespace RPGWO_Client.Network
                     HandleRndByte((RandomByte)packet);
                     break;
                 default:
-                    Handler.HandlePacket(packet);
                     break;
             }
+
+            // Send Packet off to be handled
+            Handler.HandlePacket(packet);
         }
 
         public void Send(Packet packet)
@@ -318,16 +321,24 @@ namespace RPGWO_Client.Network
                 switch (sendMode)
                 {
                     case SendReceiveMode.Checksum:
-
+                        {
+                            byte[] tmpBuffer = new byte[buffer.Length + 1];
+                            byte checksum = Utils.CalcCheckSum(buffer);
+                            tmpBuffer[tmpBuffer.Length - 1] = checksum;
+                            buffer.CopyTo(tmpBuffer, 0);
+                            buffer = tmpBuffer;
+                        }
                         break;
                     case SendReceiveMode.ChecksumRnd:
-                        byte rnd = _rSecurity.NextClientByte();
-                        byte checksum = Utils.CalcCheckSum(buffer, rnd);
-                        byte[] tmpBuffer = new byte[buffer.Length + 2];
-                        tmpBuffer[tmpBuffer.Length - 2] = rnd;
-                        tmpBuffer[tmpBuffer.Length - 1] = checksum;
-                        buffer.CopyTo(tmpBuffer, 0);
-                        buffer = tmpBuffer;
+                        {
+                            byte rnd = _rSecurity.NextClientByte();
+                            byte checksum = Utils.CalcCheckSum(buffer, rnd);
+                            byte[] tmpBuffer = new byte[buffer.Length + 2];
+                            tmpBuffer[tmpBuffer.Length - 2] = rnd;
+                            tmpBuffer[tmpBuffer.Length - 1] = checksum;
+                            buffer.CopyTo(tmpBuffer, 0);
+                            buffer = tmpBuffer;
+                        }
                         break;
                 }
 
@@ -363,6 +374,11 @@ namespace RPGWO_Client.Network
                     // TODO :: Async invoke.
                     OnConnect?.Invoke(this, null);
                     break;
+                case NetworkState.LoginSent:
+                    // Login was successful.
+                    // Update Network State
+                    NetworkState = NetworkState.MainMenu;
+                    break;
                 default:
                     Console.WriteLine("Unhandled Network State in Ack: " + NetworkState);
                     break;
@@ -375,6 +391,11 @@ namespace RPGWO_Client.Network
             {
                 case NetworkState.None:
                     // Server has failed to verify client version.
+                    NetworkState = NetworkState.VersionVerified;
+                    break;
+                case NetworkState.LoginSent:
+                    // Login was denied.
+                    // Update State
                     NetworkState = NetworkState.VersionVerified;
                     break;
                 default:

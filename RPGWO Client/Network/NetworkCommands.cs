@@ -28,7 +28,7 @@ namespace RPGWO_Client.Network
             login.Username = username;
             login.Password = password;
 
-            Send(login);
+            SendLogin(login);
         }
 
         // Create account and Login
@@ -40,7 +40,22 @@ namespace RPGWO_Client.Network
             login.Email = email;
             login.NewUser = true;
 
+            SendLogin(login);
+        }
+
+        private void SendLogin(Login login)
+        {
+            // First, verify that we are in the proper state.
+            if (this.NetworkState != NetworkState.VersionVerified)
+            {
+                // TODO :: Err
+                return;
+            }
+
             Send(login);
+
+            // Update NetworkState
+            NetworkState = NetworkState.LoginSent;
         }
     }
 }

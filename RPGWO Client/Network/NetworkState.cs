@@ -10,6 +10,7 @@ namespace RPGWO_Client.Network
     {
         None,
         VersionVerified,
-        LoginSent
+        LoginSent,
+        MainMenu
     }
 }
