@@ -37,7 +37,7 @@ namespace RPGWO_Client
             frmCreate frmMainMenu = new frmCreate();
             // frmMainMenu.TopLevel = false;
             // frmMainMenu.Parent = this;
-            frmMainMenu.Show();
+            frmMainMenu.ShowDialog();
         }
 
         private void Network_OnConnect(object sender, EventArgs e)

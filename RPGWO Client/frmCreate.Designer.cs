@@ -112,74 +112,90 @@
             // 
             // btnChestDown
             // 
+            this.btnChestDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnChestDown.Location = new System.Drawing.Point(540, 93);
             this.btnChestDown.Name = "btnChestDown";
             this.btnChestDown.Size = new System.Drawing.Size(25, 16);
             this.btnChestDown.TabIndex = 0;
             this.btnChestDown.Text = "⯆";
+            this.btnChestDown.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnChestDown.UseVisualStyleBackColor = true;
             // 
             // btnLegsDown
             // 
+            this.btnLegsDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLegsDown.Location = new System.Drawing.Point(540, 129);
             this.btnLegsDown.Name = "btnLegsDown";
             this.btnLegsDown.Size = new System.Drawing.Size(25, 16);
             this.btnLegsDown.TabIndex = 0;
             this.btnLegsDown.Text = "⯆";
+            this.btnLegsDown.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnLegsDown.UseVisualStyleBackColor = true;
             // 
             // btnArmsDown
             // 
+            this.btnArmsDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnArmsDown.Location = new System.Drawing.Point(540, 57);
             this.btnArmsDown.Name = "btnArmsDown";
             this.btnArmsDown.Size = new System.Drawing.Size(25, 16);
             this.btnArmsDown.TabIndex = 0;
             this.btnArmsDown.Text = "⯆";
+            this.btnArmsDown.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnArmsDown.UseVisualStyleBackColor = true;
             // 
             // btnHeadDown
             // 
+            this.btnHeadDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHeadDown.Location = new System.Drawing.Point(540, 21);
             this.btnHeadDown.Name = "btnHeadDown";
             this.btnHeadDown.Size = new System.Drawing.Size(25, 16);
             this.btnHeadDown.TabIndex = 0;
             this.btnHeadDown.Text = "⯆";
+            this.btnHeadDown.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnHeadDown.UseVisualStyleBackColor = true;
             // 
             // btnChestUp
             // 
+            this.btnChestUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnChestUp.Location = new System.Drawing.Point(540, 75);
             this.btnChestUp.Name = "btnChestUp";
             this.btnChestUp.Size = new System.Drawing.Size(25, 16);
             this.btnChestUp.TabIndex = 0;
             this.btnChestUp.Text = "⯅";
+            this.btnChestUp.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnChestUp.UseVisualStyleBackColor = true;
             // 
             // btwnLegsUp
             // 
+            this.btwnLegsUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btwnLegsUp.Location = new System.Drawing.Point(540, 111);
             this.btwnLegsUp.Name = "btwnLegsUp";
             this.btwnLegsUp.Size = new System.Drawing.Size(25, 16);
             this.btwnLegsUp.TabIndex = 0;
             this.btwnLegsUp.Text = "⯅";
+            this.btwnLegsUp.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btwnLegsUp.UseVisualStyleBackColor = true;
             // 
             // btnArmsUp
             // 
+            this.btnArmsUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnArmsUp.Location = new System.Drawing.Point(540, 39);
             this.btnArmsUp.Name = "btnArmsUp";
             this.btnArmsUp.Size = new System.Drawing.Size(25, 16);
             this.btnArmsUp.TabIndex = 0;
             this.btnArmsUp.Text = "⯅";
+            this.btnArmsUp.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnArmsUp.UseVisualStyleBackColor = true;
             // 
             // btnHeadUp
             // 
+            this.btnHeadUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHeadUp.Location = new System.Drawing.Point(540, 3);
             this.btnHeadUp.Name = "btnHeadUp";
             this.btnHeadUp.Size = new System.Drawing.Size(25, 16);
             this.btnHeadUp.TabIndex = 0;
             this.btnHeadUp.Text = "⯅";
+            this.btnHeadUp.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnHeadUp.UseVisualStyleBackColor = true;
             // 
             // pictureBoxLegs
@@ -228,6 +244,7 @@
             // 
             // btnUnSpecSkill
             // 
+            this.btnUnSpecSkill.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUnSpecSkill.Location = new System.Drawing.Point(366, 261);
             this.btnUnSpecSkill.Name = "btnUnSpecSkill";
             this.btnUnSpecSkill.Size = new System.Drawing.Size(82, 33);
@@ -237,6 +254,7 @@
             // 
             // btnSpecSkill
             // 
+            this.btnSpecSkill.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSpecSkill.Location = new System.Drawing.Point(366, 228);
             this.btnSpecSkill.Name = "btnSpecSkill";
             this.btnSpecSkill.Size = new System.Drawing.Size(82, 33);
@@ -345,6 +363,7 @@
             // 
             // btnUntrainSkill
             // 
+            this.btnUntrainSkill.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUntrainSkill.Location = new System.Drawing.Point(144, 261);
             this.btnUntrainSkill.Name = "btnUntrainSkill";
             this.btnUntrainSkill.Size = new System.Drawing.Size(81, 33);
@@ -354,6 +373,7 @@
             // 
             // btnTrainSkill
             // 
+            this.btnTrainSkill.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTrainSkill.Location = new System.Drawing.Point(144, 228);
             this.btnTrainSkill.Name = "btnTrainSkill";
             this.btnTrainSkill.Size = new System.Drawing.Size(81, 33);
@@ -532,71 +552,79 @@
             // 
             // label4
             // 
-            this.label4.Location = new System.Drawing.Point(238, 112);
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(241, 113);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(49, 17);
+            this.label4.Size = new System.Drawing.Size(48, 13);
             this.label4.TabIndex = 6;
             this.label4.Text = "Wisdom:";
             // 
             // label5
             // 
-            this.label5.Location = new System.Drawing.Point(222, 88);
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(225, 89);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(65, 17);
+            this.label5.Size = new System.Drawing.Size(64, 13);
             this.label5.TabIndex = 6;
             this.label5.Text = "Intelligence:";
             // 
             // label6
             // 
-            this.label6.Location = new System.Drawing.Point(222, 64);
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(230, 65);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(65, 17);
+            this.label6.Size = new System.Drawing.Size(60, 13);
             this.label6.TabIndex = 6;
             this.label6.Text = "Quickness:";
             // 
             // label7
             // 
-            this.label7.Location = new System.Drawing.Point(238, 40);
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(239, 41);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(49, 17);
+            this.label7.Size = new System.Drawing.Size(51, 13);
             this.label7.TabIndex = 6;
             this.label7.Text = "Dexterity:";
             // 
             // label8
             // 
-            this.label8.Location = new System.Drawing.Point(238, 16);
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(239, 21);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(49, 17);
+            this.label8.Size = new System.Drawing.Size(50, 13);
             this.label8.TabIndex = 6;
             this.label8.Text = "Strength:";
             // 
             // label9
             // 
-            this.label9.Location = new System.Drawing.Point(24, 68);
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(24, 69);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(25, 17);
+            this.label9.Size = new System.Drawing.Size(27, 13);
             this.label9.TabIndex = 6;
             this.label9.Text = "Life:";
             // 
             // label10
             // 
-            this.label10.Location = new System.Drawing.Point(3, 92);
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(3, 93);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(48, 17);
+            this.label10.Size = new System.Drawing.Size(48, 13);
             this.label10.TabIndex = 6;
             this.label10.Text = "Stamina:";
             // 
             // label11
             // 
-            this.label11.Location = new System.Drawing.Point(8, 116);
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(10, 117);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(41, 17);
+            this.label11.Size = new System.Drawing.Size(37, 13);
             this.label11.TabIndex = 6;
             this.label11.Text = "Mana:";
             // 
             // label12
             // 
-            this.label12.Location = new System.Drawing.Point(8, 4);
+            this.label12.Location = new System.Drawing.Point(8, 7);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(39, 17);
             this.label12.TabIndex = 6;
@@ -668,9 +696,10 @@
             // 
             // label13
             // 
-            this.label13.Location = new System.Drawing.Point(8, 36);
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(9, 39);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(85, 17);
+            this.label13.Size = new System.Drawing.Size(81, 13);
             this.label13.TabIndex = 6;
             this.label13.Text = "Attribute Points:";
             // 
@@ -755,7 +784,9 @@
             this.Controls.Add(this.btnUnSpecSkill);
             this.Controls.Add(this.btnLegsDown);
             this.Controls.Add(this.btnChestDown);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmCreate";
             this.Text = "Create Player";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLegs)).EndInit();
