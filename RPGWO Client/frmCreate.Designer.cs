@@ -116,7 +116,7 @@
             this.btnChestDown.Name = "btnChestDown";
             this.btnChestDown.Size = new System.Drawing.Size(25, 16);
             this.btnChestDown.TabIndex = 0;
-            this.btnChestDown.Text = "⯅";
+            this.btnChestDown.Text = "⯆";
             this.btnChestDown.UseVisualStyleBackColor = true;
             // 
             // btnLegsDown
@@ -125,7 +125,7 @@
             this.btnLegsDown.Name = "btnLegsDown";
             this.btnLegsDown.Size = new System.Drawing.Size(25, 16);
             this.btnLegsDown.TabIndex = 0;
-            this.btnLegsDown.Text = "⯅";
+            this.btnLegsDown.Text = "⯆";
             this.btnLegsDown.UseVisualStyleBackColor = true;
             // 
             // btnArmsDown
@@ -134,7 +134,7 @@
             this.btnArmsDown.Name = "btnArmsDown";
             this.btnArmsDown.Size = new System.Drawing.Size(25, 16);
             this.btnArmsDown.TabIndex = 0;
-            this.btnArmsDown.Text = "⯅";
+            this.btnArmsDown.Text = "⯆";
             this.btnArmsDown.UseVisualStyleBackColor = true;
             // 
             // btnHeadDown
@@ -143,7 +143,7 @@
             this.btnHeadDown.Name = "btnHeadDown";
             this.btnHeadDown.Size = new System.Drawing.Size(25, 16);
             this.btnHeadDown.TabIndex = 0;
-            this.btnHeadDown.Text = "⯅";
+            this.btnHeadDown.Text = "⯆";
             this.btnHeadDown.UseVisualStyleBackColor = true;
             // 
             // btnChestUp
