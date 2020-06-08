@@ -65,7 +65,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(0, 12);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(87, 20);
+            this.label1.Size = new System.Drawing.Size(58, 13);
             this.label1.TabIndex = 2;
             this.label1.Text = "Username:";
             // 
@@ -74,7 +74,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(0, 45);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(82, 20);
+            this.label2.Size = new System.Drawing.Size(56, 13);
             this.label2.TabIndex = 3;
             this.label2.Text = "Password:";
             // 
@@ -84,7 +84,7 @@
             this.label3.Location = new System.Drawing.Point(0, 94);
             this.label3.Margin = new System.Windows.Forms.Padding(0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(82, 20);
+            this.label3.Size = new System.Drawing.Size(57, 13);
             this.label3.TabIndex = 4;
             this.label3.Text = "New User:";
             // 
@@ -93,7 +93,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(0, 147);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(52, 20);
+            this.label4.Size = new System.Drawing.Size(35, 13);
             this.label4.TabIndex = 5;
             this.label4.Text = "Email:";
             // 
@@ -101,7 +101,7 @@
             // 
             this.textBoxUsername.Location = new System.Drawing.Point(68, 12);
             this.textBoxUsername.Name = "textBoxUsername";
-            this.textBoxUsername.Size = new System.Drawing.Size(90, 26);
+            this.textBoxUsername.Size = new System.Drawing.Size(90, 20);
             this.textBoxUsername.TabIndex = 0;
             // 
             // textBoxPassword
@@ -109,7 +109,7 @@
             this.textBoxPassword.Location = new System.Drawing.Point(68, 42);
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.PasswordChar = '*';
-            this.textBoxPassword.Size = new System.Drawing.Size(90, 26);
+            this.textBoxPassword.Size = new System.Drawing.Size(90, 20);
             this.textBoxPassword.TabIndex = 6;
             // 
             // checkBoxNewUser
@@ -118,7 +118,7 @@
             this.checkBoxNewUser.Location = new System.Drawing.Point(60, 95);
             this.checkBoxNewUser.Margin = new System.Windows.Forms.Padding(0);
             this.checkBoxNewUser.Name = "checkBoxNewUser";
-            this.checkBoxNewUser.Size = new System.Drawing.Size(22, 21);
+            this.checkBoxNewUser.Size = new System.Drawing.Size(15, 14);
             this.checkBoxNewUser.TabIndex = 7;
             this.checkBoxNewUser.UseVisualStyleBackColor = true;
             // 
@@ -127,7 +127,7 @@
             this.textBoxEmail.Enabled = false;
             this.textBoxEmail.Location = new System.Drawing.Point(4, 170);
             this.textBoxEmail.Name = "textBoxEmail";
-            this.textBoxEmail.Size = new System.Drawing.Size(154, 26);
+            this.textBoxEmail.Size = new System.Drawing.Size(154, 20);
             this.textBoxEmail.TabIndex = 8;
             // 
             // btnLogin
@@ -136,7 +136,7 @@
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(54, 41);
             this.btnLogin.TabIndex = 9;
-            this.btnLogin.Text = "Ok";
+            this.btnLogin.Text = "&Ok";
             this.btnLogin.UseVisualStyleBackColor = true;
             this.btnLogin.Click += new System.EventHandler(this.BtnLogin_Click);
             // 
@@ -146,7 +146,7 @@
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(54, 41);
             this.btnCancel.TabIndex = 10;
-            this.btnCancel.Text = "Cancel";
+            this.btnCancel.Text = "&Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
             // 

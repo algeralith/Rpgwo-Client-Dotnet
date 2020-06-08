@@ -14,6 +14,16 @@ namespace RPGWO_Client.Network
 
         }
 
+        public void SendAck()
+        {
+            Send(new Ack(), SendReceiveMode.None); // No security for Ack / Nack.
+        }
+
+        public void SendNack()
+        {
+            Send(new Nack(), SendReceiveMode.None); // No security for Ack / Nack.
+        }
+
         public void SendInfo2()
         {
             Info2 info2 = new Info2();

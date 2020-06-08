@@ -23,6 +23,8 @@ namespace RPGWO_Client.Network
         private RSecurity _rSecurity;
 
         public NetworkState NetworkState = NetworkState.None;
+
+        // Packet Receive Modes.
         private SendReceiveMode _receiveMode = SendReceiveMode.Checksum; // Client starts sending checksum.
         private SendReceiveMode _sendMode = SendReceiveMode.None;
 
