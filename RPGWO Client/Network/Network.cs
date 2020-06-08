@@ -373,7 +373,7 @@ namespace RPGWO_Client.Network
             {
                 case NetworkState.None:
                     // Server has veried client version.
-                    NetworkState = NetworkState.VersionVerified;
+                    NetworkState = NetworkState.LoginScreen;
                     // Notify that connection has been established.
                     // TODO :: This can be done better.
                     OnConnect?.BeginInvoke(this, EventArgs.Empty, null, null);
@@ -384,7 +384,9 @@ namespace RPGWO_Client.Network
                     NetworkState = NetworkState.MainMenu;
                     break;
                 default:
-                    Console.WriteLine("Unhandled Network State in Ack: " + NetworkState);
+                    // Console.WriteLine("Unhandled Network State in Ack: " + NetworkState);
+                    // Forward packet to be handled elsewhere.
+                    Handler.HandlePacket(new Ack());
                     break;
             }
         }
@@ -395,15 +397,19 @@ namespace RPGWO_Client.Network
             {
                 case NetworkState.None:
                     // Server has failed to verify client version.
-                    NetworkState = NetworkState.VersionVerified;
+                    NetworkState = NetworkState.LoginScreen;
+
+                    // TODO :: Show Error, Disconnect Client.
                     break;
                 case NetworkState.LoginSent:
                     // Login was denied.
                     // Update State
-                    NetworkState = NetworkState.VersionVerified;
+                    NetworkState = NetworkState.LoginScreen;
                     break;
                 default:
-                    Console.WriteLine("Unhandled Network State in Nack: " + NetworkState);
+                    // Console.WriteLine("Unhandled Network State in Nack: " + NetworkState);
+                    // Forward packet to be handled elsewhere.
+                    Handler.HandlePacket(new Nack());
                     break;
             }
         }

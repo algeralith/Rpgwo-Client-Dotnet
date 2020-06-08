@@ -9,7 +9,7 @@ namespace RPGWO_Client.Network
     public enum NetworkState
     {
         None,
-        VersionVerified,
+        LoginScreen,
         LoginSent,
         MainMenu
     }
