@@ -159,7 +159,14 @@ namespace RPGWO_Client.Network.Packets
         public Int16 ReadInt16()
         {
             Int16 i = BitConverter.ToInt16(buffer, _readHead);
-            _readHead++;
+            _readHead += 2;
+            return i;
+        }
+
+        public int ReadInt32()
+        {
+            int i = BitConverter.ToInt32(buffer, _readHead);
+            _readHead += 4;
             return i;
         }
 

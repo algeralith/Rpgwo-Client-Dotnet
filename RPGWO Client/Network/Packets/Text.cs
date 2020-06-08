@@ -8,8 +8,10 @@ namespace RPGWO_Client.Network.Packets
 {
     public class Text : Packet
     {
-        public byte TextLength { get; private set; }
-        public byte[] Unknown { get; private set; } // TODO :: Unsure of the remaining data.
+        public byte TextLength { get; set; }
+        public byte Channel { get; set; }
+        public int UUID { get; set; }
+        public int ClientID { get; set; }
 
         // Not part of the Packet Structure.
         public bool ReceivedText { get; set; }
@@ -19,7 +21,6 @@ namespace RPGWO_Client.Network.Packets
             MultiComplete = false;
 
             ReceivedText = false;
-            Unknown = new byte[9]; // TODO :: 
         }
 
         public void PrepareForText()
@@ -32,9 +33,9 @@ namespace RPGWO_Client.Network.Packets
             if (!ReceivedText)
             {
                 TextLength = ReadByte();
-
-                for (int i = 0; i < Unknown.Length; i++)
-                    ReadByte();
+                Channel = ReadByte();
+                UUID = ReadInt32();
+                ClientID = ReadInt32();
 
                 // Resize Buffer
                 ResizeBuffer(this.buffer.Length + TextLength);
