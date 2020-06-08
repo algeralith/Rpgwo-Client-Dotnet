@@ -56,7 +56,7 @@ namespace RPGWO_Client.Network
         private void SendLogin(Login login)
         {
             // First, verify that we are in the proper state.
-            if (this.NetworkState != NetworkState.VersionVerified)
+            if (this.NetworkState != NetworkState.LoginScreen)
             {
                 // TODO :: Err
                 return;
