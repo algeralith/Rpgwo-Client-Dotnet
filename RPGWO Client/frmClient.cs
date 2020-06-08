@@ -16,28 +16,47 @@ namespace RPGWO_Client
         // Networking
         public Network.Network Network { private set; get; }
 
+        // Client Forms
         public frmLogin LoginForm { private set; get; }
+        public frmCreate CreateForm { private set; get; }
+        public frmMainMenu MainMenu { private set; get; }
 
         public frmClient()
         {
+
             InitializeComponent();
-            LoginForm = new frmLogin(this);
         }
 
         private void FrmClient_Load(object sender, EventArgs e)
         {
-            LoginForm.TopLevel = false;
-            LoginForm.Parent = this;
-
             this.Network = new Network.Network("127.0.0.1", 4502);
 
-            Network.OnConnect += Network_OnConnect;
-            // Network.Connect();
+            InitalizeForms();
 
-            frmCreate frmMainMenu = new frmCreate();
-            // frmMainMenu.TopLevel = false;
-            // frmMainMenu.Parent = this;
-            frmMainMenu.ShowDialog();
+            InitalizeEvents();
+
+            Network.Connect();
+        }
+
+        private void InitalizeForms()
+        {
+            LoginForm = new frmLogin(this);
+            // For some reason, it seems like you need to try to access the handle to make sure its created.
+            // See: https://stackoverflow.com/questions/808867/invoke-or-begininvoke-cannot-be-called-on-a-control-until-the-window-handle-has/809186
+            // TODO :: Look into the proper way to do this.
+            var handler = LoginForm.Handle;
+
+            MainMenu = new frmMainMenu();
+            handler = MainMenu.Handle;
+
+            CreateForm = new frmCreate();
+            handler = CreateForm.Handle;
+        }
+
+        private void InitalizeEvents()
+        {
+            Network.OnConnect += Network_OnConnect;
+            Network.OnDisconnect += Network_OnDisconnect;
         }
 
         private void Network_OnConnect(object sender, EventArgs e)
@@ -46,8 +65,14 @@ namespace RPGWO_Client
 
             LoginForm.Invoke((MethodInvoker)delegate ()
             {
-                LoginForm.Show();
+                LoginForm.ShowDialog();
             });
         }
+
+        private void Network_OnDisconnect(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }

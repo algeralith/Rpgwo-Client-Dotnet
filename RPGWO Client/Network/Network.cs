@@ -129,6 +129,7 @@ namespace RPGWO_Client.Network
             if (_clientSock == null || _clientSock.Connected == false)
             {
                 // Socket has been D/C'd, handle disconnect
+                HandleDisconnect();
                 return;
             }
 
@@ -196,6 +197,7 @@ namespace RPGWO_Client.Network
             if (_clientSock == null || _clientSock.Connected == false)
             {
                 // Socket has been D/C'd, handle disconnect
+                HandleDisconnect();
                 return;
             }
 
@@ -303,6 +305,7 @@ namespace RPGWO_Client.Network
             if (_clientSock == null || _clientSock.Connected == false)
             {
                 // Socket has been D/C'd, handle disconnect
+                HandleDisconnect();
                 return;
             }
 
@@ -369,10 +372,9 @@ namespace RPGWO_Client.Network
                 case NetworkState.None:
                     // Server has veried client version.
                     NetworkState = NetworkState.VersionVerified;
-
                     // Notify that connection has been established.
-                    // TODO :: Async invoke.
-                    OnConnect?.Invoke(this, null);
+                    // TODO :: This can be done better.
+                    OnConnect?.BeginInvoke(this, EventArgs.Empty, null, null);
                     break;
                 case NetworkState.LoginSent:
                     // Login was successful.
@@ -402,6 +404,14 @@ namespace RPGWO_Client.Network
                     Console.WriteLine("Unhandled Network State in Nack: " + NetworkState);
                     break;
             }
+        }
+
+
+        private void HandleDisconnect()
+        {
+            // TODO :: Proper disconnect handling
+            Console.WriteLine("Disconnected");
+            OnDisconnect?.BeginInvoke(this, EventArgs.Empty, null, null);
         }
 
         private void HandleRndByte(RandomByte packet)
