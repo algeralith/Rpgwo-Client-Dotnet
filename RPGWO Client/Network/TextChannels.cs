@@ -17,7 +17,7 @@ namespace RPGWO_Client.Network
         LightBlue = 6, // 200, 200, 255
         Brown = 7, // 191, 161, 109
         Pink = 8, // 245, 184, 205
-        YellowCombat = 9, // 230, 230, 0 -- Battle Text Message.
+        Yellow = 9, // 230, 230, 0 -- Battle Text Message.
         TextMsg = 10, // Text Message / Motd box.
         Unknown11 = 11, // Does not seem to be used 
         LightBlue2 = 12, // Same as 6, Light Blue
@@ -28,7 +28,7 @@ namespace RPGWO_Client.Network
         Red = 20,
         MediumRed = 21,
         LightRed = 22,
-        Yellow = 23,
+        // Yellow = 23,
         Yellow2 = 24,
         GreenCombat = 25,
         LightGreen = 26,
@@ -41,6 +41,7 @@ namespace RPGWO_Client.Network
         Red2 = 33,
         Yellow3 = 34,
         Green = 35,
-        LightRed2 = 36
+        LightRed2 = 36,
+        // DarkGrey3 = 16
     }
 }
