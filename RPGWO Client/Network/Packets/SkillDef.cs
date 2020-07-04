@@ -29,7 +29,21 @@ namespace RPGWO_Client.Network.Packets
 
         public override bool Receive()
         {
-            throw new NotImplementedException();
+            Name = ReadString(20);
+            SkillID = ReadByte();
+            ClearList = ReadBool();
+            Value = ReadInt16();
+            SkillPoints = ReadByte();
+            Strength = ReadByte();
+            Dexterity = ReadByte();
+            Quickness = ReadByte();
+            Intelligence = ReadByte();
+            Wisdom = ReadByte();
+            Divisor = ReadByte();
+            Status = ReadBool();
+            Description = ReadString(100);
+
+            return true;
         }
 
         public override byte[] GetBytes()

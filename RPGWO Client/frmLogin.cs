@@ -16,8 +16,37 @@ namespace RPGWO_Client
         public frmClient Client {get; private set; }
         public frmLogin(frmClient frmClient)
         {
-            InitializeComponent();
             Client = frmClient;
+            InitializeComponent();
+            InitializeEvents();
+        }
+
+        private void InitializeEvents()
+        {
+            Client.Network.Handler.LoginSuccess += Handler_LoginSuccess;
+            Client.Network.Handler.LoginFailure += Handler_LoginFailure;
+        }
+
+        private void Handler_LoginSuccess(object sender, EventArgs e)
+        {
+            // Hide Login
+            Client.HideForm(this);
+
+            // Show MainMenu
+            Client.ShowForm(Client.MainMenu);
+            
+            // TODO :: The following code is better suited elsewhere. Just putting it here for quick testing.
+            // Request Skills
+            Client.Network.SendSkillDefReq();
+
+            // Request Player List
+            Client.Network.SendPlayerListReq();
+
+        }
+
+        private void Handler_LoginFailure(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void BtnLogin_Click(object sender, EventArgs e)
@@ -33,7 +62,6 @@ namespace RPGWO_Client
             {
                 Client.Network.SendLogin(textBoxUsername.Text, textBoxPassword.Text, textBoxEmail.Text);
             }
-
         }
 
         private void BtnCancel_Click(object sender, EventArgs e)

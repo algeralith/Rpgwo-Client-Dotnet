@@ -20,10 +20,10 @@ namespace RPGWO_Client
         public frmLogin LoginForm { private set; get; }
         public frmCreate CreateForm { private set; get; }
         public frmMainMenu MainMenu { private set; get; }
+        public frmTextMsg TextMessage { private set; get; }
 
         public frmClient()
         {
-
             InitializeComponent();
         }
 
@@ -46,17 +46,29 @@ namespace RPGWO_Client
             // TODO :: Look into the proper way to do this.
             var handler = LoginForm.Handle;
 
-            MainMenu = new frmMainMenu();
+            MainMenu = new frmMainMenu(this);
             handler = MainMenu.Handle;
 
             CreateForm = new frmCreate();
             handler = CreateForm.Handle;
+
+            TextMessage = new frmTextMsg();
+            handler = TextMessage.Handle;
         }
 
         private void InitalizeEvents()
         {
+            // Network Connection Events.
             Network.OnConnect += Network_OnConnect;
             Network.OnDisconnect += Network_OnDisconnect;
+
+            // Packet Events.
+            Network.Handler.OnText += Handler_OnText;
+        }
+
+        private void Handler_OnText(object sender, EventArgs e)
+        {
+            // throw new NotImplementedException();
         }
 
         private void Network_OnConnect(object sender, EventArgs e)
@@ -66,6 +78,7 @@ namespace RPGWO_Client
             LoginForm.Invoke((MethodInvoker)delegate ()
             {
                 LoginForm.ShowDialog();
+                // TODO :: Reset form after it closes.
             });
         }
 
@@ -74,5 +87,25 @@ namespace RPGWO_Client
             throw new NotImplementedException();
         }
 
+        public void ShowMainMenu()
+        {
+            MainMenu.Invoke((MethodInvoker)delegate () {
+                MainMenu.ShowDialog();
+            });
+        }
+
+        public void ShowForm(Form form)
+        {
+            form.BeginInvoke((MethodInvoker)delegate () {
+                form.ShowDialog();
+            });
+        }
+
+        public void HideForm(Form form)
+        {
+            form.Invoke((MethodInvoker)delegate () {
+                form.Hide();
+            });
+        }
     }
 }

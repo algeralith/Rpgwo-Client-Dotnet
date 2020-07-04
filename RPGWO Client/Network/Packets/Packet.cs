@@ -142,6 +142,16 @@ namespace RPGWO_Client.Network.Packets
         }
 
         // Read Methods
+        public bool ReadBool()
+        {
+            byte b = ReadByte();
+
+            if (b == 0XFF)
+                return true;
+            else
+                return false;
+        }
+
         public byte ReadByte()
         {
             byte b = buffer[_readHead];
@@ -149,10 +159,12 @@ namespace RPGWO_Client.Network.Packets
             return b;
         }
 
-        public byte ReadBytes(int length)
+        public byte[] ReadBytes(int length)
         {
-            byte b = buffer[_readHead];
-            _readHead++;
+            byte[] b = new byte[length];
+            Array.Copy(buffer, _readHead, b, 0, length);
+            _readHead += length;
+
             return b;
         }
 
@@ -172,7 +184,9 @@ namespace RPGWO_Client.Network.Packets
 
         public String ReadString(int maxLength)
         {
-            return "";
+            String tmp = Encoding.UTF8.GetString(ReadBytes(maxLength)).TrimEnd('\0');
+
+            return tmp;
         }
     }
 }

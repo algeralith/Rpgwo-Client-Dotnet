@@ -75,9 +75,16 @@
     <Compile Include="frmMainMenu.Designer.cs">
       <DependentUpon>frmMainMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmTextMsg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTextMsg.Designer.cs">
+      <DependentUpon>frmTextMsg.cs</DependentUpon>
+    </Compile>
     <Compile Include="Network\Network.cs" />
     <Compile Include="Network\NetworkCommands.cs" />
     <Compile Include="Network\NetworkState.cs" />
+    <Compile Include="Network\PacketEventArgs.cs" />
     <Compile Include="Network\PacketHandler.cs" />
     <Compile Include="Network\Packets.cs" />
     <Compile Include="Network\Packets\Ack.cs" />
@@ -87,7 +94,9 @@
     <Compile Include="Network\Packets\Nack.cs" />
     <Compile Include="Network\Packets\Packet.cs" />
     <Compile Include="Network\Packets\PacketTypes.cs" />
+    <Compile Include="Network\Packets\PlayerList.cs" />
     <Compile Include="Network\Packets\RandomByte.cs" />
+    <Compile Include="Network\Packets\ReqPlayerList.cs" />
     <Compile Include="Network\Packets\ReqSkillDef.cs" />
     <Compile Include="Network\Packets\SkillDef.cs" />
     <Compile Include="Network\Packets\Text.cs" />
@@ -95,6 +104,7 @@
     <Compile Include="Network\RpgwoSocketEventArgs.cs" />
     <Compile Include="Network\RSecurity.cs" />
     <Compile Include="Network\SocketModes.cs" />
+    <Compile Include="Network\TextChannels.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils.cs" />
@@ -109,6 +119,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMainMenu.resx">
       <DependentUpon>frmMainMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTextMsg.resx">
+      <DependentUpon>frmTextMsg.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

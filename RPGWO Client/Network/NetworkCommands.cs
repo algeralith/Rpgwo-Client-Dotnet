@@ -31,6 +31,20 @@ namespace RPGWO_Client.Network
             Send(info2);
         }
 
+        public void SendSkillDefReq()
+        {
+            ReqSkillDef reqSkillDef = new ReqSkillDef();
+
+            Send(reqSkillDef);
+        }
+
+        public void SendPlayerListReq()
+        {
+            ReqPlayerList reqPlayerList = new ReqPlayerList();
+
+            Send(reqPlayerList);
+        }
+
         // Default Login
         public void SendLogin(String username, String password)
         {

@@ -40,12 +40,14 @@ namespace RPGWO_Client.Network
             RegisterPacket((byte)PacketTypes.Nack, typeof(Nack));
             RegisterPacket((byte)PacketTypes.Version, typeof(Packets.Version));
             RegisterPacket((byte)PacketTypes.Login, typeof(Login)); // Sent Only
+            // RegisterPacket((byte)PacketTypes.ReqPlayerList, typeof(ReqPlayerList)); // Sent Only
+            RegisterPacket((byte)PacketTypes.PlayerList, typeof(PlayerList));
             RegisterPacket((byte)PacketTypes.Text, typeof(Text));
             RegisterPacket((byte)PacketTypes.RandomByte, typeof(RandomByte));
             RegisterPacket((byte)PacketTypes.ClientList, typeof(ClientList)); // TODO :: Handler
             RegisterPacket((byte)PacketTypes.SkillDef, typeof(SkillDef));
             RegisterPacket((byte)PacketTypes.ReqSkillDef, typeof(ReqSkillDef));
-            RegisterPacket((byte)PacketTypes.Info2, typeof(Info2)); // Sent Only
+            // RegisterPacket((byte)PacketTypes.Info2, typeof(Info2)); // Sent Only
             RegisterPacket((byte)PacketTypes.Ack, typeof(Ack));
         }
 
@@ -377,11 +379,6 @@ namespace RPGWO_Client.Network
                     // Notify that connection has been established.
                     // TODO :: This can be done better.
                     OnConnect?.BeginInvoke(this, EventArgs.Empty, null, null);
-                    break;
-                case NetworkState.LoginSent:
-                    // Login was successful.
-                    // Update Network State
-                    NetworkState = NetworkState.MainMenu;
                     break;
                 default:
                     // Console.WriteLine("Unhandled Network State in Ack: " + NetworkState);
