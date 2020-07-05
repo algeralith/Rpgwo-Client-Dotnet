@@ -233,6 +233,8 @@ namespace RPGWO_Client
 
         private void UpdateSkillDefLabel(SkillDef skillDef)
         {
+            StringBuilder stringBuilder = new StringBuilder(120);
+
             // Melee Defense :: Cost 10 :: (DEX + QUICK) / 3
             List<String> attr = new List<string>(5);
 
@@ -247,23 +249,24 @@ namespace RPGWO_Client
             if (skillDef.Wisdom > 0)
                 attr.Add("WISDOM");
 
-            String attributes = "(";
+            stringBuilder.Append(skillDef.Name.Trim());
+            stringBuilder.Append(" :: Cost ");
+            stringBuilder.Append((skillDef.SkillPoints > 100 ? skillDef.SkillPoints - 100 : skillDef.SkillPoints));
+            stringBuilder.Append(" :: ");
+            stringBuilder.Append("(");
 
             for (int i = 0; i < attr.Count; i++)
             {
                 if (i > 0)
-                    attributes += " + ";
+                    stringBuilder.Append(" + ");
 
-                attributes += attr[i];
+                stringBuilder.Append(attr[i]);
             }
+            stringBuilder.Append(")");
+            stringBuilder.Append("\r\n");
+            stringBuilder.Append(skillDef.Description.Substring(1, skillDef.Description.Length - 1));
 
-            attributes += ") / " + skillDef.Divisor.ToString();
-
-            String skillDesc = skillDef.Name.Trim() + " :: Cost " + (skillDef.SkillPoints > 100 ? skillDef.SkillPoints - 100 : skillDef.SkillPoints) + " :: " + attributes;
-            skillDesc += "\r\n";
-            skillDesc += skillDef.Description.Substring(1, skillDef.Description.Length - 1);
-
-            labelSkillDef.Text = skillDesc;
+            labelSkillDef.Text = stringBuilder.ToString();
         }
 
         private void BtnTrainSkill_Click(object sender, EventArgs e)
@@ -369,7 +372,7 @@ namespace RPGWO_Client
             UpdateLabels();
         }
 
-        private class SkillEntry : IComparable<SkillEntry>
+        private class SkillEntry
         {
             public SkillDef skillDef;
 
