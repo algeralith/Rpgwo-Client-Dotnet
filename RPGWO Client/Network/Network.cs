@@ -39,12 +39,14 @@ namespace RPGWO_Client.Network
         {
             RegisterPacket((byte)PacketTypes.Nack, typeof(Nack));
             RegisterPacket((byte)PacketTypes.Version, typeof(Packets.Version));
-            RegisterPacket((byte)PacketTypes.Login, typeof(Login)); // Sent Only
+            // RegisterPacket((byte)PacketTypes.Login, typeof(Login)); // Sent Only
             // RegisterPacket((byte)PacketTypes.ReqPlayerList, typeof(ReqPlayerList)); // Sent Only
             RegisterPacket((byte)PacketTypes.PlayerList, typeof(PlayerList));
             RegisterPacket((byte)PacketTypes.Text, typeof(Text));
             RegisterPacket((byte)PacketTypes.RandomByte, typeof(RandomByte));
-            RegisterPacket((byte)PacketTypes.ClientList, typeof(ClientList)); // TODO :: Handler
+            RegisterPacket((byte)PacketTypes.ClientList, typeof(ClientList));
+            // RegisterPacket((byte)PacketTypes.ReqSkillList, typeof(ClientList)); // Sent Only
+            RegisterPacket((byte)PacketTypes.CreateDef, typeof(CreateDef));
             RegisterPacket((byte)PacketTypes.SkillDef, typeof(SkillDef));
             RegisterPacket((byte)PacketTypes.ReqSkillDef, typeof(ReqSkillDef));
             // RegisterPacket((byte)PacketTypes.Info2, typeof(Info2)); // Sent Only

@@ -45,15 +45,19 @@ namespace RPGWO_Client
             // See: https://stackoverflow.com/questions/808867/invoke-or-begininvoke-cannot-be-called-on-a-control-until-the-window-handle-has/809186
             // TODO :: Look into the proper way to do this.
             var handler = LoginForm.Handle;
+            LoginForm.Owner = this;
 
             MainMenu = new frmMainMenu(this);
             handler = MainMenu.Handle;
+            MainMenu.Owner = this;
 
-            CreateForm = new frmCreate();
+            CreateForm = new frmCreate(this);
             handler = CreateForm.Handle;
+            CreateForm.Owner = this;
 
             TextMessage = new frmTextMsg();
             handler = TextMessage.Handle;
+            TextMessage.Owner = this;
         }
 
         private void InitalizeEvents()
@@ -75,11 +79,16 @@ namespace RPGWO_Client
         {
             Console.WriteLine("Connected to Server.");
 
+            /*
             LoginForm.Invoke((MethodInvoker)delegate ()
             {
-                LoginForm.ShowDialog();
+                LoginForm.Show(this);
+                //LoginForm.Owner.Enabled = false;
                 // TODO :: Reset form after it closes.
             });
+            */
+
+            ShowForm(LoginForm);
         }
 
         private void Network_OnDisconnect(object sender, EventArgs e)
@@ -87,25 +96,41 @@ namespace RPGWO_Client
             throw new NotImplementedException();
         }
 
-        public void ShowMainMenu()
-        {
-            MainMenu.Invoke((MethodInvoker)delegate () {
-                MainMenu.ShowDialog();
-            });
-        }
-
         public void ShowForm(Form form)
         {
-            form.BeginInvoke((MethodInvoker)delegate () {
-                form.ShowDialog();
-            });
+            // Forms do not center to owner, calculate center.
+            Point centerPoint = new Point(form.Owner.Left + form.Owner.Width / 2 - form.Width / 2, form.Owner.Top + form.Owner.Height / 2 - form.Height / 2);
+
+            if (form.InvokeRequired)
+            {
+                form.BeginInvoke((MethodInvoker)delegate () {
+                    form.Owner.Enabled = false;
+                    form.Location = centerPoint;
+                    form.Show(this);
+                });
+
+            } else
+            {
+                form.Owner.Enabled = false;
+                form.Location = centerPoint;
+                form.Show(this);
+            }
         }
 
         public void HideForm(Form form)
         {
-            form.Invoke((MethodInvoker)delegate () {
+            if (form.InvokeRequired)
+            {
+                form.BeginInvoke((MethodInvoker)delegate () {
+                    form.Owner.Enabled = true;
+                    form.Hide();
+                });
+            }
+            else
+            {
+                form.Owner.Enabled = true;
                 form.Hide();
-            });
+            }
         }
     }
 }

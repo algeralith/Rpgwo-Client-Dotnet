@@ -89,6 +89,7 @@
     <Compile Include="Network\Packets.cs" />
     <Compile Include="Network\Packets\Ack.cs" />
     <Compile Include="Network\Packets\ClientList.cs" />
+    <Compile Include="Network\Packets\CreateDef.cs" />
     <Compile Include="Network\Packets\Info2.cs" />
     <Compile Include="Network\Packets\Login.cs" />
     <Compile Include="Network\Packets\Nack.cs" />
@@ -98,6 +99,7 @@
     <Compile Include="Network\Packets\RandomByte.cs" />
     <Compile Include="Network\Packets\ReqPlayerList.cs" />
     <Compile Include="Network\Packets\ReqSkillDef.cs" />
+    <Compile Include="Network\Packets\ReqSkillList.cs" />
     <Compile Include="Network\Packets\SkillDef.cs" />
     <Compile Include="Network\Packets\Text.cs" />
     <Compile Include="Network\Packets\Version.cs" />

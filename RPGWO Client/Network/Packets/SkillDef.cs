@@ -19,7 +19,7 @@ namespace RPGWO_Client.Network.Packets
         public byte Intelligence;
         public byte Wisdom;
         public byte Divisor;
-        public bool Status; // Not sure
+        public byte Status; // Not sure
         public string Description = ""; // 100 Max
 
         public SkillDef() : base((byte)PacketTypes.SkillDef, 133)
@@ -40,7 +40,7 @@ namespace RPGWO_Client.Network.Packets
             Intelligence = ReadByte();
             Wisdom = ReadByte();
             Divisor = ReadByte();
-            Status = ReadBool();
+            Status = ReadByte();
             Description = ReadString(100);
 
             return true;

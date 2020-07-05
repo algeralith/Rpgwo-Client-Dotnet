@@ -35,10 +35,10 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(481, 265);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button1.Location = new System.Drawing.Point(722, 408);
+            this.button1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(79, 34);
+            this.button1.Size = new System.Drawing.Size(118, 52);
             this.button1.TabIndex = 0;
             this.button1.Text = "&Close";
             this.button1.UseVisualStyleBackColor = true;
@@ -50,28 +50,30 @@
             this.textBoxMessage.BackColor = System.Drawing.SystemColors.Window;
             this.textBoxMessage.ForeColor = System.Drawing.SystemColors.WindowText;
             this.textBoxMessage.Location = new System.Drawing.Point(0, 0);
-            this.textBoxMessage.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBoxMessage.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.textBoxMessage.MaxLength = 0;
             this.textBoxMessage.Multiline = true;
             this.textBoxMessage.Name = "textBoxMessage";
             this.textBoxMessage.ReadOnly = true;
             this.textBoxMessage.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.textBoxMessage.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxMessage.Size = new System.Drawing.Size(560, 260);
+            this.textBoxMessage.Size = new System.Drawing.Size(838, 398);
             this.textBoxMessage.TabIndex = 1;
             // 
             // frmTextMsg
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(583, 320);
+            this.ClientSize = new System.Drawing.Size(874, 492);
             this.ControlBox = false;
             this.Controls.Add(this.textBoxMessage);
             this.Controls.Add(this.button1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmTextMsg";
+            this.ShowInTaskbar = false;
             this.Text = "Special Message";
             this.ResumeLayout(false);
             this.PerformLayout();

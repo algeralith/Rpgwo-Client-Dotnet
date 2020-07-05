@@ -51,9 +51,29 @@ namespace RPGWO_Client
             // Grab Packet
             ClientList clientList = (ClientList)e.Packet;
 
-            this.Invoke((MethodInvoker)delegate () {
+            Client.MainMenu.BeginInvoke((MethodInvoker)delegate () {
                 toolStripStatusLabel1.Text = "Number of players logged on: " + clientList.Name;
             });
+        }
+
+        private void BtnCreate_Click(object sender, EventArgs e)
+        {
+            // Update State to show we are in character creation
+            Client.Network.NetworkState = NetworkState.PlayerCreation;
+
+            // Request Skill Definitions.
+            Client.Network.SendSkillListReq();
+
+            // Close Main Menu
+            Client.HideForm(Client.MainMenu);
+
+            // Show Create
+            Client.ShowForm(Client.CreateForm);
+        }
+
+        private void FrmMainMenu_VisibleChanged(object sender, EventArgs e)
+        {
+            Console.WriteLine();
         }
     }
 }

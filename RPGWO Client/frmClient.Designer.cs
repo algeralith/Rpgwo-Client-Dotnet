@@ -37,6 +37,7 @@
             this.ClientSize = new System.Drawing.Size(991, 683);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmClient";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.FrmClient_Load);
             this.ResumeLayout(false);

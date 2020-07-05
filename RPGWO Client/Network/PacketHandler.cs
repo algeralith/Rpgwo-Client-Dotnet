@@ -15,6 +15,8 @@ namespace RPGWO_Client.Network
         public event EventHandler LoginSuccess; // Successful Login.
         public event EventHandler LoginFailure; // Unsucessful Login.
         public event EventHandler<PacketEventArgs> OnPlayerList; // Player list is received.
+        public event EventHandler<PacketEventArgs> OnCreateDef;
+        public event EventHandler<PacketEventArgs> OnSkillDef;
         public event EventHandler OnText; // Whenever a Text Packet is received.
         public event EventHandler<PacketEventArgs> OnClientList;
 
@@ -33,11 +35,17 @@ namespace RPGWO_Client.Network
                 case PacketTypes.PlayerList:
                     HandlePlayerList((PlayerList)packet);
                     break;
+                case PacketTypes.ClientList:
+                    HandleClientList((ClientList)packet);
+                    break;
                 case PacketTypes.Text:
                     HandleText((Text)packet);
                     break;
-                case PacketTypes.ClientList:
-                    HandleClientList((ClientList)packet);
+                case PacketTypes.CreateDef:
+                    HandleCreateDef((CreateDef)packet);
+                    break;
+                case PacketTypes.SkillDef:
+                    HandleSkillDef((SkillDef)packet);
                     break;
                 case PacketTypes.Ack:
                     HandleAck();
@@ -65,6 +73,20 @@ namespace RPGWO_Client.Network
                 // Login was Unsuccessful. Revert Network State.
                 // Network.NetworkState = NetworkState.LoginScreen;
             }
+        }
+
+        private void HandleCreateDef(CreateDef createDef)
+        {
+            PacketEventArgs packetEvent = new PacketEventArgs(createDef);
+
+            OnCreateDef?.BeginInvoke(this, packetEvent, null, null);
+        }
+
+        private void HandleSkillDef(SkillDef skillDef)
+        {
+            PacketEventArgs packetEvent = new PacketEventArgs(skillDef);
+
+            OnSkillDef?.BeginInvoke(this, packetEvent, null, null);
         }
 
         private void HandlePlayerList(PlayerList playerList)

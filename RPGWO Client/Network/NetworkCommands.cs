@@ -38,6 +38,13 @@ namespace RPGWO_Client.Network
             Send(reqSkillDef);
         }
 
+        public void SendSkillListReq()
+        {
+            ReqSkillList reqSkillList = new ReqSkillList();
+
+            Send(reqSkillList);
+        }
+
         public void SendPlayerListReq()
         {
             ReqPlayerList reqPlayerList = new ReqPlayerList();
