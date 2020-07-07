@@ -12,6 +12,7 @@ namespace RPGWO_Client.Network
         LoginScreen,
         LoginSent,
         MainMenu,
-        PlayerCreation
+        PlayerCreation,
+        PlayerDelete
     }
 }

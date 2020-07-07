@@ -296,11 +296,11 @@ namespace RPGWO_Client.Network
                     HandleRndByte((RandomByte)packet);
                     break;
                 default:
+                    // Send Packet off to be handled
+                    Handler.HandlePacket(packet);
                     break;
             }
 
-            // Send Packet off to be handled
-            Handler.HandlePacket(packet);
         }
 
         public void Send(Packet packet)

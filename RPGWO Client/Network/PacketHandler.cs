@@ -19,6 +19,7 @@ namespace RPGWO_Client.Network
         public event EventHandler<PacketEventArgs> OnSkillDef;
         public event EventHandler OnText; // Whenever a Text Packet is received.
         public event EventHandler<PacketEventArgs> OnClientList;
+        public event EventHandler<bool> OnPlayerDelete;
 
         public PacketHandler(Network network)
         {
@@ -64,6 +65,11 @@ namespace RPGWO_Client.Network
 
                 LoginSuccess?.BeginInvoke(this, EventArgs.Empty, null, null);
             }
+
+            if (Network.NetworkState == NetworkState.PlayerDelete)
+            {
+                OnPlayerDelete?.BeginInvoke(this, true, null, null);
+            }
         }
 
         private void HandleNack()
@@ -72,6 +78,12 @@ namespace RPGWO_Client.Network
             {
                 // Login was Unsuccessful. Revert Network State.
                 // Network.NetworkState = NetworkState.LoginScreen;
+            }
+
+            // TODO :: Consider having the handlers change the state of the network back
+            if (Network.NetworkState == NetworkState.PlayerDelete)
+            {
+                OnPlayerDelete?.BeginInvoke(this, false, null, null);
             }
         }
 

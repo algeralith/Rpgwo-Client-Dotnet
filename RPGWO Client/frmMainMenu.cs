@@ -28,6 +28,27 @@ namespace RPGWO_Client
             Client.Network.Handler.OnClientList += Handler_OnClientList;
 
             Client.Network.Handler.OnPlayerList += Handler_OnPlayerList;
+
+            Client.Network.Handler.OnPlayerDelete += Handler_OnPlayerDelete;
+        }
+
+        private void Handler_OnPlayerDelete(object sender, bool e)
+        {
+            // Switch network state back
+            Client.Network.NetworkState = NetworkState.MainMenu;
+
+            if (e)
+            {
+                MessageBox.Show("Player deleted.", "Delete Player", MessageBoxButtons.OK);
+
+                // Update player list
+                Client.Network.SendPlayerListReq();
+            }
+            else
+            {
+                MessageBox.Show("Failed to delete player.", "Delete Player", MessageBoxButtons.OK);
+            }
+
         }
 
         private void Handler_OnPlayerList(object sender, PacketEventArgs e)
@@ -74,6 +95,28 @@ namespace RPGWO_Client
         private void FrmMainMenu_VisibleChanged(object sender, EventArgs e)
         {
             Console.WriteLine();
+        }
+
+        private void BtnDelete_Click(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedItem == null)
+                return;
+
+            DialogResult dialogResult = MessageBox.Show("Delete Player? " + listBox1.SelectedItem, "Confirm", MessageBoxButtons.YesNo);
+
+            if (dialogResult == DialogResult.Yes)
+            {
+                Delete delete = new Delete()
+                {
+                    Name = listBox1.SelectedItem.ToString()
+                };
+
+
+                // Let network know we are deleting
+                Client.Network.NetworkState = NetworkState.PlayerDelete;
+
+                Client.Network.Send(delete);
+            }
         }
     }
 }
