@@ -46,6 +46,7 @@ namespace RPGWO_Client.Network
             // RegisterPacket((byte)PacketTypes.Logout, typeof(Logout)); // Sent Only
             // RegisterPacket((byte)PacketTypes.Delete, typeof(Delete)); // Send Only
             // RegisterPacket((byte)PacketTypes.Enter, typeof(Enter)); // Send Only
+            RegisterPacket((byte)PacketTypes.ItemLocation, typeof(ItemLocation)); // TODO :: Handle
             RegisterPacket((byte)PacketTypes.WorldState, typeof(WorldState)); // TODO :: Handle
             RegisterPacket((byte)PacketTypes.PlayerStats, typeof(PlayerStats)); // TODO :: Handle
             RegisterPacket((byte)PacketTypes.ClientList, typeof(ClientList));
