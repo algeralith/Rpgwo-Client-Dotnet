@@ -86,7 +86,7 @@ namespace RPGWO_Client
             Client.Network.SendSkillListReq();
 
             // Close Main Menu
-            Client.HideForm(Client.MainMenu);
+            // Client.HideForm(Client.MainMenu);
 
             // Show Create
             Client.ShowForm(Client.CreateForm);

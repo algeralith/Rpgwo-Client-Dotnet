@@ -53,7 +53,7 @@ namespace RPGWO_Client
 
             CreateForm = new frmCreate(this);
             handler = CreateForm.Handle;
-            CreateForm.Owner = this;
+            CreateForm.Owner = MainMenu;
 
             TextMessage = new frmTextMsg();
             handler = TextMessage.Handle;
@@ -104,7 +104,7 @@ namespace RPGWO_Client
             {
                 form.Owner.Enabled = false;
                 form.Location = centerPoint;
-                form.Show(this);
+                form.Show();
             }
         }
 
