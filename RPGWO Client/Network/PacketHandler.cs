@@ -19,6 +19,7 @@ namespace RPGWO_Client.Network
         public event EventHandler<PacketEventArgs> OnSkillDef;
         public event EventHandler OnText; // Whenever a Text Packet is received.
         public event EventHandler<PacketEventArgs> OnClientList;
+        public event EventHandler<bool> OnPlayerCreate;
         public event EventHandler<bool> OnPlayerDelete;
 
         public PacketHandler(Network network)
@@ -70,6 +71,11 @@ namespace RPGWO_Client.Network
             {
                 OnPlayerDelete?.BeginInvoke(this, true, null, null);
             }
+
+            if (Network.NetworkState == NetworkState.PlayerCreation)
+            {
+                OnPlayerCreate?.BeginInvoke(this, true, null, null);
+            }
         }
 
         private void HandleNack()
@@ -84,6 +90,11 @@ namespace RPGWO_Client.Network
             if (Network.NetworkState == NetworkState.PlayerDelete)
             {
                 OnPlayerDelete?.BeginInvoke(this, false, null, null);
+            }
+
+            if (Network.NetworkState == NetworkState.PlayerCreation)
+            {
+                OnPlayerCreate?.BeginInvoke(this, false, null, null);
             }
         }
 

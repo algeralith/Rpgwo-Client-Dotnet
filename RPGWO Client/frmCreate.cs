@@ -34,6 +34,25 @@ namespace RPGWO_Client
         {
             Client.Network.Handler.OnSkillDef += Handler_OnSkillDef;
             Client.Network.Handler.OnCreateDef += Handler_OnCreateDef;
+            Client.Network.Handler.OnPlayerCreate += Handler_OnPlayerCreate;
+        }
+
+        private void Handler_OnPlayerCreate(object sender, bool e)
+        {
+            if (e)
+            {
+                Client.HideForm(this);
+
+                MessageBox.Show("Player created succesfully.");
+
+                // Send request to update MainMenu
+                // TODO :: Move this into MainMenu
+                Client.Network.SendPlayerListReq();
+            }
+            else
+            {
+                MessageBox.Show("Yikes!", "Failed to create player.", MessageBoxButtons.OK);
+            }
         }
 
         private int CalculateSpentAttributes()
