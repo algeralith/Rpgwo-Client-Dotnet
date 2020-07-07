@@ -14,6 +14,9 @@ namespace RPGWO_Client
     public partial class frmLogin : Form
     {
         public frmClient Client {get; private set; }
+
+        private bool _info2Sent = false;
+
         public frmLogin(frmClient frmClient)
         {
             Client = frmClient;
@@ -41,7 +44,6 @@ namespace RPGWO_Client
 
             // Request Player List
             Client.Network.SendPlayerListReq();
-
         }
 
         private void Handler_LoginFailure(object sender, EventArgs e)
@@ -52,7 +54,11 @@ namespace RPGWO_Client
         private void BtnLogin_Click(object sender, EventArgs e)
         {
             // First send client info2
-            Client.Network.SendInfo2();
+            if (_info2Sent == false)
+            {
+                Client.Network.SendInfo2();
+                _info2Sent = true;
+            }
 
             // TODO :: Validate text fields before sending.
             if (!checkBoxNewUser.Checked)

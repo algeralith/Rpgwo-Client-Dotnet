@@ -118,5 +118,16 @@ namespace RPGWO_Client
                 Client.Network.Send(delete);
             }
         }
+
+        private void BtnLogout_Click(object sender, EventArgs e)
+        {
+            Client.Network.Send(new Logout());
+
+            Client.Network.NetworkState = NetworkState.LoginScreen;
+
+            Client.HideForm(this);
+
+            Client.ShowForm(Client.LoginForm);
+        }
     }
 }

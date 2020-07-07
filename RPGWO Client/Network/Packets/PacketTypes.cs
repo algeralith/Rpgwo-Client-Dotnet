@@ -14,6 +14,7 @@ namespace RPGWO_Client.Network.Packets
         Create = 5,
         ReqPlayerList = 6,
         PlayerList = 7,
+        Logout = 8,
         Delete = 9,
         ClientList = 29,
         ReqSkillList = 38,

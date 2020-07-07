@@ -43,6 +43,7 @@ namespace RPGWO_Client.Network
             // RegisterPacket((byte)PacketTypes.Create, typeof(Create)); // Send Only
             // RegisterPacket((byte)PacketTypes.ReqPlayerList, typeof(ReqPlayerList)); // Sent Only
             RegisterPacket((byte)PacketTypes.PlayerList, typeof(PlayerList));
+            // RegisterPacket((byte)PacketTypes.Logout, typeof(Logout)); // Sent Only
             // RegisterPacket((byte)PacketTypes.Delete, typeof(Delete)); // Send Only
             RegisterPacket((byte)PacketTypes.Text, typeof(Text));
             RegisterPacket((byte)PacketTypes.RandomByte, typeof(RandomByte));
@@ -161,6 +162,8 @@ namespace RPGWO_Client.Network
             }
 
             Packet packet = (Packet)Activator.CreateInstance(packetType);
+
+            Console.WriteLine(_clientSock.Available);
 
             // Check to see if the packet as more data
             if (packet.Size < e.BytesTransferred)

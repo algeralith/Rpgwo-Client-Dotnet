@@ -72,6 +72,7 @@
             this.btnLogout.Size = new System.Drawing.Size(122, 50);
             this.btnLogout.TabIndex = 2;
             this.btnLogout.Text = "&Logout";
+            this.btnLogout.Click += new System.EventHandler(this.BtnLogout_Click);
             // 
             // listBox1
             // 
