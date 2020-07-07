@@ -53,7 +53,7 @@ namespace RPGWO_Client
 
         private void BtnLogin_Click(object sender, EventArgs e)
         {
-            // First send client info2
+            // First send client info2 -- TODO :: Put this into networking. 
             if (_info2Sent == false)
             {
                 Client.Network.SendInfo2();

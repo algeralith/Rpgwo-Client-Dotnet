@@ -22,6 +22,9 @@ namespace RPGWO_Client.Network.Packets
         public byte Status; // Not sure
         public string Description = ""; // 100 Max
 
+        // Not used within the Packet. Just here for convenience until I rework skills.
+        public bool Spec = false;
+
         public SkillDef() : base((byte)PacketTypes.SkillDef, 133)
         {
 

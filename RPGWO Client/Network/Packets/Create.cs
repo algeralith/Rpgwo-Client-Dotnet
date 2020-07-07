@@ -23,7 +23,9 @@ namespace RPGWO_Client.Network.Packets
         public byte Intelligence { get; set; }
         public byte Wisdom { get; set; }
 
-        // Skills -- Max of 25 skills
+        // Skills -- Max of 20 skills
+        // This packet is weird. 20 bytes for skills, then 3 empty bytes
+        // Then 20 bytes for specs, then 1 empty byte
         public SkillDef[] Skills { get; private set; }
 
         // Player Images
@@ -34,7 +36,7 @@ namespace RPGWO_Client.Network.Packets
 
         public Create() : base((byte)PacketTypes.Create, 109)
         {
-            Skills = new SkillDef[25];
+            Skills = new SkillDef[20];
         }
 
         public override byte[] GetBytes()
@@ -62,12 +64,24 @@ namespace RPGWO_Client.Network.Packets
                     AddByte(Skills[i].SkillID);
             }
 
+            // Three Empty Bytes
+            AddByte(0);
+            AddByte(0);
+            AddByte(0);
+
             // Spec
             for (int i = 0; i < Skills.Length; i++)
             {
                 if (Skills[i] == null)
                     AddByte(0);
+                else if (Skills[i].Spec)
+                    AddByte(1);
+                else
+                    AddByte(0);
             }
+
+            // One Empty Byte
+            AddByte(0);
 
             // Images
             AddByte(Head);

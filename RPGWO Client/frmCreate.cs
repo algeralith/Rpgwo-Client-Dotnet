@@ -16,6 +16,8 @@ namespace RPGWO_Client
     {
         public frmClient Client { get; private set; }
 
+        public const int MAX_SKILLS = 20;
+
         private int TotalAttributePoints = 0;
         private int TotalSkillPoints = 0;
         private int SpentAttributePoints = 0;
@@ -136,7 +138,24 @@ namespace RPGWO_Client
 
         private void BtnOk_Click(object sender, EventArgs e)
         {
-            // TODO :: Validate Player stats
+            // TODO :: Validate Player stats -- Not needed right away, server does validation.
+
+            // Check if all attributes are spent.
+            if ((TotalAttributePoints - SpentAttributePoints) > 0)
+            {
+                DialogResult dialogResult = MessageBox.Show("You have not spent all ATTRIBUTE points.\r\nCreate player anyways, loosing those points ? ", "Hold on thar!", MessageBoxButtons.YesNo);
+
+                if (dialogResult == DialogResult.No)
+                    return;
+            }
+
+            // Check if too many skills are attempting to be trained
+            if (listBoxSpec.Items.Count + listBoxTrainedSkill.Items.Count > MAX_SKILLS)
+            {
+                MessageBox.Show("Yikes!", "Only 20 skills are allowed to be trained.", MessageBoxButtons.OK);
+                return;
+            }
+
             Create create = new Create();
 
             // Name
@@ -160,6 +179,12 @@ namespace RPGWO_Client
             
             foreach (SkillEntry skillEntry in listBoxTrainedSkill.Items)
                 skillDefs.Add(skillEntry.skillDef);
+
+            foreach (SkillEntry skillEntry in listBoxSpec.Items)
+            {
+                skillEntry.skillDef.Spec = true;
+                skillDefs.Add(skillEntry.skillDef);
+            }
 
             skillDefs = skillDefs.OrderBy(x => x.SkillID).ToList();
 
