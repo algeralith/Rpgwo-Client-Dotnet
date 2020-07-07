@@ -129,5 +129,19 @@ namespace RPGWO_Client
 
             Client.ShowForm(Client.LoginForm);
         }
+
+        private void BtnEnter_Click(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedItem == null)
+                return;
+
+            Enter enter = new Enter()
+            {
+                Name = listBox1.SelectedItem.ToString()
+            };
+
+            Client.Network.Send(enter);
+
+        }
     }
 }

@@ -92,6 +92,7 @@
     <Compile Include="Network\Packets\Create.cs" />
     <Compile Include="Network\Packets\CreateDef.cs" />
     <Compile Include="Network\Packets\Delete.cs" />
+    <Compile Include="Network\Packets\Enter.cs" />
     <Compile Include="Network\Packets\Info2.cs" />
     <Compile Include="Network\Packets\Login.cs" />
     <Compile Include="Network\Packets\Logout.cs" />
@@ -99,13 +100,17 @@
     <Compile Include="Network\Packets\Packet.cs" />
     <Compile Include="Network\Packets\PacketTypes.cs" />
     <Compile Include="Network\Packets\PlayerList.cs" />
+    <Compile Include="Network\Packets\PlayerStats.cs" />
+    <Compile Include="Network\Packets\PlayerStats2.cs" />
     <Compile Include="Network\Packets\RandomByte.cs" />
     <Compile Include="Network\Packets\ReqPlayerList.cs" />
     <Compile Include="Network\Packets\ReqSkillDef.cs" />
     <Compile Include="Network\Packets\ReqSkillList.cs" />
+    <Compile Include="Network\Packets\RuneBag.cs" />
     <Compile Include="Network\Packets\SkillDef.cs" />
     <Compile Include="Network\Packets\Text.cs" />
     <Compile Include="Network\Packets\Version.cs" />
+    <Compile Include="Network\Packets\WorldState.cs" />
     <Compile Include="Network\RpgwoSocketEventArgs.cs" />
     <Compile Include="Network\RSecurity.cs" />
     <Compile Include="Network\SocketModes.cs" />

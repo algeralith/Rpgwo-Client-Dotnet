@@ -158,6 +158,7 @@ namespace RPGWO_Client
         private void BtnOk_Click(object sender, EventArgs e)
         {
             // TODO :: Validate Player stats -- Not needed right away, server does validation.
+            // TODO :: Timeout. The default client will timeout a player creation attempt after a few seconds.
 
             // Check if all attributes are spent.
             if ((TotalAttributePoints - SpentAttributePoints) > 0)

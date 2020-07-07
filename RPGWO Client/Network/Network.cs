@@ -45,13 +45,18 @@ namespace RPGWO_Client.Network
             RegisterPacket((byte)PacketTypes.PlayerList, typeof(PlayerList));
             // RegisterPacket((byte)PacketTypes.Logout, typeof(Logout)); // Sent Only
             // RegisterPacket((byte)PacketTypes.Delete, typeof(Delete)); // Send Only
-            RegisterPacket((byte)PacketTypes.Text, typeof(Text));
-            RegisterPacket((byte)PacketTypes.RandomByte, typeof(RandomByte));
+            // RegisterPacket((byte)PacketTypes.Enter, typeof(Enter)); // Send Only
+            RegisterPacket((byte)PacketTypes.WorldState, typeof(WorldState)); // TODO :: Handle
+            RegisterPacket((byte)PacketTypes.PlayerStats, typeof(PlayerStats)); // TODO :: Handle
             RegisterPacket((byte)PacketTypes.ClientList, typeof(ClientList));
             // RegisterPacket((byte)PacketTypes.ReqSkillList, typeof(ClientList)); // Sent Only
+            RegisterPacket((byte)PacketTypes.Text, typeof(Text));
+            RegisterPacket((byte)PacketTypes.PlayerStats2, typeof(PlayerStats2)); // TODO :: Handle
+            RegisterPacket((byte)PacketTypes.RuneBag, typeof(RuneBag)); // TODO :: Handle
             RegisterPacket((byte)PacketTypes.CreateDef, typeof(CreateDef));
             RegisterPacket((byte)PacketTypes.SkillDef, typeof(SkillDef));
             RegisterPacket((byte)PacketTypes.ReqSkillDef, typeof(ReqSkillDef));
+            RegisterPacket((byte)PacketTypes.RandomByte, typeof(RandomByte));
             // RegisterPacket((byte)PacketTypes.Info2, typeof(Info2)); // Sent Only
             RegisterPacket((byte)PacketTypes.Ack, typeof(Ack));
         }
