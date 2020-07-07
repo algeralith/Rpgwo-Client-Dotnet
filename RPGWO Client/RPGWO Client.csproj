@@ -88,6 +88,7 @@
     <Compile Include="Network\PacketHandler.cs" />
     <Compile Include="Network\Packets.cs" />
     <Compile Include="Network\Packets\Ack.cs" />
+    <Compile Include="Network\Packets\Attributes.cs" />
     <Compile Include="Network\Packets\ClientList.cs" />
     <Compile Include="Network\Packets\Create.cs" />
     <Compile Include="Network\Packets\CreateDef.cs" />
@@ -107,6 +108,7 @@
     <Compile Include="Network\Packets\ReqSkillDef.cs" />
     <Compile Include="Network\Packets\ReqSkillList.cs" />
     <Compile Include="Network\Packets\RuneBag.cs" />
+    <Compile Include="Network\Packets\Skill.cs" />
     <Compile Include="Network\Packets\SkillDef.cs" />
     <Compile Include="Network\Packets\Text.cs" />
     <Compile Include="Network\Packets\Version.cs" />

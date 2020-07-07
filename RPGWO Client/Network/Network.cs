@@ -49,6 +49,8 @@ namespace RPGWO_Client.Network
             RegisterPacket((byte)PacketTypes.WorldState, typeof(WorldState)); // TODO :: Handle
             RegisterPacket((byte)PacketTypes.PlayerStats, typeof(PlayerStats)); // TODO :: Handle
             RegisterPacket((byte)PacketTypes.ClientList, typeof(ClientList));
+            RegisterPacket((byte)PacketTypes.Skill, typeof(Skill)); // TODO :: Handle
+            RegisterPacket((byte)PacketTypes.Attributes, typeof(Attributes)); // TODO :: Handle
             // RegisterPacket((byte)PacketTypes.ReqSkillList, typeof(ClientList)); // Sent Only
             RegisterPacket((byte)PacketTypes.Text, typeof(Text));
             RegisterPacket((byte)PacketTypes.PlayerStats2, typeof(PlayerStats2)); // TODO :: Handle
