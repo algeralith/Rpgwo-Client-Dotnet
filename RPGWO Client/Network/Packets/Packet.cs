@@ -112,6 +112,12 @@ namespace RPGWO_Client.Network.Packets
             _writeHead += count;
         }
 
+        public void AddInt32(int i)
+        {
+            Buffer.BlockCopy(BitConverter.GetBytes(i), 0, buffer, _writeHead, 4);
+            _writeHead += 4;
+        }
+
         public void AddString(String s, int maxLength, char initial)
         {
             if (s.Length > maxLength)

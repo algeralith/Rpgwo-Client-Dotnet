@@ -79,15 +79,6 @@ namespace RPGWO_Client
         {
             Console.WriteLine("Connected to Server.");
 
-            /*
-            LoginForm.Invoke((MethodInvoker)delegate ()
-            {
-                LoginForm.Show(this);
-                //LoginForm.Owner.Enabled = false;
-                // TODO :: Reset form after it closes.
-            });
-            */
-
             ShowForm(LoginForm);
         }
 

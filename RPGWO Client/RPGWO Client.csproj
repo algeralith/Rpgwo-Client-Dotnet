@@ -89,7 +89,9 @@
     <Compile Include="Network\Packets.cs" />
     <Compile Include="Network\Packets\Ack.cs" />
     <Compile Include="Network\Packets\ClientList.cs" />
+    <Compile Include="Network\Packets\Create.cs" />
     <Compile Include="Network\Packets\CreateDef.cs" />
+    <Compile Include="Network\Packets\Delete.cs" />
     <Compile Include="Network\Packets\Info2.cs" />
     <Compile Include="Network\Packets\Login.cs" />
     <Compile Include="Network\Packets\Nack.cs" />

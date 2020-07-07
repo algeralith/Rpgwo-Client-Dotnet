@@ -40,8 +40,10 @@ namespace RPGWO_Client.Network
             RegisterPacket((byte)PacketTypes.Nack, typeof(Nack));
             RegisterPacket((byte)PacketTypes.Version, typeof(Packets.Version));
             // RegisterPacket((byte)PacketTypes.Login, typeof(Login)); // Sent Only
+            // RegisterPacket((byte)PacketTypes.Create, typeof(Create)); // Send Only
             // RegisterPacket((byte)PacketTypes.ReqPlayerList, typeof(ReqPlayerList)); // Sent Only
             RegisterPacket((byte)PacketTypes.PlayerList, typeof(PlayerList));
+            // RegisterPacket((byte)PacketTypes.Delete, typeof(Delete)); // Send Only
             RegisterPacket((byte)PacketTypes.Text, typeof(Text));
             RegisterPacket((byte)PacketTypes.RandomByte, typeof(RandomByte));
             RegisterPacket((byte)PacketTypes.ClientList, typeof(ClientList));
@@ -357,6 +359,7 @@ namespace RPGWO_Client.Network
 
                 args.SetBuffer(buffer, 0, buffer.Length);
 
+                Console.WriteLine(BitConverter.ToString(buffer));
                 _clientSock.SendAsync(args);
 
             }

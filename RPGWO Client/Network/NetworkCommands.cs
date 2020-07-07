@@ -9,10 +9,6 @@ namespace RPGWO_Client.Network
 {
     public partial class Network
     {
-        public void RequestSkillDefs()
-        {
-
-        }
 
         public void SendAck()
         {

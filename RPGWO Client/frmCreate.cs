@@ -136,7 +136,43 @@ namespace RPGWO_Client
 
         private void BtnOk_Click(object sender, EventArgs e)
         {
+            // TODO :: Validate Player stats
+            Create create = new Create();
 
+            // Name
+            create.Name = textBoxName.Text;
+
+            // Life / Stamina / Mana
+            create.Life = (byte)trackBarLife.Value;
+            create.Stamina = Convert.ToInt32(labelStamina.Text);
+            create.Mana = (byte)Convert.ToInt32(labelMana.Text);
+
+            // Attributes
+            create.Strength = (byte)trackBarStr.Value;
+            create.Dexterity = (byte)trackBarDex.Value;
+            create.Quickness = (byte)trackBarQui.Value;
+            create.Intelligence = (byte)trackBarIntl.Value;
+            create.Wisdom = (byte)trackBarWis.Value;
+
+            // Skills
+            // Create List of Skills
+            List<SkillDef> skillDefs = new List<SkillDef>();
+            
+            foreach (SkillEntry skillEntry in listBoxTrainedSkill.Items)
+                skillDefs.Add(skillEntry.skillDef);
+
+            skillDefs = skillDefs.OrderBy(x => x.SkillID).ToList();
+
+            for (int i = 0; i < skillDefs.Count; i++)
+                create.Skills[i] = skillDefs[i];
+
+            // Images
+            create.Head = 1;
+            create.Arms = 1;
+            create.Chest = 1;
+            create.Legs = 1;
+
+            Client.Network.Send(create);
         }
 
         private void BtnCancel_Click(object sender, EventArgs e)
@@ -282,6 +318,7 @@ namespace RPGWO_Client
             if (skillDef.SkillPoints > availablePoints)
             {
                 // Not enough points available
+                MessageBox.Show("You lack the skill points needed.", "Yikes!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -338,6 +375,7 @@ namespace RPGWO_Client
             if ((skillDef.SkillPoints > 100 ? skillDef.SkillPoints - 100 : skillDef.SkillPoints) > availablePoints)
             {
                 // Not enough points available
+                MessageBox.Show("You lack the skill points needed.", "Yikes!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
