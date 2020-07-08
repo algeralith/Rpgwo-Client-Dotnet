@@ -99,6 +99,7 @@
     <Compile Include="Network\Packets\ItemLocation.cs" />
     <Compile Include="Network\Packets\Login.cs" />
     <Compile Include="Network\Packets\Logout.cs" />
+    <Compile Include="Network\Packets\MapData.cs" />
     <Compile Include="Network\Packets\MonsterLocation.cs" />
     <Compile Include="Network\Packets\Nack.cs" />
     <Compile Include="Network\Packets\Packet.cs" />

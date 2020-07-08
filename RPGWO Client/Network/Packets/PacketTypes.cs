@@ -16,6 +16,7 @@ namespace RPGWO_Client.Network.Packets
         PlayerList = 7,
         Logout = 8,
         Delete = 9,
+        MapData = 10,
         Enter = 11,
         EnterFinal = 12,
         StartDisplay = 15,
