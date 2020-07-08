@@ -67,6 +67,7 @@ namespace RPGWO_Client.Network
             RegisterPacket((byte)PacketTypes.CreateDef, typeof(CreateDef));
             RegisterPacket((byte)PacketTypes.SkillDef, typeof(SkillDef));
             RegisterPacket((byte)PacketTypes.ReqSkillDef, typeof(ReqSkillDef));
+            RegisterPacket((byte)PacketTypes.MonsterLocation, typeof(MonsterLocation)); // TODO :: Handle
             RegisterPacket((byte)PacketTypes.RandomByte, typeof(RandomByte));
             // RegisterPacket((byte)PacketTypes.Info2, typeof(Info2)); // Sent Only
             RegisterPacket((byte)PacketTypes.Ack, typeof(Ack));
