@@ -48,6 +48,17 @@ namespace RPGWO_Client.Network
             Send(reqPlayerList);
         }
 
+        public void SendText(String t, byte textLength)
+        {
+            Text text = new Text()
+            {
+                TextContent = t,
+                TextLength = textLength
+            };
+
+            Send(text);
+        }
+
         // Default Login
         public void SendLogin(String username, String password)
         {

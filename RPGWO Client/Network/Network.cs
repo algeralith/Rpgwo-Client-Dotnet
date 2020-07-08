@@ -315,12 +315,12 @@ namespace RPGWO_Client.Network
 
         }
 
-        public void Send(Packet packet)
+        public void Send(Packet packet, bool needsID = true)
         {
-            Send(packet, _sendMode);
+            Send(packet, _sendMode, needsID);
         }
 
-        public void Send(Packet packet, SendReceiveMode sendMode)
+        public void Send(Packet packet, SendReceiveMode sendMode, bool needsID = true)
         {
             if (_clientSock == null || _clientSock.Connected == false)
             {
@@ -332,13 +332,21 @@ namespace RPGWO_Client.Network
             try
             {
                 byte[] buffer = null;
-                buffer = new byte[packet.Size + 1]; // Need to add PacketID before sending
 
-                // Set Packet ID
-                buffer[0] = packet.PacketID;
+                if (needsID)
+                {
+                    buffer = new byte[packet.Size + 1]; // Need to add PacketID before sending
 
-                // Copy packet contents
-                packet.GetBytes().CopyTo(buffer, 1);
+                    // Set Packet ID
+                    buffer[0] = packet.PacketID;
+
+                    // Copy packet contents
+                    packet.GetBytes().CopyTo(buffer, 1);
+                }
+                else
+                {
+                    buffer = packet.GetBytes();
+                }
 
                 // Add Security
                 switch (sendMode)
@@ -389,7 +397,7 @@ namespace RPGWO_Client.Network
             if (rpgwoSocketEventArgs.Packet.IsMultiPart && rpgwoSocketEventArgs.Packet.MultiComplete == false)
             {
                 // Send packet to be sent again
-                Send(rpgwoSocketEventArgs.Packet);
+                Send(rpgwoSocketEventArgs.Packet, false);
             }
         }
 

@@ -30,7 +30,7 @@ namespace RPGWO_Client.Network.Packets
         {
             if (!TextPart) // Set up the first part
             {
-                AddByte((byte)TextContent.Length); // Max Length is 255 TODO :: enforce this limit.
+                AddByte(TextLength); // Max Length is 255 TODO :: enforce this limit.
                 AddByte(Channel);
                 AddInt32(UUID);
                 AddInt32(ClientID);
@@ -42,7 +42,9 @@ namespace RPGWO_Client.Network.Packets
             else
             {
                 MultiComplete = true;
-                return Encoding.UTF8.GetBytes(TextContent);
+                byte[] tmpBuff = new byte[TextLength];
+                Encoding.UTF8.GetBytes(TextContent).CopyTo(tmpBuff, 0);
+                return tmpBuff;
             }
         }
 

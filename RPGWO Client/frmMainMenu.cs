@@ -142,6 +142,8 @@ namespace RPGWO_Client
 
             Client.Network.Send(enter);
 
+            // Send CPU info
+            Client.Network.SendText("@cpu RPGWO", 105);
         }
     }
 }
