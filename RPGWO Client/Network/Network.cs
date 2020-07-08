@@ -28,6 +28,9 @@ namespace RPGWO_Client.Network
         private SendReceiveMode _receiveMode = SendReceiveMode.Checksum; // Client starts sending checksum.
         private SendReceiveMode _sendMode = SendReceiveMode.None;
 
+        // Semaphore to keep send synchronous
+        private SemaphoreSlim _semaphoreSend = new SemaphoreSlim(1, 1);
+
         public bool Connected { get; private set; }
 
         // Connection Events
@@ -337,72 +340,93 @@ namespace RPGWO_Client.Network
             {
                 byte[] buffer = null;
 
-                if (needsID)
-                {
-                    buffer = new byte[packet.Size + 1]; // Need to add PacketID before sending
+                buffer = new byte[packet.Size + 1]; // Need to add PacketID before sending
 
-                    // Set Packet ID
-                    buffer[0] = packet.PacketID;
+                // Set Packet ID
+                buffer[0] = packet.PacketID;
 
-                    // Copy packet contents
-                    packet.GetBytes().CopyTo(buffer, 1);
-                }
-                else
-                {
-                    buffer = packet.GetBytes();
-                }
+                // Copy packet contents
+                packet.GetBytes().CopyTo(buffer, 1);
 
-                // Add Security
-                switch (sendMode)
+                // Apply security to the packet
+                buffer = AddSecurity(buffer, sendMode);
+
+                // Build up packet.
+                if (packet.IsMultiPart)
                 {
-                    case SendReceiveMode.Checksum:
-                        {
-                            byte[] tmpBuffer = new byte[buffer.Length + 1];
-                            byte checksum = Utils.CalcCheckSum(buffer);
-                            tmpBuffer[tmpBuffer.Length - 1] = checksum;
-                            buffer.CopyTo(tmpBuffer, 0);
-                            buffer = tmpBuffer;
-                        }
-                        break;
-                    case SendReceiveMode.ChecksumRnd:
-                        {
-                            byte rnd = _rSecurity.NextClientByte();
-                            byte checksum = Utils.CalcCheckSum(buffer, rnd);
-                            byte[] tmpBuffer = new byte[buffer.Length + 2];
-                            tmpBuffer[tmpBuffer.Length - 2] = rnd;
-                            tmpBuffer[tmpBuffer.Length - 1] = checksum;
-                            buffer.CopyTo(tmpBuffer, 0);
-                            buffer = tmpBuffer;
-                        }
-                        break;
+                    while (!packet.MultiComplete)
+                    {
+                        byte[] nextPart = packet.GetBytes();
+
+                        // Apply security
+                        nextPart = AddSecurity(nextPart, sendMode);
+
+                        // Expand buffer
+                        byte[] tmpBuffer = new byte[buffer.Length + nextPart.Length];
+
+                        // Copy two parts over
+                        Array.Copy(buffer, 0, tmpBuffer, 0, buffer.Length);
+                        Array.Copy(nextPart, 0, tmpBuffer, buffer.Length, nextPart.Length);
+
+                        buffer = tmpBuffer;
+                    }
                 }
 
                 // Prepare and send Packet
-                RpgwoSocketEventArgs args = new RpgwoSocketEventArgs();
+                SocketAsyncEventArgs args = new SocketAsyncEventArgs();
                 args.Completed += new EventHandler<SocketAsyncEventArgs>(OnSendComplete);
-                args.Packet = packet;
 
                 args.SetBuffer(buffer, 0, buffer.Length);
 
                 Console.WriteLine(BitConverter.ToString(buffer));
+
+                // Acquire Lock on Send
+                _semaphoreSend.Wait();
                 _clientSock.SendAsync(args);
 
             }
             catch (Exception ex)
             {
+                // Release lock
+                _semaphoreSend.Release();
                 Console.WriteLine(ex);
             }
         }
 
+        private byte[] AddSecurity(byte[] buffer, SendReceiveMode sendReceiveMode)
+        {
+            byte[] tmpBuffer = null;
+            switch (sendReceiveMode)
+            {
+                case SendReceiveMode.None:
+                    return buffer;
+                case SendReceiveMode.Checksum:
+                    {
+                        tmpBuffer = new byte[buffer.Length + 1];
+                        byte checksum = Utils.CalcCheckSum(buffer);
+                        tmpBuffer[tmpBuffer.Length - 1] = checksum;
+                        buffer.CopyTo(tmpBuffer, 0);
+                    }
+                    break;
+                case SendReceiveMode.ChecksumRnd:
+                    {
+                        byte rnd = _rSecurity.NextClientByte();
+                        byte checksum = Utils.CalcCheckSum(buffer, rnd);
+                        tmpBuffer = new byte[buffer.Length + 2];
+                        tmpBuffer[tmpBuffer.Length - 2] = rnd;
+                        tmpBuffer[tmpBuffer.Length - 1] = checksum;
+                        buffer.CopyTo(tmpBuffer, 0);
+                    }
+                    break;
+            }
+
+            return tmpBuffer;
+        }
+
         public void OnSendComplete(object sender, SocketAsyncEventArgs e)
         {
-            RpgwoSocketEventArgs rpgwoSocketEventArgs = (RpgwoSocketEventArgs)e;
-
-            if (rpgwoSocketEventArgs.Packet.IsMultiPart && rpgwoSocketEventArgs.Packet.MultiComplete == false)
-            {
-                // Send packet to be sent again
-                Send(rpgwoSocketEventArgs.Packet, false);
-            }
+            // Release Lock.
+            _semaphoreSend.Release();
         }
 
         private void HandleAck()
