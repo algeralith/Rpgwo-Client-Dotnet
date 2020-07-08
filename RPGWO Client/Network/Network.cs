@@ -366,8 +366,9 @@ namespace RPGWO_Client.Network
                 }
 
                 // Prepare and send Packet
-                SocketAsyncEventArgs args = new SocketAsyncEventArgs();
+                RpgwoSocketEventArgs args = new RpgwoSocketEventArgs();
                 args.Completed += new EventHandler<SocketAsyncEventArgs>(OnSendComplete);
+                args.Packet = packet;
 
                 args.SetBuffer(buffer, 0, buffer.Length);
 
@@ -383,7 +384,13 @@ namespace RPGWO_Client.Network
 
         public void OnSendComplete(object sender, SocketAsyncEventArgs e)
         {
+            RpgwoSocketEventArgs rpgwoSocketEventArgs = (RpgwoSocketEventArgs)e;
 
+            if (rpgwoSocketEventArgs.Packet.IsMultiPart && rpgwoSocketEventArgs.Packet.MultiComplete == false)
+            {
+                // Send packet to be sent again
+                Send(rpgwoSocketEventArgs.Packet);
+            }
         }
 
         private void HandleAck()

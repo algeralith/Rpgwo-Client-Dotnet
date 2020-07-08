@@ -8,29 +8,47 @@ namespace RPGWO_Client.Network.Packets
 {
     public class Text : Packet
     {
-        public byte TextLength { get; set; }
-        public byte Channel { get; set; }
-        public int UUID { get; set; }
-        public int ClientID { get; set; }
+        public byte TextLength { get; set; } = 0;
+        public byte Channel { get; set; } = 0;
+        public int UUID { get; set; } = 0;
+        public int ClientID { get; set; } = 0;
+
+        // This part is sent in a second packet
+        public string TextContent { get; set; }
 
         // Not part of the Packet Structure.
-        public bool ReceivedText { get; set; }
+        private bool TextPart { get; set; }
+
         public Text() : base((byte)PacketTypes.Text, 10)
         {
             IsMultiPart = true; // Comes in as two packets.
             MultiComplete = false;
-
-            ReceivedText = false;
+            TextPart = false;
         }
 
-        public void PrepareForText()
+        public override byte[] GetBytes()
         {
+            if (!TextPart) // Set up the first part
+            {
+                AddByte((byte)TextContent.Length); // Max Length is 255 TODO :: enforce this limit.
+                AddByte(Channel);
+                AddInt32(UUID);
+                AddInt32(ClientID);
 
+                TextPart = true;
+
+                return base.GetBytes();
+            }
+            else
+            {
+                MultiComplete = true;
+                return Encoding.UTF8.GetBytes(TextContent);
+            }
         }
 
         public override bool Receive()
         {
-            if (!ReceivedText)
+            if (!TextPart)
             {
                 TextLength = ReadByte();
                 Channel = ReadByte();
@@ -40,11 +58,12 @@ namespace RPGWO_Client.Network.Packets
                 // Resize Buffer
                 ResizeBuffer(this.buffer.Length + TextLength);
 
-                ReceivedText = true;
+                TextPart = true;
                 MultiComplete = true;
 
                 return false; // We have not received all the data. Need second.s
-            } else
+            }
+            else
             {
                 // Prepare for 
             }
