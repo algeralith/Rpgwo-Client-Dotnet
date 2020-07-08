@@ -94,6 +94,7 @@
     <Compile Include="Network\Packets\CreateDef.cs" />
     <Compile Include="Network\Packets\Delete.cs" />
     <Compile Include="Network\Packets\Enter.cs" />
+    <Compile Include="Network\Packets\EnterFinal.cs" />
     <Compile Include="Network\Packets\Info2.cs" />
     <Compile Include="Network\Packets\ItemLocation.cs" />
     <Compile Include="Network\Packets\Login.cs" />
@@ -102,6 +103,7 @@
     <Compile Include="Network\Packets\Packet.cs" />
     <Compile Include="Network\Packets\PacketTypes.cs" />
     <Compile Include="Network\Packets\PlayerList.cs" />
+    <Compile Include="Network\Packets\PlayerLocation.cs" />
     <Compile Include="Network\Packets\PlayerStats.cs" />
     <Compile Include="Network\Packets\PlayerStats2.cs" />
     <Compile Include="Network\Packets\RandomByte.cs" />
@@ -112,6 +114,8 @@
     <Compile Include="Network\Packets\Skill.cs" />
     <Compile Include="Network\Packets\SkillDef.cs" />
     <Compile Include="Network\Packets\Sound.cs" />
+    <Compile Include="Network\Packets\StartDisplay.cs" />
+    <Compile Include="Network\Packets\StopDisplay.cs" />
     <Compile Include="Network\Packets\Text.cs" />
     <Compile Include="Network\Packets\Version.cs" />
     <Compile Include="Network\Packets\WorldState.cs" />
