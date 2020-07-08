@@ -88,6 +88,7 @@
     <Compile Include="Network\PacketHandler.cs" />
     <Compile Include="Network\Packets.cs" />
     <Compile Include="Network\Packets\Ack.cs" />
+    <Compile Include="Network\Packets\Animation2.cs" />
     <Compile Include="Network\Packets\Attributes.cs" />
     <Compile Include="Network\Packets\ClientList.cs" />
     <Compile Include="Network\Packets\Create.cs" />

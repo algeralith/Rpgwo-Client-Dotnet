@@ -40,6 +40,7 @@ namespace RPGWO_Client.Network.Packets
         MonsterLocation = 72,
         RandomByte = 73,
         Info2 = 90,
+        Info3 = 91,
         Ack = 255
     }
 }
