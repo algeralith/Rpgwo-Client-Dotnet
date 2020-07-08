@@ -36,6 +36,7 @@ namespace RPGWO_Client.Network.Packets
         CreateDef = 65,
         SkillDef = 67,
         ReqSkillDef = 68,
+        Animation2 = 70,
         MonsterLocation = 72,
         RandomByte = 73,
         Info2 = 90,
