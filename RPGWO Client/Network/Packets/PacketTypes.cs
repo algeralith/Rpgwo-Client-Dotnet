@@ -21,6 +21,7 @@ namespace RPGWO_Client.Network.Packets
         WorldState = 22,
         PlayerStats = 27,
         ClientList = 29,
+        Sound = 34,
         Skill = 36,
         Attributes = 37,
         ReqSkillList = 38,

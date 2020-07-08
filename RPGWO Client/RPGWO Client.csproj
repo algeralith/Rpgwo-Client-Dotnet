@@ -111,6 +111,7 @@
     <Compile Include="Network\Packets\RuneBag.cs" />
     <Compile Include="Network\Packets\Skill.cs" />
     <Compile Include="Network\Packets\SkillDef.cs" />
+    <Compile Include="Network\Packets\Sound.cs" />
     <Compile Include="Network\Packets\Text.cs" />
     <Compile Include="Network\Packets\Version.cs" />
     <Compile Include="Network\Packets\WorldState.cs" />
