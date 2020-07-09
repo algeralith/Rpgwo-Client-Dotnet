@@ -97,6 +97,7 @@
     <Compile Include="Network\Packets\Enter.cs" />
     <Compile Include="Network\Packets\EnterFinal.cs" />
     <Compile Include="Network\Packets\Info2.cs" />
+    <Compile Include="Network\Packets\Info3.cs" />
     <Compile Include="Network\Packets\ItemLocation.cs" />
     <Compile Include="Network\Packets\Login.cs" />
     <Compile Include="Network\Packets\Logout.cs" />
