@@ -51,7 +51,7 @@ namespace RPGWO_Client
             }
             else
             {
-                MessageBox.Show("Yikes!", "Failed to create player.", MessageBoxButtons.OK);
+                MessageBox.Show( "Failed to create player.", "Yikes!", MessageBoxButtons.OK);
             }
         }
 

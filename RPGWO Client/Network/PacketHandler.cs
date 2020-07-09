@@ -24,14 +24,17 @@ namespace RPGWO_Client.Network
         public event EventHandler<bool> OnPlayerCreate;
         public event EventHandler<bool> OnPlayerDelete;
 
-        // Enter Game.
+        // Enter Game and Enter Final
         public event EventHandler<bool> OnGameEnter;
-        // Enter Final.
         public event EventHandler<bool> OnGameEnterFinal;
 
         // General.
         public event EventHandler<PacketEventArgs> OnSkillDef;
         public event EventHandler<Text> OnText;
+        public event EventHandler<Attributes> OnAttributes;
+        public event EventHandler<PlayerStats> OnPlayerStats;
+        public event EventHandler<PlayerStats2> OnPlayerStats2;
+        public event EventHandler<WorldState> OnWorldState;
 
         public PacketHandler(Network network)
         {
@@ -48,11 +51,23 @@ namespace RPGWO_Client.Network
                 case PacketTypes.PlayerList:
                     HandlePlayerList((PlayerList)packet);
                     break;
+                case PacketTypes.WorldState:
+                    OnWorldState?.BeginInvoke(this, (WorldState)packet, null, null);
+                    break;
+                case PacketTypes.PlayerStats:
+                    OnPlayerStats?.BeginInvoke(this, (PlayerStats)packet, null, null);
+                    break;
                 case PacketTypes.ClientList:
                     HandleClientList((ClientList)packet);
                     break;
+                case PacketTypes.Attributes:
+                    OnAttributes?.BeginInvoke(this, (Attributes)packet, null, null);
+                    break;
                 case PacketTypes.Text:
                     HandleText((Text)packet);
+                    break;
+                case PacketTypes.PlayerStats2:
+                    OnPlayerStats2?.BeginInvoke(this, (PlayerStats2)packet, null, null);
                     break;
                 case PacketTypes.CreateDef:
                     HandleCreateDef((CreateDef)packet);

@@ -184,12 +184,10 @@ namespace RPGWO_Client.Network.Packets
             for (int i = 0; i < length; i++)
             {
                 byte b = ReadByte();
-
-                if (b != 0)
-                    sb.Append(b);
+                sb.Append(b);
             }
 
-            return sb.ToString();
+            return sb.ToString().TrimStart('0');
         }
 
         public Int16 ReadInt16()

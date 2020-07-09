@@ -72,6 +72,46 @@ namespace RPGWO_Client
 
             // Packet Events.
             Network.Handler.OnText += Handler_OnText;
+            Network.Handler.OnWorldState += Handler_OnWorldState;
+            Network.Handler.OnAttributes += Handler_OnAttributes;
+            Network.Handler.OnPlayerStats += Handler_OnPlayerStats;
+        }
+
+        private void Handler_OnAttributes(object sender, Attributes e)
+        {
+            this.Invoke((MethodInvoker)delegate ()
+            {
+                labelStrength.Text = e.Strength.ToString();
+                labelDexterity.Text = e.Dexterity.ToString();
+                labelQuickness.Text = e.Quickness.ToString();
+                labelIntelligence.Text = e.Intelligence.ToString();
+                labelWisdom.Text = e.Wisdom.ToString();
+            });
+        }
+
+        private void Handler_OnPlayerStats(object sender, PlayerStats e)
+        {
+            this.Invoke((MethodInvoker)delegate () {
+                // Life / Stam / Mana
+                labelLife.Text = String.Format("{0}/{1}", e.Life, e.MaxLife);
+                labelStamina.Text = String.Format("{0}/{1}", e.Stamina, e.MaxStamina);
+                labelMana.Text = String.Format("{0}/{1}", e.Mana, e.MaxMana);
+
+                // Level / Total Exp / Next Level / Spendable
+                labelLevel.Text = e.Level;
+                labelTotalExp.Text = (e.TotalExp == "" ? "0" : e.TotalExp);
+                labelNextLevel.Text = e.NextLevel;
+                labelSpendable.Text = e.EarnedExp;
+
+                // TODO ::: Vitae, Vitae Xp, and Poison
+            });
+        }
+
+        private void Handler_OnWorldState(object sender, WorldState e)
+        {
+            labelWorld.Invoke((MethodInvoker)delegate () {
+                labelWorld.Text = String.Format("{0}:{1} {2} {3}, {4}", e.Hour, e.Minute, (Utils.Month)e.Month, e.Day, e.Year);
+            });
         }
 
         // Final Ack / Nack before game load complete.
@@ -92,7 +132,9 @@ namespace RPGWO_Client
 
         private void Handler_OnText(object sender, Text e)
         {
-
+            richTextAll.Invoke((MethodInvoker)delegate () {
+                richTextAll.Text += ("\r\n" + e.TextContent);
+            });
         }
 
         private void Network_OnConnect(object sender, EventArgs e)
