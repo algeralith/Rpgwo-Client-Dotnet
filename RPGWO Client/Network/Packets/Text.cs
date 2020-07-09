@@ -63,11 +63,11 @@ namespace RPGWO_Client.Network.Packets
                 TextPart = true;
                 MultiComplete = true;
 
-                return false; // We have not received all the data. Need second.s
+                return false; // We have not received all the data. Need second part of the packet.
             }
             else
             {
-                // Prepare for 
+                TextContent = ReadString(TextLength);
             }
 
             return true;

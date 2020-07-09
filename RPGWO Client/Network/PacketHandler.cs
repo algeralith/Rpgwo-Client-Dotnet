@@ -14,19 +14,24 @@ namespace RPGWO_Client.Network
         // Events
         public event EventHandler LoginSuccess; // Successful Login.
         public event EventHandler LoginFailure; // Unsucessful Login.
+
+        // Main Menu.
         public event EventHandler<PacketEventArgs> OnPlayerList; // Player list is received.
-        public event EventHandler<PacketEventArgs> OnCreateDef;
-        public event EventHandler<PacketEventArgs> OnSkillDef;
-        public event EventHandler OnText; // Whenever a Text Packet is received.
         public event EventHandler<PacketEventArgs> OnClientList;
+
+        // Player Creation.
+        public event EventHandler<PacketEventArgs> OnCreateDef;
         public event EventHandler<bool> OnPlayerCreate;
         public event EventHandler<bool> OnPlayerDelete;
 
-        // Enter Game
+        // Enter Game.
         public event EventHandler<bool> OnGameEnter;
-
-        // Enter Final
+        // Enter Final.
         public event EventHandler<bool> OnGameEnterFinal;
+
+        // General.
+        public event EventHandler<PacketEventArgs> OnSkillDef;
+        public event EventHandler<Text> OnText;
 
         public PacketHandler(Network network)
         {
@@ -147,7 +152,7 @@ namespace RPGWO_Client.Network
 
         private void HandleText(Text text)
         {
-            OnText?.BeginInvoke(this, EventArgs.Empty, null, null);
+            OnText?.BeginInvoke(this, text, null, null);
         }
 
         private void HandleClientList(ClientList clientList)

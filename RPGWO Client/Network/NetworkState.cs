@@ -14,8 +14,8 @@ namespace RPGWO_Client.Network
         MainMenu,
         PlayerCreation,
         PlayerDelete,
-        EnterStart, //
-        EnterFinal, //
+        EnterStart,
+        EnterFinal,
         InGame
     }
 }

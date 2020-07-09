@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using RPGWO_Client.Network;
+using RPGWO_Client.Network.Packets;
 
 namespace RPGWO_Client
 {
@@ -89,9 +90,9 @@ namespace RPGWO_Client
             }
         }
 
-        private void Handler_OnText(object sender, EventArgs e)
+        private void Handler_OnText(object sender, Text e)
         {
-            // throw new NotImplementedException();
+
         }
 
         private void Network_OnConnect(object sender, EventArgs e)
