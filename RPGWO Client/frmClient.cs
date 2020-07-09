@@ -97,6 +97,15 @@ namespace RPGWO_Client
                 labelStamina.Text = String.Format("{0}/{1}", e.Stamina, e.MaxStamina);
                 labelMana.Text = String.Format("{0}/{1}", e.Mana, e.MaxMana);
 
+                picLife.Maximum = Convert.ToInt32(e.MaxLife);
+                picLife.Value = Convert.ToInt32(e.Life);
+
+                picStamina.Maximum = Convert.ToInt32(e.MaxStamina);
+                picStamina.Value = Convert.ToInt32(e.Stamina);
+
+                picMana.Maximum = Convert.ToInt32(e.MaxMana);
+                picMana.Value = Convert.ToInt32(e.Mana);
+
                 // Level / Total Exp / Next Level / Spendable
                 labelLevel.Text = e.Level;
                 labelTotalExp.Text = (e.TotalExp == "" ? "0" : e.TotalExp);

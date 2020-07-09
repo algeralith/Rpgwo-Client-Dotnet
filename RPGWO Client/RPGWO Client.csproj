@@ -81,6 +81,9 @@
     <Compile Include="frmTextMsg.Designer.cs">
       <DependentUpon>frmTextMsg.cs</DependentUpon>
     </Compile>
+    <Compile Include="Gui\StatusBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Network\Network.cs" />
     <Compile Include="Network\NetworkCommands.cs" />
     <Compile Include="Network\NetworkState.cs" />

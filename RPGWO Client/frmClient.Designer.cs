@@ -28,11 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Drawing.StringFormat stringFormat1 = new System.Drawing.StringFormat();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.picLife = new System.Windows.Forms.PictureBox();
-            this.picStamina = new System.Windows.Forms.PictureBox();
-            this.picMana = new System.Windows.Forms.PictureBox();
+            this.picLife = new RPGWO_Client.Gui.StatusBar();
+            this.picStamina = new RPGWO_Client.Gui.StatusBar();
+            this.picMana = new RPGWO_Client.Gui.StatusBar();
             this.labelWorld = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -192,15 +193,25 @@
             // 
             // picLife
             // 
+            this.picLife.BackColor = System.Drawing.Color.Transparent;
             this.picLife.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.picLife.Location = new System.Drawing.Point(3, 58);
             this.picLife.Name = "picLife";
             this.picLife.Size = new System.Drawing.Size(164, 19);
+            stringFormat1.Alignment = System.Drawing.StringAlignment.Center;
+            stringFormat1.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.None;
+            stringFormat1.LineAlignment = System.Drawing.StringAlignment.Center;
+            stringFormat1.Trimming = System.Drawing.StringTrimming.Character;
+            this.picLife.stringFormat = stringFormat1;
             this.picLife.TabIndex = 1;
             this.picLife.TabStop = false;
+            this.picLife.Value = 1;
+            this.picLife.Brush = new System.Drawing.SolidBrush(System.Drawing.Color.FromArgb(0, 150, 0));
+
             // 
             // picStamina
             // 
+            this.picStamina.BackColor = System.Drawing.Color.Transparent;
             this.picStamina.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.picStamina.Location = new System.Drawing.Point(3, 78);
             this.picStamina.Margin = new System.Windows.Forms.Padding(1);
@@ -208,15 +219,19 @@
             this.picStamina.Size = new System.Drawing.Size(164, 19);
             this.picStamina.TabIndex = 1;
             this.picStamina.TabStop = false;
+            this.picStamina.Brush = new System.Drawing.SolidBrush(System.Drawing.Color.FromArgb(220, 220, 0));
+
             // 
             // picMana
             // 
+            this.picMana.BackColor = System.Drawing.Color.Transparent;
             this.picMana.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.picMana.Location = new System.Drawing.Point(3, 98);
             this.picMana.Name = "picMana";
             this.picMana.Size = new System.Drawing.Size(164, 19);
             this.picMana.TabIndex = 1;
             this.picMana.TabStop = false;
+            this.picMana.Brush = new System.Drawing.SolidBrush(System.Drawing.Color.FromArgb(0, 0, 150));
             // 
             // labelWorld
             // 
@@ -1535,9 +1550,9 @@
 
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox picLife;
-        private System.Windows.Forms.PictureBox picStamina;
-        private System.Windows.Forms.PictureBox picMana;
+        private RPGWO_Client.Gui.StatusBar picLife;
+        private RPGWO_Client.Gui.StatusBar picStamina;
+        private RPGWO_Client.Gui.StatusBar picMana;
         private System.Windows.Forms.Label labelWorld;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
