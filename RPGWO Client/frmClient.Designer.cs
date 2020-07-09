@@ -91,7 +91,6 @@
             this.button23 = new System.Windows.Forms.Button();
             this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
             this.label9 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -495,7 +494,6 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.pictureBox6);
             this.panel2.Location = new System.Drawing.Point(810, 0);
@@ -841,16 +839,6 @@
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(188, 15);
             this.label9.TabIndex = 19;
-            // 
-            // label2
-            // 
-            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label2.Location = new System.Drawing.Point(3, 105);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(204, 16);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Location";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label3
             // 
@@ -1628,7 +1616,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label32;
         private System.Windows.Forms.Label label31;

@@ -22,6 +22,12 @@ namespace RPGWO_Client.Network
         public event EventHandler<bool> OnPlayerCreate;
         public event EventHandler<bool> OnPlayerDelete;
 
+        // Enter Game
+        public event EventHandler<bool> OnGameEnter;
+
+        // Enter Final
+        public event EventHandler<bool> OnGameEnterFinal;
+
         public PacketHandler(Network network)
         {
             Network = network;
@@ -76,6 +82,16 @@ namespace RPGWO_Client.Network
             {
                 OnPlayerCreate?.BeginInvoke(this, true, null, null);
             }
+
+            if (Network.NetworkState == NetworkState.EnterStart)
+            {
+                OnGameEnter?.BeginInvoke(this, true, null, null);
+            }
+
+            if (Network.NetworkState == NetworkState.EnterFinal)
+            {
+                OnGameEnterFinal?.BeginInvoke(this, true, null, null);
+            }
         }
 
         private void HandleNack()
@@ -95,6 +111,16 @@ namespace RPGWO_Client.Network
             if (Network.NetworkState == NetworkState.PlayerCreation)
             {
                 OnPlayerCreate?.BeginInvoke(this, false, null, null);
+            }
+
+            if (Network.NetworkState == NetworkState.EnterStart)
+            {
+                OnGameEnter?.BeginInvoke(this, false, null, null);
+            }
+
+            if (Network.NetworkState == NetworkState.EnterFinal)
+            {
+                OnGameEnterFinal?.BeginInvoke(this, false, null, null);
             }
         }
 

@@ -66,8 +66,27 @@ namespace RPGWO_Client
             Network.OnConnect += Network_OnConnect;
             Network.OnDisconnect += Network_OnDisconnect;
 
+            // Enter Final.
+            Network.Handler.OnGameEnterFinal += Handler_OnGameEnterFinal;
+
             // Packet Events.
             Network.Handler.OnText += Handler_OnText;
+        }
+
+        // Final Ack / Nack before game load complete.
+        private void Handler_OnGameEnterFinal(object sender, bool e)
+        {
+            if (e)
+            {
+                // Client is completely in game. Update network status.
+                Network.NetworkState = NetworkState.InGame;
+            }
+            else
+            {
+                // TODO :: Consider how to properly do this. Mickey just pops up an error and then
+                // Brings up the exit confirmation.
+                MessageBox.Show("Cannot enter world.\r\nWorld may be stopped.\r\n.Your player may be dead.", "Sorry", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
 
         private void Handler_OnText(object sender, EventArgs e)

@@ -30,7 +30,10 @@ namespace RPGWO_Client
             Client.Network.Handler.OnPlayerList += Handler_OnPlayerList;
 
             Client.Network.Handler.OnPlayerDelete += Handler_OnPlayerDelete;
+
+            Client.Network.Handler.OnGameEnter += Handler_OnGameEnter;
         }
+
 
         private void Handler_OnPlayerDelete(object sender, bool e)
         {
@@ -140,13 +143,29 @@ namespace RPGWO_Client
                 Name = listBox1.SelectedItem.ToString()
             };
 
+            // Set Network state to entering
+            Client.Network.NetworkState = NetworkState.EnterStart;
             Client.Network.Send(enter);
+        }
 
-            // Send CPU info
-            Client.Network.SendText("@cpu RPGWO", 105);
+        private void Handler_OnGameEnter(object sender, bool e)
+        {
+            if (e)
+            {
+                // Send CPU info
+                Client.Network.SendText("@cpu RPGWO", 105);
 
-            // Complete
-            Client.Network.Send(new EnterFinal());
+                // Update Networking to enterfinal
+                Client.Network.NetworkState = NetworkState.EnterFinal;
+                Client.Network.Send(new EnterFinal());
+
+                // Close MainMenu
+                Client.HideForm(this);
+            }
+            else
+            {
+                MessageBox.Show("Cannot enter world.", "Sorry", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
     }
 }
