@@ -33,9 +33,6 @@
             System.Drawing.StringFormat stringFormat3 = new System.Drawing.StringFormat();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.picLife = new RPGWO_Client.Gui.StatusBar();
-            this.picStamina = new RPGWO_Client.Gui.StatusBar();
-            this.picMana = new RPGWO_Client.Gui.StatusBar();
             this.labelWorld = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -89,14 +86,16 @@
             this.button9 = new System.Windows.Forms.Button();
             this.button20 = new System.Windows.Forms.Button();
             this.button21 = new System.Windows.Forms.Button();
+            this.picLife = new RPGWO_Client.Gui.StatusBar();
+            this.picStamina = new RPGWO_Client.Gui.StatusBar();
+            this.picMana = new RPGWO_Client.Gui.StatusBar();
+            this.skillsView = new RPGWO_Client.Gui.SkillsView();
             this.skillsView1 = new RPGWO_Client.Gui.SkillsView();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picLife)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picStamina)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picMana)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabControlChats.SuspendLayout();
             this.tabPage12.SuspendLayout();
@@ -108,6 +107,9 @@
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picLife)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picStamina)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picMana)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -128,61 +130,6 @@
             this.pictureBox2.Size = new System.Drawing.Size(164, 36);
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
-            // 
-            // picLife
-            // 
-            this.picLife.BackColor = System.Drawing.Color.Transparent;
-            this.picLife.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.picLife.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
-            this.picLife.Location = new System.Drawing.Point(3, 58);
-            this.picLife.Maximum = 0;
-            this.picLife.Name = "picLife";
-            this.picLife.Size = new System.Drawing.Size(164, 19);
-            stringFormat1.Alignment = System.Drawing.StringAlignment.Center;
-            stringFormat1.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.None;
-            stringFormat1.LineAlignment = System.Drawing.StringAlignment.Center;
-            stringFormat1.Trimming = System.Drawing.StringTrimming.Character;
-            this.picLife.stringFormat = stringFormat1;
-            this.picLife.TabIndex = 1;
-            this.picLife.TabStop = false;
-            this.picLife.Value = 1;
-            // 
-            // picStamina
-            // 
-            this.picStamina.BackColor = System.Drawing.Color.Transparent;
-            this.picStamina.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.picStamina.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
-            this.picStamina.Location = new System.Drawing.Point(3, 78);
-            this.picStamina.Margin = new System.Windows.Forms.Padding(1);
-            this.picStamina.Maximum = 0;
-            this.picStamina.Name = "picStamina";
-            this.picStamina.Size = new System.Drawing.Size(164, 19);
-            stringFormat2.Alignment = System.Drawing.StringAlignment.Center;
-            stringFormat2.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.None;
-            stringFormat2.LineAlignment = System.Drawing.StringAlignment.Center;
-            stringFormat2.Trimming = System.Drawing.StringTrimming.Character;
-            this.picStamina.stringFormat = stringFormat2;
-            this.picStamina.TabIndex = 1;
-            this.picStamina.TabStop = false;
-            this.picStamina.Value = 0;
-            // 
-            // picMana
-            // 
-            this.picMana.BackColor = System.Drawing.Color.Transparent;
-            this.picMana.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.picMana.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
-            this.picMana.Location = new System.Drawing.Point(3, 98);
-            this.picMana.Maximum = 0;
-            this.picMana.Name = "picMana";
-            this.picMana.Size = new System.Drawing.Size(164, 19);
-            stringFormat3.Alignment = System.Drawing.StringAlignment.Center;
-            stringFormat3.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.None;
-            stringFormat3.LineAlignment = System.Drawing.StringAlignment.Center;
-            stringFormat3.Trimming = System.Drawing.StringTrimming.Character;
-            this.picMana.stringFormat = stringFormat3;
-            this.picMana.TabIndex = 1;
-            this.picMana.TabStop = false;
-            this.picMana.Value = 0;
             // 
             // labelWorld
             // 
@@ -227,17 +174,18 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.skillsView1);
-            this.tabPage2.Location = new System.Drawing.Point(4, 40);
+            this.tabPage2.Controls.Add(this.skillsView);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(368, 411);
+            this.tabPage2.Size = new System.Drawing.Size(368, 429);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Stats";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.skillsView1);
             this.tabPage3.Location = new System.Drawing.Point(4, 40);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Size = new System.Drawing.Size(368, 411);
@@ -247,45 +195,45 @@
             // 
             // tabPage4
             // 
-            this.tabPage4.Location = new System.Drawing.Point(4, 40);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(368, 411);
+            this.tabPage4.Size = new System.Drawing.Size(368, 429);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Magic";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
             // tabPage5
             // 
-            this.tabPage5.Location = new System.Drawing.Point(4, 40);
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(368, 411);
+            this.tabPage5.Size = new System.Drawing.Size(368, 429);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Mail";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
             // tabPage6
             // 
-            this.tabPage6.Location = new System.Drawing.Point(4, 40);
+            this.tabPage6.Location = new System.Drawing.Point(4, 22);
             this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Size = new System.Drawing.Size(368, 411);
+            this.tabPage6.Size = new System.Drawing.Size(368, 429);
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "Help";
             this.tabPage6.UseVisualStyleBackColor = true;
             // 
             // tabPage7
             // 
-            this.tabPage7.Location = new System.Drawing.Point(4, 40);
+            this.tabPage7.Location = new System.Drawing.Point(4, 22);
             this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Size = new System.Drawing.Size(368, 411);
+            this.tabPage7.Size = new System.Drawing.Size(368, 429);
             this.tabPage7.TabIndex = 6;
             this.tabPage7.Text = "Options";
             this.tabPage7.UseVisualStyleBackColor = true;
             // 
             // tabPage8
             // 
-            this.tabPage8.Location = new System.Drawing.Point(4, 40);
+            this.tabPage8.Location = new System.Drawing.Point(4, 22);
             this.tabPage8.Name = "tabPage8";
-            this.tabPage8.Size = new System.Drawing.Size(368, 411);
+            this.tabPage8.Size = new System.Drawing.Size(368, 429);
             this.tabPage8.TabIndex = 7;
             this.tabPage8.Text = "Guild";
             this.tabPage8.UseVisualStyleBackColor = true;
@@ -722,11 +670,76 @@
             this.button21.Text = "button21";
             this.button21.UseVisualStyleBackColor = true;
             // 
+            // picLife
+            // 
+            this.picLife.BackColor = System.Drawing.Color.Transparent;
+            this.picLife.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.picLife.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
+            this.picLife.Location = new System.Drawing.Point(3, 58);
+            this.picLife.Maximum = 0;
+            this.picLife.Name = "picLife";
+            this.picLife.Size = new System.Drawing.Size(164, 19);
+            stringFormat1.Alignment = System.Drawing.StringAlignment.Center;
+            stringFormat1.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.None;
+            stringFormat1.LineAlignment = System.Drawing.StringAlignment.Center;
+            stringFormat1.Trimming = System.Drawing.StringTrimming.Character;
+            this.picLife.stringFormat = stringFormat1;
+            this.picLife.TabIndex = 1;
+            this.picLife.TabStop = false;
+            this.picLife.Value = 1;
+            this.picLife.Brush = new System.Drawing.SolidBrush(System.Drawing.Color.FromArgb(0, 150, 0));
+            // 
+            // picStamina
+            // 
+            this.picStamina.BackColor = System.Drawing.Color.Transparent;
+            this.picStamina.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.picStamina.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
+            this.picStamina.Location = new System.Drawing.Point(3, 78);
+            this.picStamina.Margin = new System.Windows.Forms.Padding(1);
+            this.picStamina.Maximum = 0;
+            this.picStamina.Name = "picStamina";
+            this.picStamina.Size = new System.Drawing.Size(164, 19);
+            stringFormat2.Alignment = System.Drawing.StringAlignment.Center;
+            stringFormat2.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.None;
+            stringFormat2.LineAlignment = System.Drawing.StringAlignment.Center;
+            stringFormat2.Trimming = System.Drawing.StringTrimming.Character;
+            this.picStamina.stringFormat = stringFormat2;
+            this.picStamina.TabIndex = 1;
+            this.picStamina.TabStop = false;
+            this.picStamina.Value = 0;
+            this.picStamina.Brush = new System.Drawing.SolidBrush(System.Drawing.Color.FromArgb(220, 220, 0));
+            // 
+            // picMana
+            // 
+            this.picMana.BackColor = System.Drawing.Color.Transparent;
+            this.picMana.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.picMana.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
+            this.picMana.Location = new System.Drawing.Point(3, 98);
+            this.picMana.Maximum = 0;
+            this.picMana.Name = "picMana";
+            this.picMana.Size = new System.Drawing.Size(164, 19);
+            stringFormat3.Alignment = System.Drawing.StringAlignment.Center;
+            stringFormat3.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.None;
+            stringFormat3.LineAlignment = System.Drawing.StringAlignment.Center;
+            stringFormat3.Trimming = System.Drawing.StringTrimming.Character;
+            this.picMana.stringFormat = stringFormat3;
+            this.picMana.TabIndex = 1;
+            this.picMana.TabStop = false;
+            this.picMana.Value = 0;
+            this.picMana.Brush = new System.Drawing.SolidBrush(System.Drawing.Color.FromArgb(0, 0, 150));
+            // 
+            // skillsView
+            // 
+            this.skillsView.Location = new System.Drawing.Point(4, 7);
+            this.skillsView.Name = "skillsView";
+            this.skillsView.Size = new System.Drawing.Size(360, 394);
+            this.skillsView.TabIndex = 0;
+            // 
             // skillsView1
             // 
-            this.skillsView1.Location = new System.Drawing.Point(4, 7);
+            this.skillsView1.Location = new System.Drawing.Point(0, 0);
             this.skillsView1.Name = "skillsView1";
-            this.skillsView1.Size = new System.Drawing.Size(360, 394);
+            this.skillsView1.Size = new System.Drawing.Size(368, 411);
             this.skillsView1.TabIndex = 0;
             // 
             // frmClient
@@ -753,17 +766,16 @@
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Location = new System.Drawing.Point(1, 1);
             this.Name = "frmClient";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RPG World Online";
             this.Load += new System.EventHandler(this.FrmClient_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picLife)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picStamina)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picMana)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.tabControlChats.ResumeLayout(false);
             this.tabPage12.ResumeLayout(false);
@@ -775,6 +787,9 @@
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picLife)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picStamina)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picMana)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -840,6 +855,7 @@
         private System.Windows.Forms.RichTextBox richTextSystem;
         private System.Windows.Forms.RichTextBox richTextCombat;
         private System.Windows.Forms.RichTextBox richTextMisc;
+        private Gui.SkillsView skillsView;
         private Gui.SkillsView skillsView1;
     }
 }

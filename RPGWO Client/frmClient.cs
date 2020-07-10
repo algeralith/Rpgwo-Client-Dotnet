@@ -75,17 +75,26 @@ namespace RPGWO_Client
             Network.Handler.OnWorldState += Handler_OnWorldState;
             Network.Handler.OnAttributes += Handler_OnAttributes;
             Network.Handler.OnPlayerStats += Handler_OnPlayerStats;
+            Network.Handler.OnSkill += Handler_OnSkill;
+        }
+
+        private void Handler_OnSkill(object sender, Skill e)
+        {
+            this.Invoke((MethodInvoker)delegate ()
+            {
+                skillsView.SkillsList.AddSkil(e);
+            });
         }
 
         private void Handler_OnAttributes(object sender, Attributes e)
         {
             this.Invoke((MethodInvoker)delegate ()
             {
-                labelStrength.Text = e.Strength.ToString();
-                labelDexterity.Text = e.Dexterity.ToString();
-                labelQuickness.Text = e.Quickness.ToString();
-                labelIntelligence.Text = e.Intelligence.ToString();
-                labelWisdom.Text = e.Wisdom.ToString();
+                skillsView.Attributes.SetStrength(e.Strength);
+                skillsView.Attributes.SetDexterity(e.Dexterity);
+                skillsView.Attributes.SetQuickness(e.Quickness);
+                skillsView.Attributes.SetIntelligence(e.Intelligence);
+                skillsView.Attributes.SetWisdom(e.Wisdom);
             });
         }
 
@@ -93,9 +102,9 @@ namespace RPGWO_Client
         {
             this.Invoke((MethodInvoker)delegate () {
                 // Life / Stam / Mana
-                labelLife.Text = String.Format("{0}/{1}", e.Life, e.MaxLife);
-                labelStamina.Text = String.Format("{0}/{1}", e.Stamina, e.MaxStamina);
-                labelMana.Text = String.Format("{0}/{1}", e.Mana, e.MaxMana);
+                skillsView.Attributes.SetLife(e.Life, e.MaxLife);
+                skillsView.Attributes.SetStamina(e.Stamina, e.MaxStamina);
+                skillsView.Attributes.SetMana(e.Mana, e.MaxMana);
 
                 picLife.Maximum = Convert.ToInt32(e.MaxLife);
                 picLife.Value = Convert.ToInt32(e.Life);
@@ -106,10 +115,11 @@ namespace RPGWO_Client
                 picMana.Maximum = Convert.ToInt32(e.MaxMana);
                 picMana.Value = Convert.ToInt32(e.Mana);
 
-                // Level / Total Exp / Next Level / Spendable
-                labelLevel.Text = e.Level.ToString();
-                labelNextLevel.Text = e.NextLevel.ToString();
-                labelSpendable.Text = e.EarnedExp.ToString();
+                //// Level / Total Exp / Next Level / Spendable
+                skillsView.SetLevel(e.Level);
+                skillsView.SetTotalExperience(e.TotalExp);
+                skillsView.SetNextLevel(e.NextLevel);
+                skillsView.SetSpendable(e.EarnedExp);
 
                 // TODO ::: Vitae, Vitae Xp, and Poison
             });

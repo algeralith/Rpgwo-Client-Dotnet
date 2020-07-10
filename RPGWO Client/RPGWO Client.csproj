@@ -81,11 +81,26 @@
     <Compile Include="frmTextMsg.Designer.cs">
       <DependentUpon>frmTextMsg.cs</DependentUpon>
     </Compile>
+    <Compile Include="Gui\SkillsList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Gui\SkillsList.Designer.cs">
+      <DependentUpon>SkillsList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Gui\SkillsView.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Gui\SkillsView.Designer.cs">
+      <DependentUpon>SkillsView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Gui\StatusBar.cs">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Gui\Attributes.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Gui\Attributes.Designer.cs">
+      <DependentUpon>Attributes.cs</DependentUpon>
     </Compile>
     <Compile Include="Network\Network.cs" />
     <Compile Include="Network\NetworkCommands.cs" />
@@ -150,6 +165,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmTextMsg.resx">
       <DependentUpon>frmTextMsg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\SkillsList.resx">
+      <DependentUpon>SkillsList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\Attributes.resx">
+      <DependentUpon>Attributes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Gui\SkillsView.resx">
       <DependentUpon>SkillsView.cs</DependentUpon>
