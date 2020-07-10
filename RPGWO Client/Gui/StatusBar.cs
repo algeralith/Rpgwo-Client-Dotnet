@@ -27,6 +27,8 @@ namespace RPGWO_Client.Gui
             FontBrush = new SolidBrush(System.Drawing.Color.FromArgb(200, 200, 200));
 
             this.Font = new Font(this.Font.FontFamily, 8, FontStyle.Bold, GraphicsUnit.Point);
+
+            ResizeRedraw = true;
         }
 
         protected override void OnPaint(PaintEventArgs e)

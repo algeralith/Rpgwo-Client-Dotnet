@@ -17,10 +17,10 @@ namespace RPGWO_Client.Network.Packets
         public byte LifePercentage { get; set; }
         public byte Tame { get; set; }
         public byte pType { get; set; } // TODO 
-        public string Index { get; set; } // Not sure if string, or int32. TODO :: 
-        public string Level { get; set; } // 4 characters
+        public int Index { get; set; } // Not sure if string, or int32. TODO :: 
+        public int Level { get; set; } // 4 characters
         public byte Light { get; set; }
-        public string Image { get; set; } // 4 characters
+        public int Image { get; set; } // 4 characters
         public byte Head { get; set; }
         public byte Arms { get; set; }
         public byte Chest { get; set; }
@@ -48,10 +48,10 @@ namespace RPGWO_Client.Network.Packets
             LifePercentage = ReadByte();
             Tame = ReadByte();
             pType = ReadByte();
-            Index = ReadBytesAsString(4);
-            Level = ReadBytesAsString(4);
+            Index = ReadStringAsInt(4);
+            Level = ReadStringAsInt(4);
             Light = ReadByte();
-            Image = ReadBytesAsString(4);
+            Image = ReadStringAsInt(4);
             Head = ReadByte();
             Arms = ReadByte();
             Legs = ReadByte();

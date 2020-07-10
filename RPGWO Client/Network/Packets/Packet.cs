@@ -174,20 +174,28 @@ namespace RPGWO_Client.Network.Packets
             return b;
         }
 
-        public string ReadBytesAsString(int length)
+        public int ReadStringAsInt(int length)
         {
             // For playerstats the each byte represents its value in a string
             // i.e { 0x0, 0x0, 0x1, 0x2 } -> 0012 -> 12
-
-            StringBuilder sb = new StringBuilder(length);
-
-            for (int i = 0; i < length; i++)
+            try
             {
-                byte b = ReadByte();
-                sb.Append(b);
-            }
+                StringBuilder stringBuilder = new StringBuilder(9); // Most usages are 9 characters
 
-            return sb.ToString().TrimStart('0');
+                byte[] buff  = ReadBytes(length);
+
+                for (int i = 0; i < buff.Length; i++)
+                    stringBuilder.Append(buff[i]);
+
+                String s = stringBuilder.ToString();
+                int value = Convert.ToInt32(s);
+                return value;
+            }
+            catch (Exception e)
+            {
+                Console.Write(e);
+                return 0;
+            }
         }
 
         public Int16 ReadInt16()

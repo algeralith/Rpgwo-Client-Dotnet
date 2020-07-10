@@ -107,10 +107,9 @@ namespace RPGWO_Client
                 picMana.Value = Convert.ToInt32(e.Mana);
 
                 // Level / Total Exp / Next Level / Spendable
-                labelLevel.Text = e.Level;
-                labelTotalExp.Text = (e.TotalExp == "" ? "0" : e.TotalExp);
-                labelNextLevel.Text = e.NextLevel;
-                labelSpendable.Text = e.EarnedExp;
+                labelLevel.Text = e.Level.ToString();
+                labelNextLevel.Text = e.NextLevel.ToString();
+                labelSpendable.Text = e.EarnedExp.ToString();
 
                 // TODO ::: Vitae, Vitae Xp, and Poison
             });

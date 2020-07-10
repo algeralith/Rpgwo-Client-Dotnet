@@ -9,29 +9,29 @@ namespace RPGWO_Client.Network.Packets
     public class PlayerStats : Packet
     {
         // Life
-        public string Life { get; set; }
+        public int Life { get; set; }
         // Max Life
-        public string MaxLife { get; set; }
+        public int MaxLife { get; set; }
         // Stamina
-        public string Stamina { get; set; }
+        public int Stamina { get; set; }
         // Max Stamina
-        public string MaxStamina { get; set; }
+        public int MaxStamina { get; set; }
         // Total Exp
-        public string TotalExp { get; set; }
+        public int TotalExp { get; set; }
         // Earned Exp
-        public string EarnedExp { get; set; } // Spendable
+        public int EarnedExp { get; set; } // Spendable
         // Mana
-        public string Mana { get; set; }
+        public int Mana { get; set; }
         // Max Mana
-        public string MaxMana { get; set; }
+        public int MaxMana { get; set; }
         // Level
-        public string Level { get; set; }
+        public int Level { get; set; }
         // Next Level
-        public string NextLevel { get; set; }
+        public int NextLevel { get; set; }
         // Vitae
         public byte Vitae { get; set; }
         // Vitae Exp
-        public string VitaeExp { get; set; }
+        public int VitaeExp { get; set; }
         // Poison
         public byte Poison { get; set; }
 
@@ -42,28 +42,28 @@ namespace RPGWO_Client.Network.Packets
 
         public override bool Receive()
         {
-            Life = ReadBytesAsString(4);
-            MaxLife = ReadBytesAsString(4);
+            Life = ReadStringAsInt(4);
+            MaxLife = ReadStringAsInt(4);
 
-            Stamina = ReadBytesAsString(4);
-            MaxStamina = ReadBytesAsString(4);
+            Stamina = ReadStringAsInt(4);
+            MaxStamina = ReadStringAsInt(4);
 
-            TotalExp = ReadBytesAsString(9);
-            EarnedExp = ReadBytesAsString(9);
+            TotalExp = ReadStringAsInt(9);
+            EarnedExp = ReadStringAsInt(9);
 
-            Mana = ReadBytesAsString(4);
-            MaxMana = ReadBytesAsString(4);
+            Mana = ReadStringAsInt(4);
+            MaxMana = ReadStringAsInt(4);
 
-            Level = ReadBytesAsString(4);
+            Level = ReadStringAsInt(4);
 
-            NextLevel = ReadBytesAsString(9);
+            NextLevel = ReadStringAsInt(9);
 
             Vitae = ReadByte();
 
             // The next three bytes do not appear to be used.
             ReadBytes(3);
 
-            VitaeExp = ReadBytesAsString(9);
+            VitaeExp = ReadStringAsInt(9);
 
             // Next Byte is not used.
             ReadByte();
