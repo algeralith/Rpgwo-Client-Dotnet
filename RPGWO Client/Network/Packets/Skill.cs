@@ -12,7 +12,7 @@ namespace RPGWO_Client.Network.Packets
 
         public byte SkillID { get; set; }
 
-        public byte ClearList { get; set; } // Probably a bool, verify. TODO ::
+        public bool ClearList { get; set; } // Probably a bool, verify. TODO ::
 
         public Int16 Value { get; set; }
 
@@ -43,7 +43,7 @@ namespace RPGWO_Client.Network.Packets
         {
             SkillName = ReadString(20);
             SkillID = ReadByte();
-            ClearList = ReadByte();
+            ClearList = ReadBool();
             Value = ReadInt16();
             SkillPoints = ReadByte();
             Strength = ReadByte();
@@ -53,7 +53,7 @@ namespace RPGWO_Client.Network.Packets
             Wisdom = ReadByte();
             Divisor = ReadByte();
             Status = ReadByte();
-            Spec = ReadByte();
+            Spec = ReadByte(); // 0 and 1
 
             return true;
         }

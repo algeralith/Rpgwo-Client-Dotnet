@@ -35,6 +35,7 @@ namespace RPGWO_Client.Network
         public event EventHandler<PlayerStats> OnPlayerStats;
         public event EventHandler<PlayerStats2> OnPlayerStats2;
         public event EventHandler<WorldState> OnWorldState;
+        public event EventHandler<Skill> OnSkill;
 
         public PacketHandler(Network network)
         {
@@ -59,6 +60,9 @@ namespace RPGWO_Client.Network
                     break;
                 case PacketTypes.ClientList:
                     HandleClientList((ClientList)packet);
+                    break;
+                case PacketTypes.Skill:
+                    OnSkill?.BeginInvoke(this, (Skill)packet, null, null);
                     break;
                 case PacketTypes.Attributes:
                     OnAttributes?.BeginInvoke(this, (Attributes)packet, null, null);
