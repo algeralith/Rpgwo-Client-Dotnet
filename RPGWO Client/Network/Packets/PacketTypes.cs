@@ -41,6 +41,7 @@ namespace RPGWO_Client.Network.Packets
         RandomByte = 73,
         Info2 = 90,
         Info3 = 91,
+        Result = 102,
         Ack = 255
     }
 }
