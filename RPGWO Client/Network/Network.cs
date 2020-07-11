@@ -8,6 +8,8 @@ using System.IO;
 using System.Net.Sockets;
 using System.Threading;
 using RPGWO_Client.Network.Packets;
+using System.Threading.Tasks;
+using System.Drawing;
 
 namespace RPGWO_Client.Network
 {
@@ -145,7 +147,10 @@ namespace RPGWO_Client.Network
                 args.SetBuffer(packetID, 0, 1); // Set args to return with only with the header of the next packet.
                 args.Completed += new EventHandler<SocketAsyncEventArgs>(OnHeaderComplete);
 
-                _clientSock.ReceiveAsync(args);
+                bool pending = _clientSock.ReceiveAsync(args);
+
+                if (!pending) // Operation was completed synchronously 
+                    OnHeaderComplete(this, args);
             }
             catch (Exception ex)
             {
@@ -155,7 +160,7 @@ namespace RPGWO_Client.Network
 
         private void OnHeaderComplete(object sender, SocketAsyncEventArgs e)
         {
-            if (_clientSock == null || _clientSock.Connected == false)
+            if (_clientSock == null || _clientSock.Connected == false || e.BytesTransferred == 0)
             {
                 // Socket has been D/C'd, handle disconnect
                 HandleDisconnect();
@@ -219,7 +224,10 @@ namespace RPGWO_Client.Network
                 args.ReceiveMode = _receiveMode;
                 args.Completed += new EventHandler<SocketAsyncEventArgs>(ReceivePacketData);
 
-                _clientSock.ReceiveAsync(args);
+                bool pending = _clientSock.ReceiveAsync(args);
+
+                if (!pending) // Operation was completed synchronously
+                    ReceivePacketData(this, args);
             }
         }
 
@@ -246,7 +254,10 @@ namespace RPGWO_Client.Network
                 args2.SetBuffer(args.Buffer, args2.TotalReceived, args.Buffer.Length - args2.TotalReceived);
                 args2.Completed += new EventHandler<SocketAsyncEventArgs>(ReceivePacketData);
 
-                _clientSock.ReceiveAsync(args2);
+                bool pending = _clientSock.ReceiveAsync(args2);
+
+                if (!pending) // Operation was completed synchronously
+                    ReceivePacketData(this, args);
             }
             else
             {
@@ -288,7 +299,11 @@ namespace RPGWO_Client.Network
                         args2.SetBuffer(buffer, 0, buffer.Length);
                         args2.Completed += new EventHandler<SocketAsyncEventArgs>(ReceivePacketData);
 
-                        _clientSock.ReceiveAsync(args2);
+                        bool pending = _clientSock.ReceiveAsync(args2);
+
+                        if (!pending) // Operation was completed synchronously
+                            ReceivePacketData(this, args2);
+
                         return; // TODO :: Refactor out this bit of code.
                     }
                 }
@@ -386,7 +401,10 @@ namespace RPGWO_Client.Network
 
                 // Acquire Lock on Send
                 _semaphoreSend.Wait();
-                _clientSock.SendAsync(args);
+                bool pending = _clientSock.SendAsync(args);
+
+                if (!pending) // Operation was completed synchronously. 
+                    _semaphoreSend.Release(); 
 
             }
             catch (Exception ex)
@@ -442,7 +460,7 @@ namespace RPGWO_Client.Network
                     NetworkState = NetworkState.LoginScreen;
                     // Notify that connection has been established.
                     // TODO :: This can be done better.
-                    OnConnect?.BeginInvoke(this, EventArgs.Empty, null, null);
+                    // Task.Run(() => OnConnect?.Invoke(this, EventArgs.Empty));
                     break;
                 default:
                     // Console.WriteLine("Unhandled Network State in Ack: " + NetworkState);
@@ -480,7 +498,7 @@ namespace RPGWO_Client.Network
         {
             // TODO :: Proper disconnect handling
             Console.WriteLine("Disconnected");
-            OnDisconnect?.BeginInvoke(this, EventArgs.Empty, null, null);
+            Task.Run(() => OnDisconnect?.Invoke(this, EventArgs.Empty));
         }
 
         private void HandleRndByte(RandomByte packet)
@@ -490,7 +508,10 @@ namespace RPGWO_Client.Network
 
             // Update Receive / Send mode
             _receiveMode = SendReceiveMode.ChecksumRnd; // Tell Socket to expect packets to use both Checksum and Random.
-            _sendMode = SendReceiveMode.ChecksumRnd; 
+            _sendMode = SendReceiveMode.ChecksumRnd;
+
+            // Alert that connection is now established
+            Task.Run(() => OnConnect?.Invoke(this, EventArgs.Empty));
         }
 
         public static void RegisterPacket(Byte packetID, Type packetType)
