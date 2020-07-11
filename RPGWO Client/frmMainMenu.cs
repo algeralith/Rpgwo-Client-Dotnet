@@ -54,11 +54,8 @@ namespace RPGWO_Client
 
         }
 
-        private void Handler_OnPlayerList(object sender, PacketEventArgs e)
+        private void Handler_OnPlayerList(object sender, PlayerList playerList)
         {
-            // Grab Packet
-            PlayerList playerList = (PlayerList)e.Packet;
-
             this.BeginInvoke((MethodInvoker)delegate () {
                 // Clear listbox
                 listBox1.Items.Clear();
@@ -70,11 +67,9 @@ namespace RPGWO_Client
             });
         }
 
-        private void Handler_OnClientList(object sender, PacketEventArgs e)
+        private void Handler_OnClientList(object sender, ClientList clientList)
         {
             // Grab Packet
-            ClientList clientList = (ClientList)e.Packet;
-
             Client.MainMenu.BeginInvoke((MethodInvoker)delegate () {
                 toolStripStatusLabel1.Text = "Number of players logged on: " + clientList.Name;
             });

@@ -16,8 +16,8 @@ namespace RPGWO_Client.Network
         public event EventHandler LoginFailure; // Unsucessful Login.
 
         // Main Menu.
-        public event EventHandler<PacketEventArgs> OnPlayerList; // Player list is received.
-        public event EventHandler<PacketEventArgs> OnClientList;
+        public event EventHandler<PlayerList> OnPlayerList; // Player list is received.
+        public event EventHandler<ClientList> OnClientList;
 
         // Player Creation.
         public event EventHandler<PacketEventArgs> OnCreateDef;
@@ -164,9 +164,7 @@ namespace RPGWO_Client.Network
 
         private void HandlePlayerList(PlayerList playerList)
         {
-            PacketEventArgs packetEvent = new PacketEventArgs(playerList);
-
-            Task.Run(() => OnPlayerList?.Invoke(this, packetEvent));
+            Task.Run(() => OnPlayerList?.Invoke(this, playerList));
         }
 
         private void HandleText(Text text)
@@ -176,9 +174,7 @@ namespace RPGWO_Client.Network
 
         private void HandleClientList(ClientList clientList)
         {
-            PacketEventArgs packetEvent = new PacketEventArgs(clientList);
-
-            Task.Run(() => OnClientList?.Invoke(this, packetEvent));
+            Task.Run(() => OnClientList?.Invoke(this, clientList));
         }
     }
 }

@@ -2,14 +2,17 @@
 using System.Collections.Generic;
 using System.Text;
 using RPGWO_Client.Network;
+using RPGWO_Client.Network.Packets;
 
 namespace RPGWO_Headless
 {
     public class HeadlessClient
     {
         public Network Network { get; private set; } // Refactor out into more generic "Server" class in the future
-        private string userName = "eddie";
-        private string password = "lol123";
+        private string userName = "";
+        private string password = "";
+
+        private PlayerList Players { get; set; }
 
         public HeadlessClient(String ipAddress, int port)
         {
@@ -39,9 +42,17 @@ namespace RPGWO_Headless
             Network.Handler.OnPlayerList += Handler_OnPlayerList;
         }
 
-        private void Handler_OnPlayerList(object sender, PacketEventArgs e)
+        private void Handler_OnPlayerList(object sender, PlayerList e)
         {
-            throw new NotImplementedException();
+            Players = e;
+
+            // Login
+            Enter enter = new Enter();
+            enter.Name = Players.PlayerNames[0];
+
+            // Set Network state to entering -- TODO :: 
+            Network.NetworkState = NetworkState.EnterStart;
+            Network.Send(enter);
         }
 
         // Unsuccessful connect / Disconnected
@@ -56,6 +67,7 @@ namespace RPGWO_Headless
             Console.WriteLine("Connected.");
             Network.SendInfo2();
             Network.SendLogin(userName, password);
+            Network.SendPlayerListReq();
         }
     }
 }
