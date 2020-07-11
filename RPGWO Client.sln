@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29009.5
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RPGWO Client", "RPGWO Client\RPGWO Client.csproj", "{20FA19A8-11F7-4312-82A0-095D0CC9DA1F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RPGWO Headless", "RPGWO Headless\RPGWO Headless.csproj", "{1B02CA8F-6761-418B-AD3A-8BC483922204}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RPGWO Headless", "RPGWO Headless\RPGWO Headless.csproj", "{1B02CA8F-6761-418B-AD3A-8BC483922204}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

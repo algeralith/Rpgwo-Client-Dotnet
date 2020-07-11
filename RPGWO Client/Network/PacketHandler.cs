@@ -53,25 +53,25 @@ namespace RPGWO_Client.Network
                     HandlePlayerList((PlayerList)packet);
                     break;
                 case PacketTypes.WorldState:
-                    OnWorldState?.BeginInvoke(this, (WorldState)packet, null, null);
+                    Task.Run(() => OnWorldState?.Invoke(this, (WorldState)packet));
                     break;
                 case PacketTypes.PlayerStats:
-                    OnPlayerStats?.BeginInvoke(this, (PlayerStats)packet, null, null);
+                    Task.Run(() => OnPlayerStats?.Invoke(this, (PlayerStats)packet));
                     break;
                 case PacketTypes.ClientList:
                     HandleClientList((ClientList)packet);
                     break;
                 case PacketTypes.Skill:
-                    OnSkill?.BeginInvoke(this, (Skill)packet, null, null);
+                    Task.Run(() => OnSkill?.Invoke(this, (Skill)packet));
                     break;
                 case PacketTypes.Attributes:
-                    OnAttributes?.BeginInvoke(this, (Attributes)packet, null, null);
+                    Task.Run(() => OnAttributes?.Invoke(this, (Attributes)packet));
                     break;
                 case PacketTypes.Text:
                     HandleText((Text)packet);
                     break;
                 case PacketTypes.PlayerStats2:
-                    OnPlayerStats2?.BeginInvoke(this, (PlayerStats2)packet, null, null);
+                    Task.Run(() => OnPlayerStats2?.Invoke(this, (PlayerStats2)packet));
                     break;
                 case PacketTypes.CreateDef:
                     HandleCreateDef((CreateDef)packet);
@@ -94,27 +94,27 @@ namespace RPGWO_Client.Network
                 // Login was Successful. Update state to show we are currently at the main menu.
                 Network.NetworkState = NetworkState.MainMenu;
 
-                LoginSuccess?.BeginInvoke(this, EventArgs.Empty, null, null);
+                Task.Run(() => LoginSuccess?.Invoke(this, EventArgs.Empty));
             }
 
             if (Network.NetworkState == NetworkState.PlayerDelete)
             {
-                OnPlayerDelete?.BeginInvoke(this, true, null, null);
+                Task.Run(() => OnPlayerDelete?.Invoke(this, true));
             }
 
             if (Network.NetworkState == NetworkState.PlayerCreation)
             {
-                OnPlayerCreate?.BeginInvoke(this, true, null, null);
+                Task.Run(() => OnPlayerCreate?.Invoke(this, true));
             }
 
             if (Network.NetworkState == NetworkState.EnterStart)
             {
-                OnGameEnter?.BeginInvoke(this, true, null, null);
+                Task.Run(() => OnGameEnter?.Invoke(this, true));
             }
 
             if (Network.NetworkState == NetworkState.EnterFinal)
             {
-                OnGameEnterFinal?.BeginInvoke(this, true, null, null);
+                Task.Run(() => OnGameEnterFinal?.Invoke(this, true));
             }
         }
 
@@ -129,22 +129,22 @@ namespace RPGWO_Client.Network
             // TODO :: Consider having the handlers change the state of the network back
             if (Network.NetworkState == NetworkState.PlayerDelete)
             {
-                OnPlayerDelete?.BeginInvoke(this, false, null, null);
+                Task.Run(() => OnPlayerDelete?.Invoke(this, true));
             }
 
             if (Network.NetworkState == NetworkState.PlayerCreation)
             {
-                OnPlayerCreate?.BeginInvoke(this, false, null, null);
+                Task.Run(() => OnPlayerCreate?.Invoke(this, true));
             }
 
             if (Network.NetworkState == NetworkState.EnterStart)
             {
-                OnGameEnter?.BeginInvoke(this, false, null, null);
+                Task.Run(() => OnGameEnter?.Invoke(this, true));
             }
 
             if (Network.NetworkState == NetworkState.EnterFinal)
             {
-                OnGameEnterFinal?.BeginInvoke(this, false, null, null);
+                Task.Run(() => OnGameEnterFinal?.Invoke(this, true));
             }
         }
 
@@ -152,33 +152,33 @@ namespace RPGWO_Client.Network
         {
             PacketEventArgs packetEvent = new PacketEventArgs(createDef);
 
-            OnCreateDef?.BeginInvoke(this, packetEvent, null, null);
+            Task.Run(() => OnCreateDef?.Invoke(this, packetEvent));
         }
 
         private void HandleSkillDef(SkillDef skillDef)
         {
             PacketEventArgs packetEvent = new PacketEventArgs(skillDef);
 
-            OnSkillDef?.BeginInvoke(this, packetEvent, null, null);
+            Task.Run(() => OnSkillDef?.Invoke(this, packetEvent));
         }
 
         private void HandlePlayerList(PlayerList playerList)
         {
             PacketEventArgs packetEvent = new PacketEventArgs(playerList);
 
-            OnPlayerList?.BeginInvoke(this, packetEvent, null, null);
+            Task.Run(() => OnPlayerList?.Invoke(this, packetEvent));
         }
 
         private void HandleText(Text text)
         {
-            OnText?.BeginInvoke(this, text, null, null);
+            Task.Run(() => OnText?.Invoke(this, text));
         }
 
         private void HandleClientList(ClientList clientList)
         {
             PacketEventArgs packetEvent = new PacketEventArgs(clientList);
 
-            OnClientList?.BeginInvoke(this, packetEvent, null, null);
+            Task.Run(() => OnClientList?.Invoke(this, packetEvent));
         }
     }
 }

@@ -177,12 +177,13 @@ namespace RPGWO_Client.Network.Packets
         public int ReadStringAsInt(int length)
         {
             // For playerstats the each byte represents its value in a string
-            // i.e { 0x0, 0x0, 0x1, 0x2 } -> 0012 -> 12
+            // i.e { 0x0, 0x0, 0x1, 0x2 } -> 0012 -> 12.
+            byte[] buff = null;
             try
             {
                 StringBuilder stringBuilder = new StringBuilder(9); // Most usages are 9 characters
 
-                byte[] buff  = ReadBytes(length);
+                buff = ReadBytes(length);
 
                 for (int i = 0; i < buff.Length; i++)
                     stringBuilder.Append(buff[i]);
