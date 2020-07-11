@@ -32,6 +32,7 @@ namespace RPGWO_Client.Network.Packets
         ReqSkillList = 38,
         Text = 41,
         PlayerStats2 = 43,
+        SpellDef = 61,
         RuneBag = 62,
         CreateDef = 65,
         SkillDef = 67,

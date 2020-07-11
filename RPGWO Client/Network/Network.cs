@@ -66,6 +66,7 @@ namespace RPGWO_Client.Network
             // RegisterPacket((byte)PacketTypes.ReqSkillList, typeof(ClientList)); // Sent Only
             RegisterPacket((byte)PacketTypes.Text, typeof(Text));
             RegisterPacket((byte)PacketTypes.PlayerStats2, typeof(PlayerStats2)); // TODO :: Handle
+            RegisterPacket((byte)PacketTypes.SpellDef, typeof(SpellDef)); // TODO :: Handle
             RegisterPacket((byte)PacketTypes.RuneBag, typeof(RuneBag)); // TODO :: Handle
             RegisterPacket((byte)PacketTypes.CreateDef, typeof(CreateDef));
             RegisterPacket((byte)PacketTypes.SkillDef, typeof(SkillDef));

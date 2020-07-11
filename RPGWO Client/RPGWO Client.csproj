@@ -140,6 +140,7 @@
     <Compile Include="Network\Packets\Skill.cs" />
     <Compile Include="Network\Packets\SkillDef.cs" />
     <Compile Include="Network\Packets\Sound.cs" />
+    <Compile Include="Network\Packets\SpellDef.cs" />
     <Compile Include="Network\Packets\StartDisplay.cs" />
     <Compile Include="Network\Packets\StopDisplay.cs" />
     <Compile Include="Network\Packets\Text.cs" />
