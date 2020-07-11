@@ -88,7 +88,10 @@ namespace RPGWO_Client.Gui
 
                 // Only reset scroll value if it was previously enabled.
                 if (!skillScrollBar.Enabled)
+                {
                     skillScrollBar.Value = 0;
+                    skillScrollBar.Enabled = true;
+                }
             }
             else
             {
@@ -113,5 +116,11 @@ namespace RPGWO_Client.Gui
                 _skillValues[i].Text = skill.Value.ToString();
             }
         }
+
+        private void skillScrollBar_Scroll(object sender, ScrollEventArgs e)
+        {
+            UpdateSkills();
+        }
+
     }
 }

@@ -379,13 +379,14 @@
             this.skillScrollBar.Name = "skillScrollBar";
             this.skillScrollBar.Size = new System.Drawing.Size(25, 208);
             this.skillScrollBar.TabIndex = 0;
+            this.skillScrollBar.Scroll += new System.Windows.Forms.ScrollEventHandler(this.skillScrollBar_Scroll);
             // 
-            // Skills
+            // SkillsList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.groupBox1);
-            this.Name = "Skills";
+            this.Name = "SkillsList";
             this.Size = new System.Drawing.Size(301, 237);
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
