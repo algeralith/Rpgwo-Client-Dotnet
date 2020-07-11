@@ -155,6 +155,7 @@ namespace RPGWO_Client.Network
             catch (Exception ex)
             {
                 // Something went wrong, D/C and handle
+                Console.WriteLine(ex);
             }
         }
 

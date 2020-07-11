@@ -3,12 +3,20 @@ using System.Collections.Generic;
 using System.Text;
 using RPGWO_Client.Network;
 using RPGWO_Client.Network.Packets;
+using Discord;
+using Discord.API;
+using Discord.Commands;
+using Discord.Net;
+using Discord.WebSocket;
+using System.Threading.Tasks;
 
 namespace RPGWO_Headless
 {
     public class HeadlessClient
     {
         public Network Network { get; private set; } // Refactor out into more generic "Server" class in the future
+        public DiscordSocketClient discord;
+
         private string userName = "";
         private string password = "";
 
@@ -18,21 +26,12 @@ namespace RPGWO_Headless
         {
             // Set up networking
             this.Network = new Network(ipAddress, port);
+            // discord = new DiscordSocketClient();
 
-            InitializeEvents();
+            InitializeRpgwoEvents();
+            // InitializeDiscordEvents();
         }
-        public void Start()
-        {
-            // Try to connect to the rpgwo server
-            Network.Connect();
-
-            while(true)
-            {
-
-            }
-        }
-
-        private void InitializeEvents()
+        private void InitializeRpgwoEvents()
         {
             // Network Events
             Network.OnConnect += Network_OnConnect;
@@ -40,6 +39,65 @@ namespace RPGWO_Headless
 
             // Client Events
             Network.Handler.OnPlayerList += Handler_OnPlayerList;
+            Network.Handler.OnGameEnter += Handler_OnGameEnter;
+            Network.Handler.OnText += Handler_OnText;
+        }
+
+        public void InitializeDiscordEvents()
+        {
+            discord.Log += Discord_Log;
+            discord.MessageReceived += Discord_MessageReceived;
+        }
+
+        public async Task Start()
+        {
+            // Try to connect to the rpgwo server
+            Network.Connect();
+
+            // await discord.LoginAsync(TokenType.Bot, "");
+            // await discord.StartAsync();
+
+            await Task.Delay(-1);
+        }
+
+        //
+        // Discord Events
+        //
+        private Task Discord_MessageReceived(SocketMessage arg)
+        {
+            return Task.Run(() => { });
+        }
+
+        private Task Discord_Log(LogMessage arg)
+        {
+            return Task.Run(() => {
+                Console.WriteLine(arg);
+            });
+        }
+
+        //
+        // Rpgwo Events
+        //
+        private void Handler_OnText(object sender, Text e)
+        {
+            Console.WriteLine("Channel: " + e.Channel);
+            Console.WriteLine(e.TextContent);
+        }
+
+        private void Handler_OnGameEnter(object sender, bool e)
+        {
+            if (e)
+            {
+                // Send CPU info
+                Network.SendText("@cpu DiscordBot", 105);
+
+                // Send Final Enter
+                Network.SendEnterFinal();
+            }
+            else
+            {
+                // TODO :: Failed to enter game.
+            }
         }
 
         private void Handler_OnPlayerList(object sender, PlayerList e)
