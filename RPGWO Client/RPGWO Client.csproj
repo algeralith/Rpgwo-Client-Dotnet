@@ -135,6 +135,7 @@
     <Compile Include="Network\Packets\ReqPlayerList.cs" />
     <Compile Include="Network\Packets\ReqSkillDef.cs" />
     <Compile Include="Network\Packets\ReqSkillList.cs" />
+    <Compile Include="Network\Packets\Result.cs" />
     <Compile Include="Network\Packets\RuneBag.cs" />
     <Compile Include="Network\Packets\Skill.cs" />
     <Compile Include="Network\Packets\SkillDef.cs" />

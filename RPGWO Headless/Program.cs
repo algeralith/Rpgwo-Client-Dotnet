@@ -6,7 +6,7 @@ namespace RPGWO_Headless
     {
         static void Main(string[] args)
         {
-            new HeadlessClient("127.0.0.1", 4502).Start();
+            new HeadlessClient("127.0.0.1", 4502).Start().GetAwaiter().GetResult();
         }
     }
 }
