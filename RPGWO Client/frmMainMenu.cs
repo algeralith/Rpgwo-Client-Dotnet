@@ -148,9 +148,8 @@ namespace RPGWO_Client
                 // Send CPU info
                 Client.Network.SendText("@cpu RPGWO", 105);
 
-                // Update Networking to enterfinal
-                Client.Network.NetworkState = NetworkState.EnterFinal;
-                Client.Network.Send(new EnterFinal());
+                // Send Final Enter
+                Client.Network.SendEnterFinal();
 
                 // Close MainMenu
                 Client.HideForm(this);
