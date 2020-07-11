@@ -114,6 +114,22 @@ namespace RPGWO_Client.Network
             }
         }
 
+        public void ReConnect()
+        {
+            // Ensure Network State is reset
+            NetworkState = NetworkState.None;
+
+            // Remove Security
+            _rSecurity = null;
+            _sendMode = SendReceiveMode.None;
+            _receiveMode = SendReceiveMode.Checksum;
+
+            _clientSock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+
+            // Connect
+            Connect();
+        }
+
         private void OnConnectionComplete(object sender, SocketAsyncEventArgs e)
         {
             try
@@ -137,6 +153,7 @@ namespace RPGWO_Client.Network
             if (_clientSock == null || _clientSock.Connected == false)
             {
                 // Socket has been D/C'd, handle disconnect
+                HandleDisconnect();
                 return;
             }
 
@@ -500,6 +517,14 @@ namespace RPGWO_Client.Network
         {
             // TODO :: Proper disconnect handling
             Console.WriteLine("Disconnected");
+
+            // Disconnect the socket for reuse.
+            _clientSock.Disconnect(false);
+
+            // Reset network state.
+            NetworkState = NetworkState.None;
+
+            // Fire off event.
             Task.Run(() => OnDisconnect?.Invoke(this, EventArgs.Empty));
         }
 
