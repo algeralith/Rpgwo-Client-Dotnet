@@ -59,6 +59,18 @@ namespace RPGWO_Client.Network
             Send(text);
         }
 
+        public void SendEnter(String s)
+        {
+            Enter enter = new Enter()
+            {
+                Name = s
+            };
+
+            // Set Network state to entering
+            NetworkState = NetworkState.EnterStart;
+            Send(enter);
+        }
+
         // Default Login
         public void SendLogin(String username, String password)
         {

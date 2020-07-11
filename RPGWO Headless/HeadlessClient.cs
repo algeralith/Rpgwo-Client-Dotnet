@@ -37,8 +37,5 @@ namespace RPGWO_Headless
         {
             Console.WriteLine("Connected.");
         }
-
-
-        // 
     }
 }

@@ -138,14 +138,7 @@ namespace RPGWO_Client
             if (listBox1.SelectedItem == null)
                 return;
 
-            Enter enter = new Enter()
-            {
-                Name = listBox1.SelectedItem.ToString()
-            };
-
-            // Set Network state to entering
-            Client.Network.NetworkState = NetworkState.EnterStart;
-            Client.Network.Send(enter);
+            Client.Network.SendEnter(listBox1.SelectedItem.ToString());
         }
 
         private void Handler_OnGameEnter(object sender, bool e)
