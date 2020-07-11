@@ -13,11 +13,11 @@ namespace RPGWO_Client.Network.Packets
         public byte Ypos { get; set; }
         public byte ImageType { get; set; } // TODO :: Enum this.
         public byte Stealth { get; set; } // Bool or Byte?
-        public byte Name { get; set; } // 50 characters
+        public string Name { get; set; } // 50 characters
         public byte LifePercentage { get; set; }
         public byte Tame { get; set; }
         public byte pType { get; set; } // TODO 
-        public int Index { get; set; } // Not sure if string, or int32. TODO :: 
+        public Int16 Index { get; set; } // Not sure if string, or int32. TODO :: 
         public int Level { get; set; } // 4 characters
         public byte Light { get; set; }
         public int Image { get; set; } // 4 characters
@@ -44,11 +44,12 @@ namespace RPGWO_Client.Network.Packets
             Ypos = ReadByte();
             ImageType = ReadByte();
             Stealth = ReadByte();
-            Name = ReadByte();
+            Name = ReadString(50);
             LifePercentage = ReadByte();
             Tame = ReadByte();
             pType = ReadByte();
-            Index = ReadStringAsInt(4);
+            Index = ReadInt16();
+            ReadByte(); // Empty Byte
             Level = ReadStringAsInt(4);
             Light = ReadByte();
             Image = ReadStringAsInt(4);
