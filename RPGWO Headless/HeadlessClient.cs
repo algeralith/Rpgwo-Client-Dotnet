@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using RPGWO_Client.Network;
-using RPGWO_Client.Network.Packets;
+using RPGWO_Client.Networking;
+using RPGWO_Client.Networking.Packets;
 using Discord;
 using Discord.API;
 using Discord.Commands;

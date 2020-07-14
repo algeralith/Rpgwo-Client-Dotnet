@@ -7,8 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using RPGWO_Client.Network;
-using RPGWO_Client.Network.Packets;
+using RPGWO_Client.Networking;
+using RPGWO_Client.Networking.Packets;
 
 namespace RPGWO_Client
 {

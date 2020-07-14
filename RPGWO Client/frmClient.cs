@@ -3,25 +3,36 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using RPGWO_Client.Network;
-using RPGWO_Client.Network.Packets;
+using RPGWO_Client.Resources;
+using RPGWO_Client.Networking;
+using RPGWO_Client.Networking.Packets;
 
 namespace RPGWO_Client
 {
     public partial class frmClient : Form
     {
         // Networking
-        public Network.Network Network { private set; get; }
+        public Network Network { private set; get; }
 
         // Client Forms
         public frmLogin LoginForm { private set; get; }
         public frmCreate CreateForm { private set; get; }
         public frmMainMenu MainMenu { private set; get; }
         public frmTextMsg TextMessage { private set; get; }
+
+        public World World { private set; get; }
+        private WorldRenderer WorldRenderer { get; set; }
+
+        // Sprite Management
+        public SpriteManager SpriteManager { private set; get; }
+
 
         public frmClient()
         {
@@ -30,13 +41,29 @@ namespace RPGWO_Client
 
         private void FrmClient_Load(object sender, EventArgs e)
         {
-            this.Network = new Network.Network("127.0.0.1", 4502);
+            this.Network = new Network("127.0.0.1", 4502);
 
             InitalizeForms();
 
             InitalizeEvents();
 
+            World = new World(Network);
+
+            WorldRenderer = new WorldRenderer(World);
+            World.WorldRenderer = WorldRenderer;
+
+            // Load Resources
+            LoadResources();
+
             Network.Connect();
+        }
+
+        private void LoadResources()
+        {
+            SpriteManager = new SpriteManager("Hex_Reborn.files");
+            SpriteManager.Load();
+
+            WorldRenderer.SpriteManager = SpriteManager;
         }
 
         private void InitalizeForms()
