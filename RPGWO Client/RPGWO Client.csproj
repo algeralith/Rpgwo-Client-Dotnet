@@ -81,9 +81,14 @@
     <Compile Include="frmTextMsg.Designer.cs">
       <DependentUpon>frmTextMsg.cs</DependentUpon>
     </Compile>
+    <Compile Include="Items\ArmorSpot.cs" />
+    <Compile Include="Items\ItemClass.cs" />
+    <Compile Include="Items\ItemDef.cs" />
+    <Compile Include="Items\ItemSize.cs" />
+    <Compile Include="Items\WeaponDamageType.cs" />
     <Compile Include="Resources\SpriteManager.cs" />
     <Compile Include="Resources\SpriteSheet.cs" />
-    <Compile Include="Resources\SpriteSize.cs" />
+    <Compile Include="Resources\ImageType.cs" />
     <Compile Include="Gui\SkillsList.cs">
       <SubType>UserControl</SubType>
     </Compile>

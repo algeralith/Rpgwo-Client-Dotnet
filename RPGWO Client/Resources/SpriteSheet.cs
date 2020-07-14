@@ -54,7 +54,7 @@ namespace RPGWO_Client.Resources
         }
 
         // Indexes are between 0-99
-        public Bitmap SubImage(int index, SpriteSize spriteSize = SpriteSize.OnebyOne)
+        public Bitmap SubImage(int index, ImageType spriteSize = ImageType.OnebyOne)
         {
             if (_spriteSheet == null)
                 Load();
@@ -69,15 +69,15 @@ namespace RPGWO_Client.Resources
 
             switch (spriteSize)
             {
-                case SpriteSize.OnebyOne:
+                case ImageType.OnebyOne:
                     newSpriteWidth = 32;
                     newSpriteHeight = 32;
                     break;
-                case SpriteSize.OneByTwo:
+                case ImageType.OneByTwo:
                     newSpriteWidth = 32;
                     newSpriteHeight = 64;
                     break;
-                case SpriteSize.TwoByTwo:
+                case ImageType.TwoByTwo:
                     newSpriteWidth = 64;
                     newSpriteHeight = 64;
                     break;

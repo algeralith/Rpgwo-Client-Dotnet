@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RPGWO_Client.Resources
 {
-    public enum SpriteSize
+    public enum ImageType
     {
         OnebyOne = 0,
         OneByTwo = 1,
