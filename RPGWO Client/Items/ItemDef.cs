@@ -11,7 +11,7 @@ namespace RPGWO_Client.Items
     public class ItemDef
     {
 
-        public Int16 InUse { get; set; }
+        public bool InUse { get; set; }
         public String Name { get; set; } // 30 Characters
         public Int16[] Animation { get; set; } = new Int16[10];
         public ImageType ImageType { get; set; }
@@ -72,13 +72,13 @@ namespace RPGWO_Client.Items
                 int version = reader.ReadInt32();
                 int itemCount = reader.ReadInt32();
 
-                itemDefs = new ItemDef[itemCount];
+                itemDefs = new ItemDef[itemCount]; // TODO :: Arrays are 1 based in VB. Remember.
 
                 for (int i = 0; i < itemCount; i++)
                 {
                     ItemDef itemDef = new ItemDef();
 
-                    itemDef.InUse = reader.ReadInt16();
+                    itemDef.InUse = Convert.ToBoolean(reader.ReadInt16());
                     itemDef.Name = new String(reader.ReadChars(30));
 
                     for (int j = 0; j < 10; j++)
@@ -135,7 +135,8 @@ namespace RPGWO_Client.Items
 
                     reader.ReadBytes(96); // As far as I can tell, the remaining bytes are empty and never used.
 
-                    itemDefs[i] = itemDef;
+                    if (itemDef.InUse)
+                    i   temDefs[i] = itemDef;
                 }
             }
 
