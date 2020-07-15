@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RPGWO_Client.Items
+namespace RPGWO_Client.Resources.Items
 {
     public enum ItemClass : Int16
     {

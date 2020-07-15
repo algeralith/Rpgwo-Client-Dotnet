@@ -6,11 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RPGWO_Client.Items
+namespace RPGWO_Client.Resources.Items
 {
     public class ItemDef
     {
-
         public bool InUse { get; set; }
         public String Name { get; set; } // 30 Characters
         public Int16[] Animation { get; set; } = new Int16[10];
@@ -130,13 +129,13 @@ namespace RPGWO_Client.Items
                     itemDef.ElectricalAL = reader.ReadInt16();
                     itemDef.Warmth = reader.ReadInt16();
                     itemDef.IsAmmo = Convert.ToBoolean(reader.ReadInt16());
-                    itemDef.SelfRepair = Convert.ToBoolean(reader.ReadInt16());
-                    itemDef.DynamicDamage = Convert.ToBoolean(reader.ReadInt16());
+                    // itemDef.SelfRepair = Convert.ToBoolean(reader.ReadInt16());
+                    // itemDef.DynamicDamage = Convert.ToBoolean(reader.ReadInt16());
 
-                    reader.ReadBytes(96); // As far as I can tell, the remaining bytes are empty and never used.
+                    reader.ReadBytes(100); // As far as I can tell, the remaining bytes are empty and never used.
 
                     if (itemDef.InUse)
-                    i   temDefs[i] = itemDef;
+                        itemDefs[i] = itemDef;
                 }
             }
 

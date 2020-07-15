@@ -5,7 +5,7 @@ using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RPGWO_Client.Items
+namespace RPGWO_Client.Resources.Items
 {
     public enum ArmorSpot : Int16
     {
