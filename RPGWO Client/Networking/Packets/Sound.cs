@@ -10,8 +10,8 @@ namespace RPGWO_Client.Networking.Packets
     {
 
         public string SoundName { get; set; }
-
         public bool Loop { get; set; } // TODO :: Verify
+
         public Sound() : base((byte)PacketTypes.Sound, 21)
         {
 

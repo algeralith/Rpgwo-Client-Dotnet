@@ -81,12 +81,14 @@
     <Compile Include="frmTextMsg.Designer.cs">
       <DependentUpon>frmTextMsg.cs</DependentUpon>
     </Compile>
-    <Compile Include="Items\ArmorSpot.cs" />
-    <Compile Include="Items\ItemClass.cs" />
-    <Compile Include="Items\ItemDef.cs" />
-    <Compile Include="Items\ItemSize.cs" />
-    <Compile Include="Items\WeaponDamageType.cs" />
-    <Compile Include="Monsters\MonsterDef.cs" />
+    <Compile Include="Resources\Animation\AnimationDef.cs" />
+    <Compile Include="Resources\Animation\AnimationFrame.cs" />
+    <Compile Include="Resources\Items\ArmorSpot.cs" />
+    <Compile Include="Resources\Items\ItemClass.cs" />
+    <Compile Include="Resources\Items\ItemDef.cs" />
+    <Compile Include="Resources\Items\ItemSize.cs" />
+    <Compile Include="Resources\Items\WeaponDamageType.cs" />
+    <Compile Include="Resources\Monsters\MonsterDef.cs" />
     <Compile Include="Resources\SpriteManager.cs" />
     <Compile Include="Resources\SpriteSheet.cs" />
     <Compile Include="Resources\ImageType.cs" />
