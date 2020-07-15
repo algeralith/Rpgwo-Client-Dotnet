@@ -10,6 +10,6 @@ namespace RPGWO_Client.Resources.Animation
     {
         public int Frame { get; set; }
         public Int16 FrameSize { get; set; }
-        public string Sound { get; set; }
+        public string Sound { get; set; } // 50 Characters
     }
 }

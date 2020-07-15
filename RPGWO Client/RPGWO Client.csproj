@@ -87,6 +87,7 @@
     <Compile Include="Resources\Items\ItemClass.cs" />
     <Compile Include="Resources\Items\ItemDef.cs" />
     <Compile Include="Resources\Items\ItemSize.cs" />
+    <Compile Include="Resources\Items\ItemUse.cs" />
     <Compile Include="Resources\Items\WeaponDamageType.cs" />
     <Compile Include="Resources\Monsters\MonsterDef.cs" />
     <Compile Include="Resources\SpriteManager.cs" />
