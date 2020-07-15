@@ -14,7 +14,6 @@ namespace RPGWO_Client
         [STAThread]
         static void Main()
         {
-            RPGWO_Client.Resources.Items.ItemUse.ReadItems();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new frmClient());

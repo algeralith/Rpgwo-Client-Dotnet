@@ -187,7 +187,6 @@ namespace RPGWO_Client.Resources.Items
                     itemUse.SurfaceOnly = Convert.ToBoolean(reader.ReadInt16());
                     itemUse.UnderGroundOnly = Convert.ToBoolean(reader.ReadInt16());
 
-
                     itemUse.PickLock = reader.ReadInt16();
                     itemUse.SetWriting = Convert.ToBoolean(reader.ReadInt16());
 
@@ -195,12 +194,10 @@ namespace RPGWO_Client.Resources.Items
                     Int16 unknown7 = reader.ReadInt16();
                     Int16 unknown8 = reader.ReadInt16();
 
-
                     itemUse.SetAim = Convert.ToBoolean(reader.ReadInt16());
 
                     // The Follow is not known.
                     itemUse.UseAllQty = Convert.ToBoolean(reader.ReadInt16()); // This appears to not work, in fact. Makes no difference in hex comparision.
-
 
                     itemUse.FocusData8 = reader.ReadInt16();
                     itemUse.SetFocusData8 = Convert.ToBoolean(reader.ReadInt16());
