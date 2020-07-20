@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RPGWO_Client.Resources;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,13 +12,13 @@ namespace RPGWO_Client.Networking.Packets
 
         public byte Xpos { get; set; }
         public byte Ypos { get; set; }
-        public byte ImageType { get; set; } // TODO :: Enum this.
+        public ImageType ImageType { get; set; } // TODO :: Enum this.
         public byte Stealth { get; set; } // Bool or Byte?
         public string Name { get; set; } // 50 characters
         public byte LifePercentage { get; set; }
         public byte Tame { get; set; }
         public byte pType { get; set; } // TODO 
-        public Int16 Index { get; set; } // Not sure if string, or int32. TODO :: 
+        public Int32 Index { get; set; } // Not sure if string, or int32. TODO :: 
         public int Level { get; set; } // 4 characters
         public byte Light { get; set; }
         public int Image { get; set; } // 4 characters
@@ -31,8 +32,6 @@ namespace RPGWO_Client.Networking.Packets
         public byte StaminaPercentage { get; set; }
         public byte ManaPercentage { get; set; }
 
-
-
         public PlayerLocation() : base((byte)PacketTypes.PlayerLocation, 79)
         {
 
@@ -42,19 +41,19 @@ namespace RPGWO_Client.Networking.Packets
         {
             Xpos = ReadByte();
             Ypos = ReadByte();
-            ImageType = ReadByte();
+            ImageType = (ImageType)ReadByte();
             Stealth = ReadByte();
             Name = ReadString(50);
             LifePercentage = ReadByte();
             Tame = ReadByte();
-            pType = ReadByte();
-            Index = ReadInt16();
-            ReadByte(); // Empty Byte
+            pType = ReadByte(); // 57
+            Index = ReadStringAsInt(4);
             Level = ReadStringAsInt(4);
-            Light = ReadByte();
+            Light = ReadByte(); // 66
             Image = ReadStringAsInt(4);
-            Head = ReadByte();
+            Head = ReadByte(); // 71
             Arms = ReadByte();
+            Chest = ReadByte();
             Legs = ReadByte();
             Weapon = ReadByte();
             Shield = ReadByte();

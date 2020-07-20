@@ -39,8 +39,13 @@ namespace RPGWO_Client.Networking
 
         // Map related.
         public event EventHandler<MapData> OnMapData;
+        public event EventHandler<ItemLocation> OnItemLocation;
         public event EventHandler<PlayerLocation> OnPlayerLocation;
         public event EventHandler<MonsterLocation> OnMosterLocatiion;
+
+        // Render Trigger
+        public event EventHandler<StartDisplay> OnStartDisplay;
+        public event EventHandler<StopDisplay> OnStopDisplay;
 
         public PacketHandler(Network network)
         {
@@ -60,8 +65,17 @@ namespace RPGWO_Client.Networking
                 case PacketTypes.MapData:
                     Task.Run(() => OnMapData?.Invoke(this, (MapData)packet));
                     break;
+                case PacketTypes.StartDisplay:
+                    Task.Run(() => OnStartDisplay?.Invoke(this, (StartDisplay)packet));
+                    break;
+                case PacketTypes.StopDisplay:
+                    Task.Run(() => OnStopDisplay?.Invoke(this, (StopDisplay)packet));
+                    break;
                 case PacketTypes.PlayerLocation:
                     Task.Run(() => OnPlayerLocation?.Invoke(this, (PlayerLocation)packet));
+                    break;
+                case PacketTypes.ItemLocation:
+                    Task.Run(() => OnItemLocation?.Invoke(this, (ItemLocation)packet));
                     break;
                 case PacketTypes.WorldState:
                     Task.Run(() => OnWorldState?.Invoke(this, (WorldState)packet));

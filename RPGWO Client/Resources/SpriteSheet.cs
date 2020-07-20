@@ -95,7 +95,8 @@ namespace RPGWO_Client.Resources
             Rectangle rectangle = new Rectangle(x, y, newSpriteWidth, newSpriteHeight);
 
             // Copy section into temporary bmp.
-            Bitmap bitmap = _spriteSheet.Clone(rectangle, _spriteSheet.PixelFormat);
+            Bitmap bitmap = _spriteSheet.Clone(rectangle, PixelFormat.Format32bppArgb);
+            bitmap.MakeTransparent();
 
             return bitmap;
         }

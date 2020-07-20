@@ -340,7 +340,7 @@ namespace RPGWO_Client.Networking
         {
             // Certain Packets need to not leave the networking class.
             // Handle these packets before dispatching to our Packet Handler.
-            Console.WriteLine("Handling: " + packet.PacketID);
+            Console.WriteLine("Handling: " + (PacketTypes)packet.PacketID);
 
             switch ((PacketTypes)packet.PacketID)
             {

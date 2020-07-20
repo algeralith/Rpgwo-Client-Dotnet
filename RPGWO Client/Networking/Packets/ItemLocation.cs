@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RPGWO_Client.Resources.Items;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,7 +15,7 @@ namespace RPGWO_Client.Networking.Packets
         public byte SpellID { get; set; }
         public byte Xpos { get; set; }
         public byte Ypos { get; set; }
-        public byte Spot { get; set; } // TODO :: Figure this out.
+        public ItemSpot Spot { get; set; } // TODO :: Figure this out.
         public Int32 Index { get; set; } // TODO ::
         public byte OpenSightCount { get; set; }
         public byte LightSource { get; set; }
@@ -36,7 +37,7 @@ namespace RPGWO_Client.Networking.Packets
             SpellID = ReadByte();
             Xpos = ReadByte();
             Ypos = ReadByte();
-            Spot = ReadByte();
+            Spot = (ItemSpot)ReadByte();
             Index = ReadInt32();
             OpenSightCount = ReadByte();
             LightSource = ReadByte();

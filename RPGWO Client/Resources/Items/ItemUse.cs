@@ -134,12 +134,7 @@ namespace RPGWO_Client.Resources.Items
                     itemUse.Warp = Convert.ToBoolean(reader.ReadInt16());
 
                     Int16 unknown3 = reader.ReadInt16(); // 1
-                    if (unknown3 != 1)
-                        Console.WriteLine();
                     Int16 unknown4 = reader.ReadInt16();
-
-                    if (unknown4 != 0)
-                        Console.WriteLine();
 
                     itemUse.Mortarspeed = reader.ReadInt16();
                     itemUse.UseItemSkillReq = Convert.ToBoolean(reader.ReadInt16());
@@ -175,6 +170,8 @@ namespace RPGWO_Client.Resources.Items
                     itemUse.NeedUnLevelSurface = Convert.ToBoolean(reader.ReadInt16());
 
                     itemUse.SuccessMsg = new String(reader.ReadChars(50));
+
+
                     itemUse.FailedMsg = new String(reader.ReadChars(50));
                     itemUse.LockFocus = Convert.ToBoolean(reader.ReadInt16());
                     itemUse.KeyFocus = reader.ReadInt16();
@@ -186,7 +183,6 @@ namespace RPGWO_Client.Resources.Items
                     itemUse.DigUnderGround = Convert.ToBoolean(reader.ReadInt16());
                     itemUse.SurfaceOnly = Convert.ToBoolean(reader.ReadInt16());
                     itemUse.UnderGroundOnly = Convert.ToBoolean(reader.ReadInt16());
-
                     itemUse.PickLock = reader.ReadInt16();
                     itemUse.SetWriting = Convert.ToBoolean(reader.ReadInt16());
 

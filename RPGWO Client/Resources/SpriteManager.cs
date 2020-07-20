@@ -21,6 +21,7 @@ namespace RPGWO_Client.Resources
         private Dictionary<int, SpriteSheet> _backgrondSheets;
         private Dictionary<int, SpriteSheet> _chestSheets;
         private Dictionary<int, SpriteSheet> _headSheets;
+        private Dictionary<int, SpriteSheet> _armSheets;
         private Dictionary<int, SpriteSheet> _legSheets;
         private Dictionary<int, SpriteSheet> _shieldSheets;
         private Dictionary<int, SpriteSheet> _weaponsSheets;
@@ -36,6 +37,7 @@ namespace RPGWO_Client.Resources
             _backgrondSheets = new Dictionary<int, SpriteSheet>();
             _chestSheets = new Dictionary<int, SpriteSheet>();
             _headSheets = new Dictionary<int, SpriteSheet>();
+            _armSheets = new Dictionary<int, SpriteSheet>();
             _legSheets = new Dictionary<int, SpriteSheet>();
             _shieldSheets = new Dictionary<int, SpriteSheet>();
             _weaponsSheets = new Dictionary<int, SpriteSheet>();
@@ -44,13 +46,49 @@ namespace RPGWO_Client.Resources
         }
 
         // TODO :: Caching
-        public Bitmap GetBackground(int spriteId)
+        public Bitmap GetSprite(SpriteType type, int spriteId, ImageType imageType = ImageType.OnebyOne)
         {
             // Calculate what sheet the sprite is on
             int sheetNumber = spriteId / 100; //100 images per sheet.
             int spriteNumber = spriteId % 100;
 
-            return _backgrondSheets[sheetNumber].SubImage(spriteNumber);
+            Dictionary<int, SpriteSheet> spriteSheet = _itemSheets; // Let _items be default for now
+
+            switch (type)
+            {
+                case SpriteType.Animation:
+                    spriteSheet = _animationSheets;
+                    break;
+                case SpriteType.Arms:
+                    spriteSheet = _armSheets;
+                    break;
+                case SpriteType.Background:
+                    spriteSheet = _backgrondSheets;
+                    break;
+                case SpriteType.Chest:
+                    spriteSheet = _chestSheets;
+                    break;
+                case SpriteType.Head:
+                    spriteSheet = _headSheets;
+                    break;
+                case SpriteType.Items:
+                    spriteSheet = _itemSheets;
+                    break;
+                case SpriteType.Legs:
+                    spriteSheet = _legSheets;
+                    break;
+                case SpriteType.Players:
+                    spriteSheet = _playerSheets;
+                    break;
+                case SpriteType.Shields:
+                    spriteSheet = _shieldSheets;
+                    break;
+                case SpriteType.Weapons:
+                    spriteSheet = _weaponsSheets;
+                    break;
+            }
+
+            return spriteSheet[sheetNumber].SubImage(spriteNumber, imageType);
         }
 
         public void Load()
@@ -65,6 +103,7 @@ namespace RPGWO_Client.Resources
                 string[] backgrounds = files.Where(path => new Regex(@"^[aA-zZ.]*background\d*.bmp$", RegexOptions.IgnoreCase).IsMatch(path)).ToArray();
                 string[] chests = files.Where(path => new Regex(@"^[aA-zZ.]*chest\d*.bmp$", RegexOptions.IgnoreCase).IsMatch(path)).ToArray();
                 string[] heads = files.Where(path => new Regex(@"^[aA-zZ.]*head\d*.bmp$", RegexOptions.IgnoreCase).IsMatch(path)).ToArray();
+                string[] arms = files.Where(path => new Regex(@"^[aA-zZ.]*arms\d*.bmp$", RegexOptions.IgnoreCase).IsMatch(path)).ToArray();
                 string[] legs = files.Where(path => new Regex(@"^[aA-zZ.]*legs\d*.bmp$", RegexOptions.IgnoreCase).IsMatch(path)).ToArray();
                 string[] shields = files.Where(path => new Regex(@"^[aA-zZ.]*shield\d*.bmp$", RegexOptions.IgnoreCase).IsMatch(path)).ToArray();
                 string[] weapons = files.Where(path => new Regex(@"^[aA-zZ.]*weapon\d*.bmp$", RegexOptions.IgnoreCase).IsMatch(path)).ToArray();
@@ -75,6 +114,7 @@ namespace RPGWO_Client.Resources
                 InitializeSheets(backgrounds, _backgrondSheets);
                 InitializeSheets(chests, _chestSheets);
                 InitializeSheets(heads, _headSheets);
+                InitializeSheets(arms, _armSheets);
                 InitializeSheets(legs, _legSheets);
                 InitializeSheets(shields, _shieldSheets);
                 InitializeSheets(weapons, _weaponsSheets);

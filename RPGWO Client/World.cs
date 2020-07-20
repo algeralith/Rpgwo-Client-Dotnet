@@ -5,12 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using RPGWO_Client.Networking;
 using RPGWO_Client.Networking.Packets;
+using RPGWO_Client.Resources.Items;
 
 namespace RPGWO_Client
 {
     public class World
     {
-
         public Network Network { get; set; }
         public WorldRenderer WorldRenderer { get; set; }
 
@@ -19,6 +19,9 @@ namespace RPGWO_Client
         private Int16 _zPos = 0;
 
         private Int16[] _mapData = new Int16[19 * 17]; // TODO :: Should make these numbers a client level constant
+
+        public ItemMap ItemMap { get; private set; }  = new ItemMap(19, 17, 20); // 20 items per tile is allowed.
+        public PlayerLocation[,] PlayerMap { get; private set; } = new PlayerLocation[19, 17];
 
         public World(Network network)
         {
@@ -32,11 +35,41 @@ namespace RPGWO_Client
             Network.Handler.OnMapData += Handler_OnMapData;
             Network.Handler.OnPlayerLocation += Handler_OnPlayerLocation;
             Network.Handler.OnMosterLocatiion += Handler_OnMosterLocatiion;
+            Network.Handler.OnItemLocation += Handler_OnItemLocation;
+
+            // Render Triggers
+            Network.Handler.OnStartDisplay += Handler_OnStartDisplay;
+            Network.Handler.OnStopDisplay += Handler_OnStopDisplay;
         }
 
-        public Int16 GetTile(int x, int y)
+        private void Handler_OnStartDisplay(object sender, StartDisplay e)
         {
-            return _mapData[17 * x + y];
+            // TODO :: Consider, this might be a race condition issue.
+            // The client will be receiving data as I'm trying to clear the maps
+            // Might be best to add a semaphore or lock around here to keep things in order
+            ItemMap.Clear();
+            PlayerMap = new PlayerLocation[19, 17];
+        }
+        private void Handler_OnStopDisplay(object sender, StopDisplay e)
+        {
+            WorldRenderer.RenderFrame();
+        }
+
+        private void Handler_OnItemLocation(object sender, ItemLocation e)
+        {
+            Console.WriteLine(e.Spot);
+
+            switch(e.Spot)
+            {
+                case ItemSpot.Map:
+                    Console.WriteLine(e);
+                    ItemMap.AddModifyItem(e);
+                    break;
+
+                case ItemSpot.None:
+                    ItemMap.RemoveItem(e);
+                    break;
+            }
         }
 
         private void Handler_OnMosterLocatiion(object sender, MonsterLocation e)
@@ -46,7 +79,12 @@ namespace RPGWO_Client
 
         private void Handler_OnPlayerLocation(object sender, PlayerLocation e)
         {
-            //throw new NotImplementedException();
+            PlayerMap[e.Xpos, e.Ypos] = e;
+        }
+
+        public Int16 GetTile(int x, int y)
+        {
+            return _mapData[17 * x + y];
         }
 
         private void Handler_OnMapData(object sender, MapData e)
@@ -56,7 +94,6 @@ namespace RPGWO_Client
             _zPos = e.Zpos;
 
             Array.Copy(e.Tiles, _mapData, e.Tiles.Length);
-            WorldRenderer.RenderFrame();
         }
     }
 }

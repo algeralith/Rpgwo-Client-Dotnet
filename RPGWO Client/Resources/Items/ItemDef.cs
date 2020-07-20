@@ -71,9 +71,9 @@ namespace RPGWO_Client.Resources.Items
                 int version = reader.ReadInt32();
                 int itemCount = reader.ReadInt32();
 
-                itemDefs = new ItemDef[itemCount]; // TODO :: Arrays are 1 based in VB. Remember.
+                itemDefs = new ItemDef[itemCount + 1]; // TODO :: Arrays are 1 based in VB. Remember.
 
-                for (int i = 0; i < itemCount; i++)
+                for (int i = 1; i <= itemCount; i++)
                 {
                     ItemDef itemDef = new ItemDef();
 

@@ -18,8 +18,7 @@ namespace RPGWO_Client
 {
     public partial class frmClient : Form
     {
-        // Networking
-        public Network Network { private set; get; }
+        public static frmClient Client { get; set; }
 
         // Client Forms
         public frmLogin LoginForm { private set; get; }
@@ -27,15 +26,18 @@ namespace RPGWO_Client
         public frmMainMenu MainMenu { private set; get; }
         public frmTextMsg TextMessage { private set; get; }
 
+        // Networking
+        public Network Network { private set; get; }
+
         public World World { private set; get; }
         private WorldRenderer WorldRenderer { get; set; }
 
-        // Sprite Management
-        public SpriteManager SpriteManager { private set; get; }
-
+        // Resource Management
+        public ResourceManager ResourceManager { private set; get; }
 
         public frmClient()
         {
+            Client = this;
             InitializeComponent();
         }
 
@@ -47,23 +49,22 @@ namespace RPGWO_Client
 
             InitalizeEvents();
 
+            // Load Resources
+            LoadResources();
+
             World = new World(Network);
 
             WorldRenderer = new WorldRenderer(World);
+            WorldRenderer.ResourceManager = ResourceManager;
             World.WorldRenderer = WorldRenderer;
 
-            // Load Resources
-            LoadResources();
 
             Network.Connect();
         }
 
         private void LoadResources()
         {
-            SpriteManager = new SpriteManager("Hex_Reborn.files");
-            SpriteManager.Load();
-
-            WorldRenderer.SpriteManager = SpriteManager;
+            ResourceManager = new ResourceManager("Hex_Reborn.files");
         }
 
         private void InitalizeForms()
@@ -229,6 +230,14 @@ namespace RPGWO_Client
                 form.Owner.Enabled = true;
                 form.Hide();
             }
+        }
+
+        // Temp Function
+        public void UpdateImage(Bitmap bitmap)
+        {
+            if (pictureBox1.Image != null)
+                pictureBox1.Image.Dispose();
+            pictureBox1.Image = bitmap;
         }
     }
 }
