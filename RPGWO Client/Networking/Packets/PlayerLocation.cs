@@ -48,7 +48,7 @@ namespace RPGWO_Client.Networking.Packets
             Tame = ReadByte();
             pType = ReadByte(); // 57
             Index = ReadStringAsInt(4);
-            Level = ReadStringAsInt(4);
+            Level = ReadStringAsInt(4); // Does not appear to be sent.
             Light = ReadByte(); // 66
             Image = ReadStringAsInt(4);
             Head = ReadByte(); // 71

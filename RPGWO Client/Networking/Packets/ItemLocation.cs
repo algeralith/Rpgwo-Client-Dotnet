@@ -17,7 +17,7 @@ namespace RPGWO_Client.Networking.Packets
         public byte Ypos { get; set; }
         public ItemSpot Spot { get; set; } // TODO :: Figure this out.
         public Int32 Index { get; set; } // TODO ::
-        public byte OpenSightCount { get; set; }
+        public bool NoOpenSight { get; set; }
         public byte LightSource { get; set; }
         public byte MagicWeaponDamage { get; set; }
         public byte SkillBonusID { get; set; }
@@ -39,7 +39,7 @@ namespace RPGWO_Client.Networking.Packets
             Ypos = ReadByte();
             Spot = (ItemSpot)ReadByte();
             Index = ReadInt32();
-            OpenSightCount = ReadByte();
+            NoOpenSight = Convert.ToBoolean(ReadByte());
             LightSource = ReadByte();
 
             // There appears to be 3 empty bytes here.

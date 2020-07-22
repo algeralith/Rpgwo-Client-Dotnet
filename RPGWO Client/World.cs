@@ -79,7 +79,7 @@ namespace RPGWO_Client
 
         private void Handler_OnPlayerLocation(object sender, PlayerLocation e)
         {
-            PlayerMap[e.Xpos, e.Ypos] = e;
+            PlayerMap[e.Xpos, e.Ypos] = e; // TODO :: Somehow, I got an index out of range here. Investigate.
         }
 
         public Int16 GetTile(int x, int y)

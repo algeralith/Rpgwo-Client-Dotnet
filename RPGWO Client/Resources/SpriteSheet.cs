@@ -13,10 +13,6 @@ namespace RPGWO_Client.Resources
     {
         private string _spritePath = "";
 
-        // All sprite sheets are 320x320 px
-        private int _width = 320;
-        private int _height = 320;
-
         private Bitmap _spriteSheet;
 
         public SpriteSheet(string spritePath)
@@ -42,9 +38,6 @@ namespace RPGWO_Client.Resources
             try
             {
                 _spriteSheet = new Bitmap(_spritePath);
-
-                _width = _spriteSheet.Width;
-                _height = _spriteSheet.Height;
             } 
             catch (FileNotFoundException ex)
             {
@@ -96,7 +89,7 @@ namespace RPGWO_Client.Resources
 
             // Copy section into temporary bmp.
             Bitmap bitmap = _spriteSheet.Clone(rectangle, PixelFormat.Format32bppArgb);
-            bitmap.MakeTransparent();
+            bitmap.MakeTransparent(Color.White);
 
             return bitmap;
         }

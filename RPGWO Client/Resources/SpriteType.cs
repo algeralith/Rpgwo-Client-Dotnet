@@ -17,6 +17,7 @@ namespace RPGWO_Client.Resources
         Shields,
         Weapons,
         Items,
-        Players
+        Players,
+        Light
     }
 }

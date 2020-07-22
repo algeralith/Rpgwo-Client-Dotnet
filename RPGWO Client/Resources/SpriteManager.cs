@@ -28,6 +28,9 @@ namespace RPGWO_Client.Resources
         private Dictionary<int, SpriteSheet> _itemSheets;
         private Dictionary<int, SpriteSheet> _playerSheets;
 
+        // Light
+        private SpriteSheet _lightingSheet;
+
         public SpriteManager(String resourcePath)
         {
             _resourcePath = resourcePath;
@@ -86,6 +89,8 @@ namespace RPGWO_Client.Resources
                 case SpriteType.Weapons:
                     spriteSheet = _weaponsSheets;
                     break;
+                case SpriteType.Light:
+                    return _lightingSheet.SubImage(spriteId);
             }
 
             return spriteSheet[sheetNumber].SubImage(spriteNumber, imageType);
@@ -120,6 +125,10 @@ namespace RPGWO_Client.Resources
                 InitializeSheets(weapons, _weaponsSheets);
                 InitializeSheets(items, _itemSheets);
                 InitializeSheets(players, _playerSheets);
+
+                // Lighting file
+                _lightingSheet = new SpriteSheet("Light.bmp");
+
             }
             catch (DirectoryNotFoundException ex)
             {
