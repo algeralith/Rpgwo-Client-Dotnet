@@ -101,7 +101,7 @@ namespace RPGWO_Client.Resources
             try
             {
                 // Grab a list of all resources
-                string[] files = Directory.GetFiles(_resourcePath); // Using hex_reborn as test files TODO ::
+                string[] files = Directory.GetFiles(_resourcePath);
 
                 // List all background files
                 string[] animations = files.Where(path => new Regex(@"^[aA-zZ.]*animation\d*.bmp$", RegexOptions.IgnoreCase).IsMatch(path)).ToArray();

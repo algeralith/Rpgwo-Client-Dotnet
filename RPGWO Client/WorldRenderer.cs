@@ -260,9 +260,6 @@ namespace RPGWO_Client
             if (Distance(x1, y1, x2, y2) <= 1)
                 return true;
 
-            if (x2 == 0 && y2 == 7)
-                Console.WriteLine();
-
             int run = x1 - x2;
             int rise = y1 - y2;
 
@@ -332,7 +329,6 @@ namespace RPGWO_Client
 
             if (Math.Abs(run) > Math.Abs(rise))
             {
-                Console.WriteLine("3");
                 // x move
                 slope = (double)rise / run;
 
@@ -351,7 +347,6 @@ namespace RPGWO_Client
 
                     if ((i + xStart != x1 || yPos != y1) && (i + xStart != x2 || yPos != y2))
                     {
-                        Console.WriteLine((i + xStart).ToString() + "," + yPos.ToString());
                         if (!OpenSghtLineHelper(i + xStart, yPos))
                             return false;
                     }

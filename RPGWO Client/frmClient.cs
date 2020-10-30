@@ -49,7 +49,6 @@ namespace RPGWO_Client
 
             InitalizeEvents();
 
-            // Load Resources
             LoadResources();
 
             World = new World(Network);
@@ -237,6 +236,7 @@ namespace RPGWO_Client
         {
             if (pictureBox1.Image != null)
                 pictureBox1.Image.Dispose();
+
             pictureBox1.Image = bitmap;
         }
     }
