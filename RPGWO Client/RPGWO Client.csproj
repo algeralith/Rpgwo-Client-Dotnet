@@ -1,222 +1,32 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{20FA19A8-11F7-4312-82A0-095D0CC9DA1F}</ProjectGuid>
+    <TargetFramework>net5.0</TargetFramework>
     <OutputType>Exe</OutputType>
     <RootNamespace>RPGWO_Client</RootNamespace>
-    <AssemblyName>RPGWO Client</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <Deterministic>true</Deterministic>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.VisualBasic" />
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Management" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Deployment" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="frmClient.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmClient.Designer.cs">
-      <DependentUpon>frmClient.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmCreate.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmCreate.Designer.cs">
-      <DependentUpon>frmCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmLogin.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmLogin.Designer.cs">
-      <DependentUpon>frmLogin.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmMainMenu.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmMainMenu.Designer.cs">
-      <DependentUpon>frmMainMenu.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmTextMsg.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmTextMsg.Designer.cs">
-      <DependentUpon>frmTextMsg.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ItemMap.cs" />
-    <Compile Include="Resources\Animation\AnimationDef.cs" />
-    <Compile Include="Resources\Animation\AnimationFrame.cs" />
-    <Compile Include="Resources\Items\ArmorSpot.cs" />
-    <Compile Include="Resources\Items\ItemClass.cs" />
-    <Compile Include="Resources\Items\ItemDef.cs" />
-    <Compile Include="Resources\Items\ItemSize.cs" />
-    <Compile Include="Resources\Items\ItemSpot.cs" />
-    <Compile Include="Resources\Items\ItemUse.cs" />
-    <Compile Include="Resources\Items\WeaponDamageType.cs" />
-    <Compile Include="Resources\Monsters\MonsterDef.cs" />
-    <Compile Include="Resources\ResourceManager.cs" />
-    <Compile Include="Resources\SpriteManager.cs" />
-    <Compile Include="Resources\SpriteSheet.cs" />
-    <Compile Include="Resources\ImageType.cs" />
-    <Compile Include="Gui\SkillsList.cs">
+    <Compile Update="Gui\SkillsList.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Gui\SkillsList.Designer.cs">
-      <DependentUpon>SkillsList.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Gui\SkillsView.cs">
+    <Compile Update="Gui\SkillsView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Gui\SkillsView.Designer.cs">
-      <DependentUpon>SkillsView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Gui\StatusBar.cs">
+    <Compile Update="Gui\StatusBar.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Gui\Attributes.cs">
+    <Compile Update="Gui\Attributes.cs">
       <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Gui\Attributes.Designer.cs">
-      <DependentUpon>Attributes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Networking\Network.cs" />
-    <Compile Include="Networking\NetworkCommands.cs" />
-    <Compile Include="Networking\NetworkState.cs" />
-    <Compile Include="Networking\PacketEventArgs.cs" />
-    <Compile Include="Networking\PacketHandler.cs" />
-    <Compile Include="Networking\Packets.cs" />
-    <Compile Include="Networking\Packets\Ack.cs" />
-    <Compile Include="Networking\Packets\Animation2.cs" />
-    <Compile Include="Networking\Packets\Attributes.cs" />
-    <Compile Include="Networking\Packets\ClientList.cs" />
-    <Compile Include="Networking\Packets\Create.cs" />
-    <Compile Include="Networking\Packets\CreateDef.cs" />
-    <Compile Include="Networking\Packets\Delete.cs" />
-    <Compile Include="Networking\Packets\Enter.cs" />
-    <Compile Include="Networking\Packets\EnterFinal.cs" />
-    <Compile Include="Networking\Packets\Info2.cs" />
-    <Compile Include="Networking\Packets\Info3.cs" />
-    <Compile Include="Networking\Packets\ItemLocation.cs" />
-    <Compile Include="Networking\Packets\Login.cs" />
-    <Compile Include="Networking\Packets\Logout.cs" />
-    <Compile Include="Networking\Packets\MapData.cs" />
-    <Compile Include="Networking\Packets\MonsterLocation.cs" />
-    <Compile Include="Networking\Packets\Nack.cs" />
-    <Compile Include="Networking\Packets\Packet.cs" />
-    <Compile Include="Networking\Packets\PacketTypes.cs" />
-    <Compile Include="Networking\Packets\PlayerList.cs" />
-    <Compile Include="Networking\Packets\PlayerLocation.cs" />
-    <Compile Include="Networking\Packets\PlayerStats.cs" />
-    <Compile Include="Networking\Packets\PlayerStats2.cs" />
-    <Compile Include="Networking\Packets\RandomByte.cs" />
-    <Compile Include="Networking\Packets\ReqPlayerList.cs" />
-    <Compile Include="Networking\Packets\ReqSkillDef.cs" />
-    <Compile Include="Networking\Packets\ReqSkillList.cs" />
-    <Compile Include="Networking\Packets\Result.cs" />
-    <Compile Include="Networking\Packets\RuneBag.cs" />
-    <Compile Include="Networking\Packets\Skill.cs" />
-    <Compile Include="Networking\Packets\SkillDef.cs" />
-    <Compile Include="Networking\Packets\Sound.cs" />
-    <Compile Include="Networking\Packets\SpellDef.cs" />
-    <Compile Include="Networking\Packets\StartDisplay.cs" />
-    <Compile Include="Networking\Packets\StopDisplay.cs" />
-    <Compile Include="Networking\Packets\Text.cs" />
-    <Compile Include="Networking\Packets\Version.cs" />
-    <Compile Include="Networking\Packets\WorldState.cs" />
-    <Compile Include="Networking\RpgwoSocketEventArgs.cs" />
-    <Compile Include="Networking\RSecurity.cs" />
-    <Compile Include="Networking\SocketModes.cs" />
-    <Compile Include="Networking\TextChannels.cs" />
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Resources\SpriteType.cs" />
-    <Compile Include="Utils.cs" />
-    <Compile Include="World.cs" />
-    <Compile Include="WorldRenderer.cs" />
-    <EmbeddedResource Include="frmClient.resx">
-      <DependentUpon>frmClient.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmCreate.resx">
-      <DependentUpon>frmCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmLogin.resx">
-      <DependentUpon>frmLogin.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmMainMenu.resx">
-      <DependentUpon>frmMainMenu.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmTextMsg.resx">
-      <DependentUpon>frmTextMsg.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Gui\SkillsList.resx">
-      <DependentUpon>SkillsList.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Gui\Attributes.resx">
-      <DependentUpon>Attributes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Gui\SkillsView.resx">
-      <DependentUpon>SkillsView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="Microsoft.VisualBasic" Version="10.3.0" />
+    <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
+    <PackageReference Include="System.Management" Version="4.7.0" />
   </ItemGroup>
-  <ItemGroup />
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
