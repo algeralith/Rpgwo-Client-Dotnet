@@ -89,10 +89,12 @@
             this.groupBox1.Controls.Add(this.skillValue1);
             this.groupBox1.Controls.Add(this.skillLabel1);
             this.groupBox1.Controls.Add(this.skillScrollBar);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(301, 237);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.groupBox1.Size = new System.Drawing.Size(351, 273);
             this.groupBox1.TabIndex = 30;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Skills";
@@ -100,294 +102,295 @@
             // skillValue13
             // 
             this.skillValue13.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.skillValue13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.skillValue13.Location = new System.Drawing.Point(200, 215);
-            this.skillValue13.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.skillValue13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.skillValue13.Location = new System.Drawing.Point(233, 243);
+            this.skillValue13.Margin = new System.Windows.Forms.Padding(4, 1, 4, 1);
             this.skillValue13.Name = "skillValue13";
-            this.skillValue13.Size = new System.Drawing.Size(66, 15);
+            this.skillValue13.Size = new System.Drawing.Size(77, 17);
             this.skillValue13.TabIndex = 44;
             // 
             // skillValue12
             // 
             this.skillValue12.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.skillValue12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.skillValue12.Location = new System.Drawing.Point(200, 199);
-            this.skillValue12.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.skillValue12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.skillValue12.Location = new System.Drawing.Point(233, 225);
+            this.skillValue12.Margin = new System.Windows.Forms.Padding(4, 1, 4, 1);
             this.skillValue12.Name = "skillValue12";
-            this.skillValue12.Size = new System.Drawing.Size(66, 15);
+            this.skillValue12.Size = new System.Drawing.Size(77, 17);
             this.skillValue12.TabIndex = 43;
             // 
             // skillValue11
             // 
             this.skillValue11.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.skillValue11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.skillValue11.Location = new System.Drawing.Point(200, 183);
-            this.skillValue11.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.skillValue11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.skillValue11.Location = new System.Drawing.Point(233, 206);
+            this.skillValue11.Margin = new System.Windows.Forms.Padding(4, 1, 4, 1);
             this.skillValue11.Name = "skillValue11";
-            this.skillValue11.Size = new System.Drawing.Size(66, 15);
+            this.skillValue11.Size = new System.Drawing.Size(77, 17);
             this.skillValue11.TabIndex = 42;
             // 
             // skillValue10
             // 
             this.skillValue10.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.skillValue10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.skillValue10.Location = new System.Drawing.Point(200, 167);
-            this.skillValue10.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.skillValue10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.skillValue10.Location = new System.Drawing.Point(233, 188);
+            this.skillValue10.Margin = new System.Windows.Forms.Padding(4, 1, 4, 1);
             this.skillValue10.Name = "skillValue10";
-            this.skillValue10.Size = new System.Drawing.Size(66, 15);
+            this.skillValue10.Size = new System.Drawing.Size(77, 17);
             this.skillValue10.TabIndex = 41;
             // 
             // skillValue9
             // 
             this.skillValue9.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.skillValue9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.skillValue9.Location = new System.Drawing.Point(200, 151);
-            this.skillValue9.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.skillValue9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.skillValue9.Location = new System.Drawing.Point(233, 169);
+            this.skillValue9.Margin = new System.Windows.Forms.Padding(4, 1, 4, 1);
             this.skillValue9.Name = "skillValue9";
-            this.skillValue9.Size = new System.Drawing.Size(66, 15);
+            this.skillValue9.Size = new System.Drawing.Size(77, 17);
             this.skillValue9.TabIndex = 40;
             // 
             // skillValue8
             // 
             this.skillValue8.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.skillValue8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.skillValue8.Location = new System.Drawing.Point(200, 135);
-            this.skillValue8.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.skillValue8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.skillValue8.Location = new System.Drawing.Point(233, 151);
+            this.skillValue8.Margin = new System.Windows.Forms.Padding(4, 1, 4, 1);
             this.skillValue8.Name = "skillValue8";
-            this.skillValue8.Size = new System.Drawing.Size(66, 15);
+            this.skillValue8.Size = new System.Drawing.Size(77, 17);
             this.skillValue8.TabIndex = 39;
             // 
             // skillValue7
             // 
             this.skillValue7.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.skillValue7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.skillValue7.Location = new System.Drawing.Point(200, 119);
-            this.skillValue7.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.skillValue7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.skillValue7.Location = new System.Drawing.Point(233, 132);
+            this.skillValue7.Margin = new System.Windows.Forms.Padding(4, 1, 4, 1);
             this.skillValue7.Name = "skillValue7";
-            this.skillValue7.Size = new System.Drawing.Size(66, 15);
+            this.skillValue7.Size = new System.Drawing.Size(77, 17);
             this.skillValue7.TabIndex = 38;
             // 
             // skillValue6
             // 
             this.skillValue6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.skillValue6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.skillValue6.Location = new System.Drawing.Point(200, 103);
-            this.skillValue6.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.skillValue6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.skillValue6.Location = new System.Drawing.Point(233, 114);
+            this.skillValue6.Margin = new System.Windows.Forms.Padding(4, 1, 4, 1);
             this.skillValue6.Name = "skillValue6";
-            this.skillValue6.Size = new System.Drawing.Size(66, 15);
+            this.skillValue6.Size = new System.Drawing.Size(77, 17);
             this.skillValue6.TabIndex = 37;
             // 
             // skillValue5
             // 
             this.skillValue5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.skillValue5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.skillValue5.Location = new System.Drawing.Point(200, 87);
-            this.skillValue5.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.skillValue5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.skillValue5.Location = new System.Drawing.Point(233, 95);
+            this.skillValue5.Margin = new System.Windows.Forms.Padding(4, 1, 4, 1);
             this.skillValue5.Name = "skillValue5";
-            this.skillValue5.Size = new System.Drawing.Size(66, 15);
+            this.skillValue5.Size = new System.Drawing.Size(77, 17);
             this.skillValue5.TabIndex = 36;
             // 
             // skillValue4
             // 
             this.skillValue4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.skillValue4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.skillValue4.Location = new System.Drawing.Point(200, 71);
-            this.skillValue4.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.skillValue4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.skillValue4.Location = new System.Drawing.Point(233, 77);
+            this.skillValue4.Margin = new System.Windows.Forms.Padding(4, 1, 4, 1);
             this.skillValue4.Name = "skillValue4";
-            this.skillValue4.Size = new System.Drawing.Size(66, 15);
+            this.skillValue4.Size = new System.Drawing.Size(77, 17);
             this.skillValue4.TabIndex = 35;
             // 
             // skillValue3
             // 
             this.skillValue3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.skillValue3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.skillValue3.Location = new System.Drawing.Point(200, 55);
-            this.skillValue3.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.skillValue3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.skillValue3.Location = new System.Drawing.Point(233, 58);
+            this.skillValue3.Margin = new System.Windows.Forms.Padding(4, 1, 4, 1);
             this.skillValue3.Name = "skillValue3";
-            this.skillValue3.Size = new System.Drawing.Size(66, 15);
+            this.skillValue3.Size = new System.Drawing.Size(77, 17);
             this.skillValue3.TabIndex = 34;
             // 
             // skillValue2
             // 
             this.skillValue2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.skillValue2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.skillValue2.Location = new System.Drawing.Point(200, 39);
-            this.skillValue2.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.skillValue2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.skillValue2.Location = new System.Drawing.Point(233, 40);
+            this.skillValue2.Margin = new System.Windows.Forms.Padding(4, 1, 4, 1);
             this.skillValue2.Name = "skillValue2";
-            this.skillValue2.Size = new System.Drawing.Size(66, 15);
+            this.skillValue2.Size = new System.Drawing.Size(77, 17);
             this.skillValue2.TabIndex = 33;
             // 
             // skillLabel13
             // 
             this.skillLabel13.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.skillLabel13.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.skillLabel13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.skillLabel13.Location = new System.Drawing.Point(6, 215);
-            this.skillLabel13.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.skillLabel13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.skillLabel13.Location = new System.Drawing.Point(7, 243);
+            this.skillLabel13.Margin = new System.Windows.Forms.Padding(4, 1, 4, 1);
             this.skillLabel13.Name = "skillLabel13";
-            this.skillLabel13.Size = new System.Drawing.Size(188, 15);
+            this.skillLabel13.Size = new System.Drawing.Size(219, 17);
             this.skillLabel13.TabIndex = 32;
             // 
             // skillLabel12
             // 
             this.skillLabel12.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.skillLabel12.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.skillLabel12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.skillLabel12.Location = new System.Drawing.Point(6, 199);
-            this.skillLabel12.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.skillLabel12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.skillLabel12.Location = new System.Drawing.Point(7, 225);
+            this.skillLabel12.Margin = new System.Windows.Forms.Padding(4, 1, 4, 1);
             this.skillLabel12.Name = "skillLabel12";
-            this.skillLabel12.Size = new System.Drawing.Size(188, 15);
+            this.skillLabel12.Size = new System.Drawing.Size(219, 17);
             this.skillLabel12.TabIndex = 31;
             // 
             // skillLabel11
             // 
             this.skillLabel11.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.skillLabel11.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.skillLabel11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.skillLabel11.Location = new System.Drawing.Point(6, 183);
-            this.skillLabel11.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.skillLabel11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.skillLabel11.Location = new System.Drawing.Point(7, 206);
+            this.skillLabel11.Margin = new System.Windows.Forms.Padding(4, 1, 4, 1);
             this.skillLabel11.Name = "skillLabel11";
-            this.skillLabel11.Size = new System.Drawing.Size(188, 15);
+            this.skillLabel11.Size = new System.Drawing.Size(219, 17);
             this.skillLabel11.TabIndex = 30;
             // 
             // skillLabel10
             // 
             this.skillLabel10.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.skillLabel10.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.skillLabel10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.skillLabel10.Location = new System.Drawing.Point(6, 167);
-            this.skillLabel10.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.skillLabel10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.skillLabel10.Location = new System.Drawing.Point(7, 188);
+            this.skillLabel10.Margin = new System.Windows.Forms.Padding(4, 1, 4, 1);
             this.skillLabel10.Name = "skillLabel10";
-            this.skillLabel10.Size = new System.Drawing.Size(188, 15);
+            this.skillLabel10.Size = new System.Drawing.Size(219, 17);
             this.skillLabel10.TabIndex = 29;
             // 
             // skillLabel9
             // 
             this.skillLabel9.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.skillLabel9.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.skillLabel9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.skillLabel9.Location = new System.Drawing.Point(6, 151);
-            this.skillLabel9.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.skillLabel9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.skillLabel9.Location = new System.Drawing.Point(7, 169);
+            this.skillLabel9.Margin = new System.Windows.Forms.Padding(4, 1, 4, 1);
             this.skillLabel9.Name = "skillLabel9";
-            this.skillLabel9.Size = new System.Drawing.Size(188, 15);
+            this.skillLabel9.Size = new System.Drawing.Size(219, 17);
             this.skillLabel9.TabIndex = 28;
             // 
             // skillLabel8
             // 
             this.skillLabel8.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.skillLabel8.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.skillLabel8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.skillLabel8.Location = new System.Drawing.Point(6, 135);
-            this.skillLabel8.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.skillLabel8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.skillLabel8.Location = new System.Drawing.Point(7, 151);
+            this.skillLabel8.Margin = new System.Windows.Forms.Padding(4, 1, 4, 1);
             this.skillLabel8.Name = "skillLabel8";
-            this.skillLabel8.Size = new System.Drawing.Size(188, 15);
+            this.skillLabel8.Size = new System.Drawing.Size(219, 17);
             this.skillLabel8.TabIndex = 27;
             // 
             // skillLabel7
             // 
             this.skillLabel7.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.skillLabel7.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.skillLabel7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.skillLabel7.Location = new System.Drawing.Point(6, 119);
-            this.skillLabel7.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.skillLabel7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.skillLabel7.Location = new System.Drawing.Point(7, 132);
+            this.skillLabel7.Margin = new System.Windows.Forms.Padding(4, 1, 4, 1);
             this.skillLabel7.Name = "skillLabel7";
-            this.skillLabel7.Size = new System.Drawing.Size(188, 16);
+            this.skillLabel7.Size = new System.Drawing.Size(219, 18);
             this.skillLabel7.TabIndex = 26;
             // 
             // skillLabel6
             // 
             this.skillLabel6.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.skillLabel6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.skillLabel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.skillLabel6.Location = new System.Drawing.Point(6, 103);
-            this.skillLabel6.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.skillLabel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.skillLabel6.Location = new System.Drawing.Point(7, 114);
+            this.skillLabel6.Margin = new System.Windows.Forms.Padding(4, 1, 4, 1);
             this.skillLabel6.Name = "skillLabel6";
-            this.skillLabel6.Size = new System.Drawing.Size(188, 15);
+            this.skillLabel6.Size = new System.Drawing.Size(219, 17);
             this.skillLabel6.TabIndex = 25;
             // 
             // skillLabel5
             // 
             this.skillLabel5.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.skillLabel5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.skillLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.skillLabel5.Location = new System.Drawing.Point(6, 87);
-            this.skillLabel5.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.skillLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.skillLabel5.Location = new System.Drawing.Point(7, 95);
+            this.skillLabel5.Margin = new System.Windows.Forms.Padding(4, 1, 4, 1);
             this.skillLabel5.Name = "skillLabel5";
-            this.skillLabel5.Size = new System.Drawing.Size(188, 15);
+            this.skillLabel5.Size = new System.Drawing.Size(219, 17);
             this.skillLabel5.TabIndex = 24;
             // 
             // skillLabel4
             // 
             this.skillLabel4.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.skillLabel4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.skillLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.skillLabel4.Location = new System.Drawing.Point(6, 71);
-            this.skillLabel4.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.skillLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.skillLabel4.Location = new System.Drawing.Point(7, 77);
+            this.skillLabel4.Margin = new System.Windows.Forms.Padding(4, 1, 4, 1);
             this.skillLabel4.Name = "skillLabel4";
-            this.skillLabel4.Size = new System.Drawing.Size(188, 15);
+            this.skillLabel4.Size = new System.Drawing.Size(219, 17);
             this.skillLabel4.TabIndex = 23;
             // 
             // skillLabel3
             // 
             this.skillLabel3.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.skillLabel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.skillLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.skillLabel3.Location = new System.Drawing.Point(6, 55);
-            this.skillLabel3.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.skillLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.skillLabel3.Location = new System.Drawing.Point(7, 58);
+            this.skillLabel3.Margin = new System.Windows.Forms.Padding(4, 1, 4, 1);
             this.skillLabel3.Name = "skillLabel3";
-            this.skillLabel3.Size = new System.Drawing.Size(188, 15);
+            this.skillLabel3.Size = new System.Drawing.Size(219, 17);
             this.skillLabel3.TabIndex = 22;
             // 
             // skillLabel2
             // 
             this.skillLabel2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.skillLabel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.skillLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.skillLabel2.Location = new System.Drawing.Point(6, 39);
-            this.skillLabel2.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.skillLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.skillLabel2.Location = new System.Drawing.Point(7, 45);
+            this.skillLabel2.Margin = new System.Windows.Forms.Padding(4, 1, 4, 1);
             this.skillLabel2.Name = "skillLabel2";
-            this.skillLabel2.Size = new System.Drawing.Size(188, 15);
+            this.skillLabel2.Size = new System.Drawing.Size(219, 17);
             this.skillLabel2.TabIndex = 21;
             // 
             // skillValue1
             // 
             this.skillValue1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.skillValue1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.skillValue1.Location = new System.Drawing.Point(200, 23);
-            this.skillValue1.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.skillValue1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.skillValue1.Location = new System.Drawing.Point(233, 22);
+            this.skillValue1.Margin = new System.Windows.Forms.Padding(4, 1, 4, 1);
             this.skillValue1.Name = "skillValue1";
-            this.skillValue1.Size = new System.Drawing.Size(66, 15);
+            this.skillValue1.Size = new System.Drawing.Size(77, 17);
             this.skillValue1.TabIndex = 20;
             // 
             // skillLabel1
             // 
             this.skillLabel1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.skillLabel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.skillLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.skillLabel1.Location = new System.Drawing.Point(6, 23);
-            this.skillLabel1.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.skillLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.skillLabel1.Location = new System.Drawing.Point(7, 22);
+            this.skillLabel1.Margin = new System.Windows.Forms.Padding(4, 1, 4, 1);
             this.skillLabel1.Name = "skillLabel1";
-            this.skillLabel1.Size = new System.Drawing.Size(188, 15);
+            this.skillLabel1.Size = new System.Drawing.Size(219, 17);
             this.skillLabel1.TabIndex = 19;
             // 
             // skillScrollBar
             // 
             this.skillScrollBar.Enabled = false;
             this.skillScrollBar.LargeChange = 1;
-            this.skillScrollBar.Location = new System.Drawing.Point(273, 22);
+            this.skillScrollBar.Location = new System.Drawing.Point(318, 20);
             this.skillScrollBar.Maximum = 0;
             this.skillScrollBar.Name = "skillScrollBar";
-            this.skillScrollBar.Size = new System.Drawing.Size(25, 208);
+            this.skillScrollBar.Size = new System.Drawing.Size(25, 240);
             this.skillScrollBar.TabIndex = 0;
             this.skillScrollBar.Scroll += new System.Windows.Forms.ScrollEventHandler(this.skillScrollBar_Scroll);
             // 
             // SkillsList
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.groupBox1);
+            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "SkillsList";
-            this.Size = new System.Drawing.Size(301, 237);
+            this.Size = new System.Drawing.Size(351, 273);
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
