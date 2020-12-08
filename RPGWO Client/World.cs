@@ -21,7 +21,7 @@ namespace RPGWO_Client
         private Int16[] _mapData = new Int16[19 * 17]; // TODO :: Should make these numbers a client level constant
 
         public ItemMap ItemMap { get; private set; }  = new ItemMap(19, 17, 20); // 20 items per tile is allowed.
-        public PlayerLocation[,] PlayerMap { get; private set; } = new PlayerLocation[19, 17];
+        public PlayerMap PlayerMap { get; private set; } = new PlayerMap(19, 17, 1);
 
         public World(Network network)
         {
@@ -53,7 +53,7 @@ namespace RPGWO_Client
             // The client will be receiving data as I'm trying to clear the maps
             // Might be best to add a semaphore or lock around here to keep things in order
             ItemMap.Clear();
-            PlayerMap = new PlayerLocation[19, 17];
+            PlayerMap.Clear();
         }
 
         private void Handler_OnStopDisplay(object sender, StopDisplay e)
@@ -87,7 +87,8 @@ namespace RPGWO_Client
 
         private void Handler_OnPlayerLocation(object sender, PlayerLocation e)
         {
-            PlayerMap[e.Xpos, e.Ypos] = e; // TODO :: Somehow, I got an index out of range here. Investigate.
+            // PlayerMap[e.Xpos, e.Ypos] = e; // TODO :: Somehow, I got an index out of range here. Investigate.
+            PlayerMap.AddModifyPlayer(e);
         }
 
         private void Handler_OnMapData(object sender, MapData e)

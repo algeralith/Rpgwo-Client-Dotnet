@@ -108,7 +108,7 @@ namespace RPGWO_Client
                         }
 
                         // Render Players
-                        PlayerLocation player = World.PlayerMap[x, y];
+                        PlayerLocation player = World.PlayerMap.GetPlayer(x, y);
 
                         if (player != null)
                         {
