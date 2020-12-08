@@ -23,6 +23,7 @@ namespace RPGWO_Client.Networking.Packets
         StopDisplay = 16,
         PlayerLocation = 17,
         ItemLocation = 19,
+        Event = 21,
         WorldState = 22,
         PlayerStats = 27,
         ClientList = 29,

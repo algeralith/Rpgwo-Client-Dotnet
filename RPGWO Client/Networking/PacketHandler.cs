@@ -34,6 +34,7 @@ namespace RPGWO_Client.Networking
         public event EventHandler<Attributes> OnAttributes;
         public event EventHandler<PlayerStats> OnPlayerStats;
         public event EventHandler<PlayerStats2> OnPlayerStats2;
+        public event EventHandler<Event> OnEvent;
         public event EventHandler<WorldState> OnWorldState;
         public event EventHandler<Skill> OnSkill;
 
@@ -76,6 +77,9 @@ namespace RPGWO_Client.Networking
                     break;
                 case PacketTypes.ItemLocation:
                     Task.Run(() => OnItemLocation?.Invoke(this, (ItemLocation)packet));
+                    break;
+                case PacketTypes.Event:
+                    Task.Run(() => OnEvent?.Invoke(this, (Event)packet));
                     break;
                 case PacketTypes.WorldState:
                     Task.Run(() => OnWorldState?.Invoke(this, (WorldState)packet));

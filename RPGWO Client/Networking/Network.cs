@@ -57,6 +57,7 @@ namespace RPGWO_Client.Networking
             RegisterPacket((byte)PacketTypes.StopDisplay, typeof(StopDisplay)); // TODO :: Handle
             RegisterPacket((byte)PacketTypes.PlayerLocation, typeof(PlayerLocation)); // TODO :: Handle
             RegisterPacket((byte)PacketTypes.ItemLocation, typeof(ItemLocation)); // TODO :: Handle
+            RegisterPacket((byte)PacketTypes.Event, typeof(Event)); // TODO :: Handle
             RegisterPacket((byte)PacketTypes.WorldState, typeof(WorldState)); // TODO :: Handle
             RegisterPacket((byte)PacketTypes.PlayerStats, typeof(PlayerStats)); // TODO :: Handle
             RegisterPacket((byte)PacketTypes.ClientList, typeof(ClientList));
