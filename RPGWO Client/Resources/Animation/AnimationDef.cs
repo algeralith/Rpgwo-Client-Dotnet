@@ -16,7 +16,7 @@ namespace RPGWO_Client.Resources.Animation
         {
             AnimationDef[] animationDefs = null;
 
-            using (BinaryReader reader = new BinaryReader(File.Open(@"C:\Users\Mark\Desktop\Hex-Backup-July-5-2020\server2\data\animation.dat", FileMode.Open)))
+            using (BinaryReader reader = new BinaryReader(File.Open(@"C:\Users\Mark\Desktop\Hex-Backup-July-5-2020\server2\data\animation.dat", FileMode.Open))) // TODO :: 
             {
                 int animationCount = reader.ReadInt16();
                 animationDefs = new AnimationDef[animationCount];

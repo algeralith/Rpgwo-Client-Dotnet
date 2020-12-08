@@ -171,7 +171,7 @@ namespace RPGWO_Client
             {
                 // TODO :: Consider how to properly do this. Mickey just pops up an error and then
                 // Brings up the exit confirmation.
-                MessageBox.Show("Cannot enter world.\r\nWorld may be stopped.\r\n.Your player may be dead.", "Sorry", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Cannot enter world.\r\nWorld may be stopped.\r\nYour player may be dead.", "Sorry", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
 
@@ -234,10 +234,24 @@ namespace RPGWO_Client
         // Temp Function
         public void UpdateImage(Bitmap bitmap)
         {
+
             if (pictureBox1.Image != null)
                 pictureBox1.Image.Dispose();
 
             pictureBox1.Image = bitmap;
+
+        }
+
+        public void Startdrawing()
+        {
+            if (!drawTimer.Enabled)
+                drawTimer.Start();
+        }
+
+        // For now, we'll use a timer function to handle drawing. TODO :: This should be a temp solution
+        private void drawTimer_Tick(object sender, EventArgs e)
+        {
+            WorldRenderer.RenderFrame();
         }
     }
 }

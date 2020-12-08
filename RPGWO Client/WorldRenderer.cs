@@ -18,6 +18,8 @@ namespace RPGWO_Client
         public World World { get; private set; }
         public ResourceManager ResourceManager { get; set; }
 
+        public bool Enabled { get; set; }
+
         private int _width = 19; // Should be constant
         private int _height = 17; // Should be constant.
 
@@ -43,10 +45,15 @@ namespace RPGWO_Client
                     _lightMap[x, y] = 7;
                 }
             }
+
+            Enabled = false; // Start disabled;
         }
 
         public void RenderFrame()
         {
+            if (!Enabled)
+                return;
+
             semaphoreSlim.Wait();
 
             for (int x = 0; x < _lightMap.GetLength(0); x++)
@@ -147,6 +154,7 @@ namespace RPGWO_Client
                     }
                 }
 
+                /* Disable lighting for now. TODO ::  
                 SetVisible(10, 9);
 
                 for (int x = 0; x < _width; x++)
@@ -171,6 +179,7 @@ namespace RPGWO_Client
                     }
 
                 }
+                */
 
             }
 

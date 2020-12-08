@@ -41,18 +41,26 @@ namespace RPGWO_Client
             Network.Handler.OnStartDisplay += Handler_OnStartDisplay;
             Network.Handler.OnStopDisplay += Handler_OnStopDisplay;
         }
+        public Int16 GetTile(int x, int y)
+        {
+            return _mapData[17 * x + y];
+        }
 
         private void Handler_OnStartDisplay(object sender, StartDisplay e)
         {
+            WorldRenderer.Enabled = false;
             // TODO :: Consider, this might be a race condition issue.
             // The client will be receiving data as I'm trying to clear the maps
             // Might be best to add a semaphore or lock around here to keep things in order
             ItemMap.Clear();
             PlayerMap = new PlayerLocation[19, 17];
         }
+
         private void Handler_OnStopDisplay(object sender, StopDisplay e)
         {
-            WorldRenderer.RenderFrame();
+            // WorldRenderer.RenderFrame();
+            // frmClient.Client.Startdrawing(); // TODO :: Is this the best way?
+            WorldRenderer.Enabled = true;
         }
 
         private void Handler_OnItemLocation(object sender, ItemLocation e)
@@ -80,11 +88,6 @@ namespace RPGWO_Client
         private void Handler_OnPlayerLocation(object sender, PlayerLocation e)
         {
             PlayerMap[e.Xpos, e.Ypos] = e; // TODO :: Somehow, I got an index out of range here. Investigate.
-        }
-
-        public Int16 GetTile(int x, int y)
-        {
-            return _mapData[17 * x + y];
         }
 
         private void Handler_OnMapData(object sender, MapData e)

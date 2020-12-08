@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Drawing.StringFormat stringFormat1 = new System.Drawing.StringFormat();
             System.Drawing.StringFormat stringFormat2 = new System.Drawing.StringFormat();
             System.Drawing.StringFormat stringFormat3 = new System.Drawing.StringFormat();
@@ -90,6 +91,7 @@
             this.button9 = new System.Windows.Forms.Button();
             this.button20 = new System.Windows.Forms.Button();
             this.button21 = new System.Windows.Forms.Button();
+            this.drawTimer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -162,10 +164,10 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 44);
+            this.tabPage1.Location = new System.Drawing.Point(4, 94);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(368, 417);
+            this.tabPage1.Size = new System.Drawing.Size(368, 367);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Player";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -173,10 +175,10 @@
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.skillsView);
-            this.tabPage2.Location = new System.Drawing.Point(4, 44);
+            this.tabPage2.Location = new System.Drawing.Point(4, 94);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(368, 417);
+            this.tabPage2.Size = new System.Drawing.Size(368, 367);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Stats";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -191,81 +193,81 @@
             // 
             // tabPage3
             // 
-            this.tabPage3.Location = new System.Drawing.Point(4, 44);
+            this.tabPage3.Location = new System.Drawing.Point(4, 94);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(368, 417);
+            this.tabPage3.Size = new System.Drawing.Size(368, 367);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "View";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // tabPage4
             // 
-            this.tabPage4.Location = new System.Drawing.Point(4, 44);
+            this.tabPage4.Location = new System.Drawing.Point(4, 94);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(368, 417);
+            this.tabPage4.Size = new System.Drawing.Size(368, 367);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Magic";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
             // tabPage5
             // 
-            this.tabPage5.Location = new System.Drawing.Point(4, 44);
+            this.tabPage5.Location = new System.Drawing.Point(4, 94);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(368, 417);
+            this.tabPage5.Size = new System.Drawing.Size(368, 367);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Mail";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
             // tabPage6
             // 
-            this.tabPage6.Location = new System.Drawing.Point(4, 44);
+            this.tabPage6.Location = new System.Drawing.Point(4, 94);
             this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Size = new System.Drawing.Size(368, 417);
+            this.tabPage6.Size = new System.Drawing.Size(368, 367);
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "Help";
             this.tabPage6.UseVisualStyleBackColor = true;
             // 
             // tabPage7
             // 
-            this.tabPage7.Location = new System.Drawing.Point(4, 44);
+            this.tabPage7.Location = new System.Drawing.Point(4, 94);
             this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Size = new System.Drawing.Size(368, 417);
+            this.tabPage7.Size = new System.Drawing.Size(368, 367);
             this.tabPage7.TabIndex = 6;
             this.tabPage7.Text = "Options";
             this.tabPage7.UseVisualStyleBackColor = true;
             // 
             // tabPage8
             // 
-            this.tabPage8.Location = new System.Drawing.Point(4, 44);
+            this.tabPage8.Location = new System.Drawing.Point(4, 94);
             this.tabPage8.Name = "tabPage8";
-            this.tabPage8.Size = new System.Drawing.Size(368, 417);
+            this.tabPage8.Size = new System.Drawing.Size(368, 367);
             this.tabPage8.TabIndex = 7;
             this.tabPage8.Text = "Guild";
             this.tabPage8.UseVisualStyleBackColor = true;
             // 
             // tabPage9
             // 
-            this.tabPage9.Location = new System.Drawing.Point(4, 44);
+            this.tabPage9.Location = new System.Drawing.Point(4, 94);
             this.tabPage9.Name = "tabPage9";
-            this.tabPage9.Size = new System.Drawing.Size(368, 417);
+            this.tabPage9.Size = new System.Drawing.Size(368, 367);
             this.tabPage9.TabIndex = 8;
             this.tabPage9.Text = "Appeals";
             this.tabPage9.UseVisualStyleBackColor = true;
             // 
             // tabPage10
             // 
-            this.tabPage10.Location = new System.Drawing.Point(4, 44);
+            this.tabPage10.Location = new System.Drawing.Point(4, 94);
             this.tabPage10.Name = "tabPage10";
-            this.tabPage10.Size = new System.Drawing.Size(368, 417);
+            this.tabPage10.Size = new System.Drawing.Size(368, 367);
             this.tabPage10.TabIndex = 9;
             this.tabPage10.Text = "Usage";
             this.tabPage10.UseVisualStyleBackColor = true;
             // 
             // tabPage11
             // 
-            this.tabPage11.Location = new System.Drawing.Point(4, 44);
+            this.tabPage11.Location = new System.Drawing.Point(4, 94);
             this.tabPage11.Name = "tabPage11";
-            this.tabPage11.Size = new System.Drawing.Size(368, 417);
+            this.tabPage11.Size = new System.Drawing.Size(368, 367);
             this.tabPage11.TabIndex = 10;
             this.tabPage11.Text = "Hotkeys";
             this.tabPage11.UseVisualStyleBackColor = true;
@@ -428,10 +430,10 @@
             // 
             this.tabPage12.BackColor = System.Drawing.Color.Transparent;
             this.tabPage12.Controls.Add(this.richTextAll);
-            this.tabPage12.Location = new System.Drawing.Point(4, 24);
+            this.tabPage12.Location = new System.Drawing.Point(4, 34);
             this.tabPage12.Name = "tabPage12";
             this.tabPage12.Padding = new System.Windows.Forms.Padding(3, 3, 3, 0);
-            this.tabPage12.Size = new System.Drawing.Size(607, 124);
+            this.tabPage12.Size = new System.Drawing.Size(607, 114);
             this.tabPage12.TabIndex = 0;
             this.tabPage12.Text = "All";
             // 
@@ -449,10 +451,10 @@
             // 
             this.tabPage13.BackColor = System.Drawing.Color.Transparent;
             this.tabPage13.Controls.Add(this.richTextGlobal);
-            this.tabPage13.Location = new System.Drawing.Point(4, 24);
+            this.tabPage13.Location = new System.Drawing.Point(4, 34);
             this.tabPage13.Name = "tabPage13";
             this.tabPage13.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage13.Size = new System.Drawing.Size(607, 124);
+            this.tabPage13.Size = new System.Drawing.Size(607, 114);
             this.tabPage13.TabIndex = 1;
             this.tabPage13.Text = "Global";
             // 
@@ -468,10 +470,10 @@
             // tabPage14
             // 
             this.tabPage14.Controls.Add(this.richTextLocal);
-            this.tabPage14.Location = new System.Drawing.Point(4, 24);
+            this.tabPage14.Location = new System.Drawing.Point(4, 34);
             this.tabPage14.Name = "tabPage14";
             this.tabPage14.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage14.Size = new System.Drawing.Size(607, 124);
+            this.tabPage14.Size = new System.Drawing.Size(607, 114);
             this.tabPage14.TabIndex = 2;
             this.tabPage14.Text = "Local";
             this.tabPage14.UseVisualStyleBackColor = true;
@@ -488,10 +490,10 @@
             // tabPage15
             // 
             this.tabPage15.Controls.Add(this.richTextSystem);
-            this.tabPage15.Location = new System.Drawing.Point(4, 24);
+            this.tabPage15.Location = new System.Drawing.Point(4, 34);
             this.tabPage15.Name = "tabPage15";
             this.tabPage15.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage15.Size = new System.Drawing.Size(607, 124);
+            this.tabPage15.Size = new System.Drawing.Size(607, 114);
             this.tabPage15.TabIndex = 3;
             this.tabPage15.Text = "System";
             this.tabPage15.UseVisualStyleBackColor = true;
@@ -508,10 +510,10 @@
             // tabPage16
             // 
             this.tabPage16.Controls.Add(this.richTextCombat);
-            this.tabPage16.Location = new System.Drawing.Point(4, 24);
+            this.tabPage16.Location = new System.Drawing.Point(4, 34);
             this.tabPage16.Name = "tabPage16";
             this.tabPage16.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage16.Size = new System.Drawing.Size(607, 124);
+            this.tabPage16.Size = new System.Drawing.Size(607, 114);
             this.tabPage16.TabIndex = 4;
             this.tabPage16.Text = "Combat";
             this.tabPage16.UseVisualStyleBackColor = true;
@@ -528,10 +530,10 @@
             // tabPage17
             // 
             this.tabPage17.Controls.Add(this.richTextMisc);
-            this.tabPage17.Location = new System.Drawing.Point(4, 24);
+            this.tabPage17.Location = new System.Drawing.Point(4, 34);
             this.tabPage17.Name = "tabPage17";
             this.tabPage17.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage17.Size = new System.Drawing.Size(607, 124);
+            this.tabPage17.Size = new System.Drawing.Size(607, 114);
             this.tabPage17.TabIndex = 5;
             this.tabPage17.Text = "Misc";
             this.tabPage17.UseVisualStyleBackColor = true;
@@ -551,7 +553,7 @@
             this.textBox1.Location = new System.Drawing.Point(3, 701);
             this.textBox1.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(610, 23);
+            this.textBox1.Size = new System.Drawing.Size(610, 31);
             this.textBox1.TabIndex = 11;
             // 
             // panel2
@@ -730,6 +732,11 @@
             this.button21.Text = "button21";
             this.button21.UseVisualStyleBackColor = true;
             // 
+            // drawTimer
+            // 
+            this.drawTimer.Enabled = true;
+            this.drawTimer.Tick += new System.EventHandler(this.drawTimer_Tick);
+            // 
             // frmClient
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -843,6 +850,7 @@
         private System.Windows.Forms.RichTextBox richTextCombat;
         private System.Windows.Forms.RichTextBox richTextMisc;
         private Gui.SkillsView skillsView;
+        private System.Windows.Forms.Timer drawTimer;
     }
 }
 
